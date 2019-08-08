@@ -1,3 +1,3 @@
-﻿Public Class ForeignCompany
+﻿Public Class frmForeignCompany
 
 End Class

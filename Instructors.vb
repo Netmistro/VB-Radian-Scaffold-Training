@@ -8,31 +8,27 @@ Public Class frmInstructors
 
         MySqlConn = New MySqlConnection
         MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
-        Dim READER As MySqlDataReader
         Dim SDA As New MySqlDataAdapter
         Dim dbDataSet As New DataTable
         Dim bSource As New BindingSource
 
+        'Blank all fields on load
+        txtInstructorID.Text = ""
+        txtInstructorName.Text = ""
+        cmbCompanyName.Text = ""
 
         Try
             MySqlConn.Open()
             Dim Query As String
-            Query = "select instructors.idInstructors as 'ID', instructors.InstructorName as 'Instructor', foreigncompany.CompanyName as 'Company' from radiantraining.instructors INNER JOIN foreigncompany on instructors.fkCompany = foreigncompany.idfCompany "
+            Query = "select instructors.idInstructors as 'ID', instructors.InstructorName as 'Instructor', instructors.Company as 'Company' from radiantraining.instructors"
             COMMAND = New MySqlCommand(Query, MySqlConn)
-            READER = COMMAND.ExecuteReader
-            While READER.Read
 
-                Dim instructorID = READER.GetString("ID")
-                txtInstructorID.Text = instructorID
-
-                Dim instructorName = READER.GetString("Instructor")
-                txtInstructorName.Text = instructorName
-
-                Dim companyName = READER.GetString("Company")
-                cmbCompanyName.Text = companyName
-
-            End While
-
+            SDA.SelectCommand = COMMAND
+            SDA.Fill(dbDataSet)
+            bSource.DataSource = dbDataSet
+            DataGridView1.DataSource = bSource
+            SDA.Update(dbDataSet)
+            DataGridView1.ColumnHeadersDefaultCellStyle.Font = New Font(DataGridView1.Font, FontStyle.Bold)
             MySqlConn.Close()
 
         Catch ex As Exception
@@ -67,6 +63,7 @@ Public Class frmInstructors
                 txtInstructorID.Text = ""
                 txtInstructorID.ReadOnly = True
                 txtInstructorName.Text = ""
+                cmbCompanyName.Text = ""
 
             End While
 
@@ -94,10 +91,12 @@ Public Class frmInstructors
 
             MySqlConn.Open()
             Dim Query As String
-            Query = "INSERT INTO radiantraining.instructors(InstructorName, fkCompany ) select '" & txtInstructorName.Text & "' AND SELECT idfCompany where '" & cmbCompanyName.Text & "'= CompanyName)"
+            Query = "INSERT INTO radiantraining.instructors(InstructorName, Company ) VALUES ('" & txtInstructorName.Text & "','" & cmbCompanyName.Text & "')"
             COMMAND = New MySqlCommand(Query, MySqlConn)
             READER = COMMAND.ExecuteReader
-            MsgBox("Data Saved")
+
+            MsgBox("Successfully Entered")
+            DataGridView1.Refresh()
             MySqlConn.Close()
 
         Catch ex As Exception
@@ -118,4 +117,13 @@ Public Class frmInstructors
 
     End Sub
 
+    Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+
+    End Sub
+
+    Private Sub BtnAddCompany_Click(sender As Object, e As EventArgs) Handles btnAddCompany.Click
+
+        frmForeignCompany.Show()
+
+    End Sub
 End Class

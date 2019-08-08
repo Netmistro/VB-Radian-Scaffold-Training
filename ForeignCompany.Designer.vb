@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class ForeignCompany
+Partial Class frmForeignCompany
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -267,7 +267,7 @@ Partial Class ForeignCompany
         Me.Label1.TabIndex = 24
         Me.Label1.Text = "Foreign Companies"
         '
-        'ForeignCompany
+        'frmForeignCompany
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -296,7 +296,7 @@ Partial Class ForeignCompany
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Name = "ForeignCompany"
+        Me.Name = "frmForeignCompany"
         Me.Text = "ForeignCompany"
         Me.ResumeLayout(False)
         Me.PerformLayout()
