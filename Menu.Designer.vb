@@ -24,15 +24,14 @@ Partial Class frmMenu
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMenu))
         Me.btnCheckConnection = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.btnStudentTraining = New System.Windows.Forms.Button()
+        Me.btnStudentDetails = New System.Windows.Forms.Button()
+        Me.btnLocalCompany = New System.Windows.Forms.Button()
+        Me.btnInstructor = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
@@ -44,6 +43,7 @@ Partial Class frmMenu
         Me.btnExit = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -56,16 +56,6 @@ Partial Class frmMenu
         Me.btnCheckConnection.TabIndex = 0
         Me.btnCheckConnection.Text = "Test Connection"
         Me.btnCheckConnection.UseVisualStyleBackColor = True
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.Radian_Training_Database.My.Resources.Resources.radian_logo
-        Me.PictureBox1.Location = New System.Drawing.Point(33, 25)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(110, 110)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 1
-        Me.PictureBox1.TabStop = False
         '
         'Label1
         '
@@ -108,49 +98,49 @@ Partial Class frmMenu
         Me.Label4.TabIndex = 5
         Me.Label4.Text = "radianhaltd@gmail.com"
         '
-        'Button1
+        'btnStudentTraining
         '
-        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(33, 226)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(120, 40)
-        Me.Button1.TabIndex = 9
-        Me.Button1.Text = "Student Training"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btnStudentTraining.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnStudentTraining.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnStudentTraining.Location = New System.Drawing.Point(33, 226)
+        Me.btnStudentTraining.Name = "btnStudentTraining"
+        Me.btnStudentTraining.Size = New System.Drawing.Size(120, 40)
+        Me.btnStudentTraining.TabIndex = 9
+        Me.btnStudentTraining.Text = "Student Training"
+        Me.btnStudentTraining.UseVisualStyleBackColor = False
         '
-        'Button2
+        'btnStudentDetails
         '
-        Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(33, 296)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(120, 40)
-        Me.Button2.TabIndex = 10
-        Me.Button2.Text = "Student Details"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.btnStudentDetails.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnStudentDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnStudentDetails.Location = New System.Drawing.Point(33, 296)
+        Me.btnStudentDetails.Name = "btnStudentDetails"
+        Me.btnStudentDetails.Size = New System.Drawing.Size(120, 40)
+        Me.btnStudentDetails.TabIndex = 10
+        Me.btnStudentDetails.Text = "Student Details"
+        Me.btnStudentDetails.UseVisualStyleBackColor = False
         '
-        'Button3
+        'btnLocalCompany
         '
-        Me.Button3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(33, 366)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(120, 40)
-        Me.Button3.TabIndex = 10
-        Me.Button3.Text = "Company Details"
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.btnLocalCompany.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnLocalCompany.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLocalCompany.Location = New System.Drawing.Point(33, 366)
+        Me.btnLocalCompany.Name = "btnLocalCompany"
+        Me.btnLocalCompany.Size = New System.Drawing.Size(120, 40)
+        Me.btnLocalCompany.TabIndex = 10
+        Me.btnLocalCompany.Text = "Company Details"
+        Me.btnLocalCompany.UseVisualStyleBackColor = False
         '
-        'Button4
+        'btnInstructor
         '
-        Me.Button4.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(33, 436)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(120, 40)
-        Me.Button4.TabIndex = 10
-        Me.Button4.Text = "Instructors"
-        Me.Button4.UseVisualStyleBackColor = False
+        Me.btnInstructor.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnInstructor.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnInstructor.Location = New System.Drawing.Point(33, 436)
+        Me.btnInstructor.Name = "btnInstructor"
+        Me.btnInstructor.Size = New System.Drawing.Size(120, 40)
+        Me.btnInstructor.TabIndex = 10
+        Me.btnInstructor.Text = "Instructors"
+        Me.btnInstructor.UseVisualStyleBackColor = False
         '
         'Button5
         '
@@ -270,6 +260,16 @@ Partial Class frmMenu
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Add/Edit Details"
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.Radian_Training_Database.My.Resources.Resources.radian_logo
+        Me.PictureBox1.Location = New System.Drawing.Point(33, 25)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(110, 110)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 1
+        Me.PictureBox1.TabStop = False
+        '
         'frmMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -284,10 +284,10 @@ Partial Class frmMenu
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button8)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnInstructor)
+        Me.Controls.Add(Me.btnLocalCompany)
+        Me.Controls.Add(Me.btnStudentDetails)
+        Me.Controls.Add(Me.btnStudentTraining)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -311,10 +311,10 @@ Partial Class frmMenu
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
+    Friend WithEvents btnStudentTraining As Button
+    Friend WithEvents btnStudentDetails As Button
+    Friend WithEvents btnLocalCompany As Button
+    Friend WithEvents btnInstructor As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents Button7 As Button

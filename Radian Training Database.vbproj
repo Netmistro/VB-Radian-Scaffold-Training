@@ -74,10 +74,16 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Company.Designer.vb">
-      <DependentUpon>Company.vb</DependentUpon>
+    <Compile Include="ForeignCompany.Designer.vb">
+      <DependentUpon>ForeignCompany.vb</DependentUpon>
     </Compile>
-    <Compile Include="Company.vb">
+    <Compile Include="ForeignCompany.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocalCompany.Designer.vb">
+      <DependentUpon>LocalCompany.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LocalCompany.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Instructors.Designer.vb">
@@ -128,6 +134,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ForeignCompany.resx">
+      <DependentUpon>ForeignCompany.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocalCompany.resx">
+      <DependentUpon>LocalCompany.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Instructors.resx">
+      <DependentUpon>Instructors.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.vb</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +154,12 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Students.resx">
+      <DependentUpon>Students.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student_Training.resx">
+      <DependentUpon>Student_Training.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,3 +1,3 @@
-﻿Public Class Students
+﻿Public Class frmStudents
 
 End Class

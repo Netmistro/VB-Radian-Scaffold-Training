@@ -1,3 +1,3 @@
-﻿Public Class Student_Training
+﻿Public Class frmStudentTraining
 
 End Class
