@@ -22,49 +22,56 @@ Partial Class frmForeignCompany
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBox11 = New System.Windows.Forms.TextBox()
+        Me.btnMore = New System.Windows.Forms.Button()
+        Me.txtWebsite = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.TextBox10 = New System.Windows.Forms.TextBox()
+        Me.txtMainContact = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.txtCity = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.txtFax = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtPhone2 = New System.Windows.Forms.TextBox()
+        Me.txtPhone1 = New System.Windows.Forms.TextBox()
+        Me.txtManagingDirector = New System.Windows.Forms.TextBox()
+        Me.txtCompanyName = New System.Windows.Forms.TextBox()
+        Me.txtCompanyID = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnNew = New System.Windows.Forms.Button()
+        Me.btnUpdate = New System.Windows.Forms.Button()
+        Me.btnDelete = New System.Windows.Forms.Button()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'Button1
+        'btnMore
         '
-        Me.Button1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(523, 315)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 26)
-        Me.Button1.TabIndex = 47
-        Me.Button1.Text = "More..."
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnMore.BackColor = System.Drawing.Color.Salmon
+        Me.btnMore.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnMore.Location = New System.Drawing.Point(600, 304)
+        Me.btnMore.Name = "btnMore"
+        Me.btnMore.Size = New System.Drawing.Size(100, 35)
+        Me.btnMore.TabIndex = 47
+        Me.btnMore.Text = "More..."
+        Me.btnMore.UseVisualStyleBackColor = False
         '
-        'TextBox11
+        'txtWebsite
         '
-        Me.TextBox11.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox11.Location = New System.Drawing.Point(139, 359)
-        Me.TextBox11.Name = "TextBox11"
-        Me.TextBox11.Size = New System.Drawing.Size(130, 22)
-        Me.TextBox11.TabIndex = 46
+        Me.txtWebsite.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtWebsite.Location = New System.Drawing.Point(139, 359)
+        Me.txtWebsite.Name = "txtWebsite"
+        Me.txtWebsite.Size = New System.Drawing.Size(130, 22)
+        Me.txtWebsite.TabIndex = 8
         '
         'Label12
         '
@@ -76,68 +83,68 @@ Partial Class frmForeignCompany
         Me.Label12.TabIndex = 45
         Me.Label12.Text = "Website"
         '
-        'TextBox10
+        'txtMainContact
         '
-        Me.TextBox10.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox10.Location = New System.Drawing.Point(371, 320)
-        Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.Size = New System.Drawing.Size(130, 22)
-        Me.TextBox10.TabIndex = 44
+        Me.txtMainContact.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMainContact.Location = New System.Drawing.Point(425, 317)
+        Me.txtMainContact.Name = "txtMainContact"
+        Me.txtMainContact.Size = New System.Drawing.Size(130, 22)
+        Me.txtMainContact.TabIndex = 11
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(285, 327)
+        Me.Label11.Location = New System.Drawing.Point(339, 323)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(85, 16)
         Me.Label11.TabIndex = 43
         Me.Label11.Text = "Main Contact"
         '
-        'TextBox9
+        'txtCity
         '
-        Me.TextBox9.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox9.Location = New System.Drawing.Point(371, 274)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(130, 22)
-        Me.TextBox9.TabIndex = 42
+        Me.txtCity.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCity.Location = New System.Drawing.Point(425, 275)
+        Me.txtCity.Name = "txtCity"
+        Me.txtCity.Size = New System.Drawing.Size(130, 22)
+        Me.txtCity.TabIndex = 10
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(339, 281)
+        Me.Label10.Location = New System.Drawing.Point(393, 281)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(31, 16)
         Me.Label10.TabIndex = 41
         Me.Label10.Text = "City"
         '
-        'TextBox8
+        'txtAddress
         '
-        Me.TextBox8.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox8.Location = New System.Drawing.Point(371, 199)
-        Me.TextBox8.Multiline = True
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(236, 44)
-        Me.TextBox8.TabIndex = 40
+        Me.txtAddress.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAddress.Location = New System.Drawing.Point(425, 211)
+        Me.txtAddress.Multiline = True
+        Me.txtAddress.Name = "txtAddress"
+        Me.txtAddress.Size = New System.Drawing.Size(236, 44)
+        Me.txtAddress.TabIndex = 9
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(314, 206)
+        Me.Label9.Location = New System.Drawing.Point(363, 239)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(56, 16)
         Me.Label9.TabIndex = 39
         Me.Label9.Text = "Address"
         '
-        'TextBox7
+        'txtEmail
         '
-        Me.TextBox7.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox7.Location = New System.Drawing.Point(139, 317)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(130, 22)
-        Me.TextBox7.TabIndex = 38
+        Me.txtEmail.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEmail.Location = New System.Drawing.Point(139, 317)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(130, 22)
+        Me.txtEmail.TabIndex = 7
         '
         'Label8
         '
@@ -149,13 +156,13 @@ Partial Class frmForeignCompany
         Me.Label8.TabIndex = 37
         Me.Label8.Text = "email"
         '
-        'TextBox6
+        'txtFax
         '
-        Me.TextBox6.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox6.Location = New System.Drawing.Point(139, 275)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(130, 22)
-        Me.TextBox6.TabIndex = 36
+        Me.txtFax.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFax.Location = New System.Drawing.Point(139, 275)
+        Me.txtFax.Name = "txtFax"
+        Me.txtFax.Size = New System.Drawing.Size(130, 22)
+        Me.txtFax.TabIndex = 6
         '
         'Label7
         '
@@ -167,45 +174,45 @@ Partial Class frmForeignCompany
         Me.Label7.TabIndex = 35
         Me.Label7.Text = "Fax"
         '
-        'TextBox5
+        'txtPhone2
         '
-        Me.TextBox5.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox5.Location = New System.Drawing.Point(139, 233)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(130, 22)
-        Me.TextBox5.TabIndex = 34
+        Me.txtPhone2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPhone2.Location = New System.Drawing.Point(139, 233)
+        Me.txtPhone2.Name = "txtPhone2"
+        Me.txtPhone2.Size = New System.Drawing.Size(130, 22)
+        Me.txtPhone2.TabIndex = 5
         '
-        'TextBox4
+        'txtPhone1
         '
-        Me.TextBox4.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(139, 191)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(130, 22)
-        Me.TextBox4.TabIndex = 33
+        Me.txtPhone1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPhone1.Location = New System.Drawing.Point(139, 191)
+        Me.txtPhone1.Name = "txtPhone1"
+        Me.txtPhone1.Size = New System.Drawing.Size(130, 22)
+        Me.txtPhone1.TabIndex = 4
         '
-        'TextBox3
+        'txtManagingDirector
         '
-        Me.TextBox3.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(139, 149)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(167, 22)
-        Me.TextBox3.TabIndex = 32
+        Me.txtManagingDirector.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtManagingDirector.Location = New System.Drawing.Point(139, 149)
+        Me.txtManagingDirector.Name = "txtManagingDirector"
+        Me.txtManagingDirector.Size = New System.Drawing.Size(167, 22)
+        Me.txtManagingDirector.TabIndex = 3
         '
-        'TextBox2
+        'txtCompanyName
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(139, 107)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(239, 22)
-        Me.TextBox2.TabIndex = 31
+        Me.txtCompanyName.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCompanyName.Location = New System.Drawing.Point(139, 107)
+        Me.txtCompanyName.Name = "txtCompanyName"
+        Me.txtCompanyName.Size = New System.Drawing.Size(239, 22)
+        Me.txtCompanyName.TabIndex = 2
         '
-        'TextBox1
+        'txtCompanyID
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(139, 65)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(83, 22)
-        Me.TextBox1.TabIndex = 30
+        Me.txtCompanyID.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCompanyID.Location = New System.Drawing.Point(139, 65)
+        Me.txtCompanyID.Name = "txtCompanyID"
+        Me.txtCompanyID.Size = New System.Drawing.Size(60, 22)
+        Me.txtCompanyID.TabIndex = 1
         '
         'Label6
         '
@@ -267,29 +274,94 @@ Partial Class frmForeignCompany
         Me.Label1.TabIndex = 24
         Me.Label1.Text = "Foreign Companies"
         '
+        'btnNew
+        '
+        Me.btnNew.BackColor = System.Drawing.Color.Coral
+        Me.btnNew.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNew.Location = New System.Drawing.Point(667, 399)
+        Me.btnNew.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(100, 35)
+        Me.btnNew.TabIndex = 12
+        Me.btnNew.Text = "New"
+        Me.btnNew.UseVisualStyleBackColor = False
+        '
+        'btnUpdate
+        '
+        Me.btnUpdate.BackColor = System.Drawing.Color.Coral
+        Me.btnUpdate.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUpdate.Location = New System.Drawing.Point(667, 452)
+        Me.btnUpdate.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(100, 35)
+        Me.btnUpdate.TabIndex = 13
+        Me.btnUpdate.Text = "Update"
+        Me.btnUpdate.UseVisualStyleBackColor = False
+        '
+        'btnDelete
+        '
+        Me.btnDelete.BackColor = System.Drawing.Color.Coral
+        Me.btnDelete.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDelete.Location = New System.Drawing.Point(667, 505)
+        Me.btnDelete.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(100, 35)
+        Me.btnDelete.TabIndex = 14
+        Me.btnDelete.Text = "Delete"
+        Me.btnDelete.UseVisualStyleBackColor = False
+        '
+        'btnSave
+        '
+        Me.btnSave.BackColor = System.Drawing.Color.Coral
+        Me.btnSave.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSave.Location = New System.Drawing.Point(667, 558)
+        Me.btnSave.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(100, 35)
+        Me.btnSave.TabIndex = 15
+        Me.btnSave.Text = "Save"
+        Me.btnSave.UseVisualStyleBackColor = False
+        '
+        'DataGridView2
+        '
+        Me.DataGridView2.AllowUserToAddRows = False
+        Me.DataGridView2.AllowUserToDeleteRows = False
+        Me.DataGridView2.BackgroundColor = System.Drawing.Color.White
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Location = New System.Drawing.Point(12, 399)
+        Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.ReadOnly = True
+        Me.DataGridView2.Size = New System.Drawing.Size(649, 196)
+        Me.DataGridView2.TabIndex = 52
+        '
         'frmForeignCompany
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(630, 405)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.TextBox11)
+        Me.ClientSize = New System.Drawing.Size(779, 609)
+        Me.Controls.Add(Me.DataGridView2)
+        Me.Controls.Add(Me.btnNew)
+        Me.Controls.Add(Me.btnUpdate)
+        Me.Controls.Add(Me.btnDelete)
+        Me.Controls.Add(Me.btnSave)
+        Me.Controls.Add(Me.btnMore)
+        Me.Controls.Add(Me.txtWebsite)
         Me.Controls.Add(Me.Label12)
-        Me.Controls.Add(Me.TextBox10)
+        Me.Controls.Add(Me.txtMainContact)
         Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.TextBox9)
+        Me.Controls.Add(Me.txtCity)
         Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.TextBox8)
+        Me.Controls.Add(Me.txtAddress)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.TextBox7)
+        Me.Controls.Add(Me.txtEmail)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.TextBox6)
+        Me.Controls.Add(Me.txtFax)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.TextBox5)
-        Me.Controls.Add(Me.TextBox4)
-        Me.Controls.Add(Me.TextBox3)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtPhone2)
+        Me.Controls.Add(Me.txtPhone1)
+        Me.Controls.Add(Me.txtManagingDirector)
+        Me.Controls.Add(Me.txtCompanyName)
+        Me.Controls.Add(Me.txtCompanyID)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
@@ -298,33 +370,39 @@ Partial Class frmForeignCompany
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmForeignCompany"
         Me.Text = "ForeignCompany"
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents Button1 As Button
-    Friend WithEvents TextBox11 As TextBox
+    Friend WithEvents btnMore As Button
+    Friend WithEvents txtWebsite As TextBox
     Friend WithEvents Label12 As Label
-    Friend WithEvents TextBox10 As TextBox
+    Friend WithEvents txtMainContact As TextBox
     Friend WithEvents Label11 As Label
-    Friend WithEvents TextBox9 As TextBox
+    Friend WithEvents txtCity As TextBox
     Friend WithEvents Label10 As Label
-    Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents txtAddress As TextBox
     Friend WithEvents Label9 As Label
-    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents txtEmail As TextBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents txtFax As TextBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtPhone2 As TextBox
+    Friend WithEvents txtPhone1 As TextBox
+    Friend WithEvents txtManagingDirector As TextBox
+    Friend WithEvents txtCompanyName As TextBox
+    Friend WithEvents txtCompanyID As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents btnNew As Button
+    Friend WithEvents btnUpdate As Button
+    Friend WithEvents btnDelete As Button
+    Friend WithEvents btnSave As Button
+    Friend WithEvents DataGridView2 As DataGridView
 End Class
