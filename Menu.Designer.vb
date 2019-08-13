@@ -49,8 +49,8 @@ Partial Class frmMenu
         '
         'btnCheckConnection
         '
-        Me.btnCheckConnection.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCheckConnection.Location = New System.Drawing.Point(441, 528)
+        Me.btnCheckConnection.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCheckConnection.Location = New System.Drawing.Point(470, 528)
         Me.btnCheckConnection.Name = "btnCheckConnection"
         Me.btnCheckConnection.Size = New System.Drawing.Size(120, 40)
         Me.btnCheckConnection.TabIndex = 0
@@ -60,51 +60,51 @@ Partial Class frmMenu
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Arial", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Red
-        Me.Label1.Location = New System.Drawing.Point(197, 35)
+        Me.Label1.Location = New System.Drawing.Point(188, 31)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(292, 32)
+        Me.Label1.Size = New System.Drawing.Size(289, 37)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "RADIAN H.A. Limited"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(197, 70)
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(188, 70)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(324, 17)
+        Me.Label2.Size = New System.Drawing.Size(299, 17)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "187 Helen Street, Marabella, Trinidad and Tobago"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(197, 92)
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(188, 92)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(169, 16)
+        Me.Label3.Size = New System.Drawing.Size(173, 17)
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "+1 868 658-0293/5946/8294"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(200, 114)
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(188, 114)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(144, 16)
+        Me.Label4.Size = New System.Drawing.Size(146, 17)
         Me.Label4.TabIndex = 5
         Me.Label4.Text = "radianhaltd@gmail.com"
         '
         'btnStudentTraining
         '
         Me.btnStudentTraining.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnStudentTraining.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnStudentTraining.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnStudentTraining.Location = New System.Drawing.Point(33, 226)
         Me.btnStudentTraining.Name = "btnStudentTraining"
-        Me.btnStudentTraining.Size = New System.Drawing.Size(120, 40)
+        Me.btnStudentTraining.Size = New System.Drawing.Size(120, 55)
         Me.btnStudentTraining.TabIndex = 9
         Me.btnStudentTraining.Text = "Student Training"
         Me.btnStudentTraining.UseVisualStyleBackColor = False
@@ -112,10 +112,10 @@ Partial Class frmMenu
         'btnStudentDetails
         '
         Me.btnStudentDetails.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnStudentDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnStudentDetails.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnStudentDetails.Location = New System.Drawing.Point(33, 296)
         Me.btnStudentDetails.Name = "btnStudentDetails"
-        Me.btnStudentDetails.Size = New System.Drawing.Size(120, 40)
+        Me.btnStudentDetails.Size = New System.Drawing.Size(120, 55)
         Me.btnStudentDetails.TabIndex = 10
         Me.btnStudentDetails.Text = "Student Details"
         Me.btnStudentDetails.UseVisualStyleBackColor = False
@@ -123,10 +123,10 @@ Partial Class frmMenu
         'btnLocalCompany
         '
         Me.btnLocalCompany.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnLocalCompany.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLocalCompany.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLocalCompany.Location = New System.Drawing.Point(33, 366)
         Me.btnLocalCompany.Name = "btnLocalCompany"
-        Me.btnLocalCompany.Size = New System.Drawing.Size(120, 40)
+        Me.btnLocalCompany.Size = New System.Drawing.Size(120, 55)
         Me.btnLocalCompany.TabIndex = 10
         Me.btnLocalCompany.Text = "Company Details"
         Me.btnLocalCompany.UseVisualStyleBackColor = False
@@ -134,10 +134,10 @@ Partial Class frmMenu
         'btnInstructor
         '
         Me.btnInstructor.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnInstructor.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnInstructor.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnInstructor.Location = New System.Drawing.Point(33, 436)
         Me.btnInstructor.Name = "btnInstructor"
-        Me.btnInstructor.Size = New System.Drawing.Size(120, 40)
+        Me.btnInstructor.Size = New System.Drawing.Size(120, 55)
         Me.btnInstructor.TabIndex = 10
         Me.btnInstructor.Text = "Instructors"
         Me.btnInstructor.UseVisualStyleBackColor = False
@@ -145,10 +145,10 @@ Partial Class frmMenu
         'Button5
         '
         Me.Button5.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button5.Location = New System.Drawing.Point(225, 436)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(120, 40)
+        Me.Button5.Size = New System.Drawing.Size(120, 55)
         Me.Button5.TabIndex = 12
         Me.Button5.Text = "Current Year TD"
         Me.Button5.UseVisualStyleBackColor = False
@@ -156,10 +156,10 @@ Partial Class frmMenu
         'Button6
         '
         Me.Button6.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button6.Location = New System.Drawing.Point(225, 366)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(120, 40)
+        Me.Button6.Size = New System.Drawing.Size(120, 55)
         Me.Button6.TabIndex = 13
         Me.Button6.Text = "Last Class"
         Me.Button6.UseVisualStyleBackColor = False
@@ -167,10 +167,10 @@ Partial Class frmMenu
         'Button7
         '
         Me.Button7.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button7.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button7.Location = New System.Drawing.Point(225, 296)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(120, 40)
+        Me.Button7.Size = New System.Drawing.Size(120, 55)
         Me.Button7.TabIndex = 14
         Me.Button7.Text = "Expired Training"
         Me.Button7.UseVisualStyleBackColor = False
@@ -178,10 +178,10 @@ Partial Class frmMenu
         'Button8
         '
         Me.Button8.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button8.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button8.Location = New System.Drawing.Point(225, 226)
         Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(120, 40)
+        Me.Button8.Size = New System.Drawing.Size(120, 55)
         Me.Button8.TabIndex = 11
         Me.Button8.Text = "Student Listing"
         Me.Button8.UseVisualStyleBackColor = False
@@ -189,10 +189,10 @@ Partial Class frmMenu
         'Button9
         '
         Me.Button9.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button9.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button9.Location = New System.Drawing.Point(441, 436)
         Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(120, 40)
+        Me.Button9.Size = New System.Drawing.Size(120, 55)
         Me.Button9.TabIndex = 16
         Me.Button9.Text = "Last Year Training"
         Me.Button9.UseVisualStyleBackColor = False
@@ -200,10 +200,10 @@ Partial Class frmMenu
         'Button10
         '
         Me.Button10.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button10.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button10.Location = New System.Drawing.Point(441, 366)
         Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(120, 40)
+        Me.Button10.Size = New System.Drawing.Size(120, 55)
         Me.Button10.TabIndex = 17
         Me.Button10.Text = "Company Training"
         Me.Button10.UseVisualStyleBackColor = False
@@ -211,10 +211,10 @@ Partial Class frmMenu
         'Button11
         '
         Me.Button11.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button11.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button11.Location = New System.Drawing.Point(441, 296)
         Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(120, 40)
+        Me.Button11.Size = New System.Drawing.Size(120, 55)
         Me.Button11.TabIndex = 18
         Me.Button11.Text = "Training (Private)"
         Me.Button11.UseVisualStyleBackColor = False
@@ -222,18 +222,18 @@ Partial Class frmMenu
         'Button12
         '
         Me.Button12.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button12.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button12.Location = New System.Drawing.Point(441, 226)
         Me.Button12.Name = "Button12"
-        Me.Button12.Size = New System.Drawing.Size(120, 40)
+        Me.Button12.Size = New System.Drawing.Size(120, 55)
         Me.Button12.TabIndex = 15
         Me.Button12.Text = "Outstanding Payment"
         Me.Button12.UseVisualStyleBackColor = False
         '
         'btnExit
         '
-        Me.btnExit.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExit.Location = New System.Drawing.Point(225, 528)
+        Me.btnExit.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExit.Location = New System.Drawing.Point(311, 528)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(120, 40)
         Me.btnExit.TabIndex = 19
@@ -242,7 +242,7 @@ Partial Class frmMenu
         '
         'GroupBox1
         '
-        Me.GroupBox1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(203, 182)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(387, 329)
@@ -252,7 +252,7 @@ Partial Class frmMenu
         '
         'GroupBox2
         '
-        Me.GroupBox2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(22, 182)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(152, 329)
