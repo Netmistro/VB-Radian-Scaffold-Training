@@ -95,12 +95,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AllUsers.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AllUsers.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="ForeignCompany.Designer.vb">
       <DependentUpon>ForeignCompany.vb</DependentUpon>
@@ -169,10 +163,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AllUsers.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>AllUsers.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="ForeignCompany.resx">
       <DependentUpon>ForeignCompany.vb</DependentUpon>
     </EmbeddedResource>

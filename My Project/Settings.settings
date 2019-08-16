@@ -15,19 +15,19 @@
       <Value Profile="(Default)">radiantraining</Value>
     </Setting>
     <Setting Name="PicturePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Z:\TrainingDatabase\StudentPics</Value>
     </Setting>
     <Setting Name="CertPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Z:\TrainingDatabase\StudentCertificates</Value>
     </Setting>
     <Setting Name="NationalIDPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Z:\TrainingDatabase\NationalID</Value>
     </Setting>
     <Setting Name="DriversPermitPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Z:\TrainingDatabase\DriversPermit</Value>
     </Setting>
     <Setting Name="PassportPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Z:\TrainingDatabase\Passport</Value>
     </Setting>
   </Settings>
 </SettingsFile>

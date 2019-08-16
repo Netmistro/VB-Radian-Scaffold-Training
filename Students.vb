@@ -95,7 +95,7 @@ Public Class frmStudents
                 picBoxStudent.Image = Image.FromFile(My.Settings.PicturePath & "\" & picName)
 
             Catch ex As Exception
-                MsgBox("Error Loading File")
+                picBoxStudent.Image = Image.FromFile(My.Settings.PicturePath & "\" & "default.jpg")
             End Try
 
         End If
@@ -312,6 +312,27 @@ Public Class frmStudents
 
             If txtFirstName.Text = "" And txtLastName.Text = "" Then
                 MsgBox("Please enter Student Name")
+
+            ElseIf txtFirstName.Text <> And txtLastName.Text = Nothing Then
+                MySqlConn.Open()
+                Dim Query As String
+                Query = "select * from radiantraining.localcompany"
+                COMMAND = New MySqlCommand(Query, MySqlConn)
+                READER = COMMAND.ExecuteReader
+
+                While READER.Read
+
+                    Dim firstname = READER.GetString("FirstName")
+                    Dim lastName = READER.GetString("LastName")
+
+                    If txtFirstName.Text & txtLastName.Text = firstname & lastName Then
+                        MsgBox("Name already exist!")
+                    End If
+
+                End While
+                MySqlConn.Close()
+
+
             Else
                 MySqlConn.Open()
                 Dim Query As String
@@ -353,6 +374,74 @@ Public Class frmStudents
             MySqlConn.Dispose()
 
         End Try
+
+    End Sub
+
+    Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+
+        MySqlConn = New MySqlConnection
+        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim READER As MySqlDataReader
+
+        'Try Catch Block
+        Try
+
+            MySqlConn.Open()
+            Dim Query As String
+            Query = "DELETE from radiantraining.students where StudentID='" & txtStudentID.Text & "'"
+            COMMAND = New MySqlCommand(Query, MySqlConn)
+            READER = COMMAND.ExecuteReader
+            MsgBox("Record Deleted")
+
+            'Refresh Data - Call function
+            loadTable()
+            MySqlConn.Close()
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message)
+
+        Finally
+
+            'Blank all fields on load
+            txtStudentAddress.Text = ""
+            cmbCity.Text = ""
+            txtSearchStudent.Text = ""
+            txtStudentID.Text = ""
+            txtFirstName.Text = ""
+            txtMiddleName.Text = ""
+            txtLastName.Text = ""
+            cmbCompanyName.Text = ""
+            txtMobile.Text = ""
+            txtHome.Text = ""
+            txtOther.Text = ""
+            txtEmailAddress.Text = ""
+            txtNotes.Text = ""
+            txtNationalID.Text = ""
+            txtPassportNo.Text = ""
+            txtDriversPermitNo.Text = ""
+
+            MySqlConn.Dispose()
+
+        End Try
+
+    End Sub
+
+    Private Sub PicBoxStudent_Click(sender As Object, e As EventArgs) Handles picBoxStudent.Click
+
+        Dim fd As OpenFileDialog = New OpenFileDialog()
+        Dim strFileName As String
+
+        fd.Title = "Select PDF File"
+        fd.InitialDirectory = "C:\"
+        fd.Filter = "JPG files (*.jpg)|*.jpg"
+        fd.FilterIndex = 2
+        fd.RestoreDirectory = True
+
+        If fd.ShowDialog() = DialogResult.OK Then
+            strFileName = fd.FileName
+
+        End If
 
     End Sub
 End Class
