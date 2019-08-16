@@ -9,6 +9,10 @@ Public Class frmForeignCompany
 
     Private Sub FrmForeignCompany_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        'Centre Form
+        Dim loadForeignCompany As New RadianSettings
+        loadForeignCompany.CenterForm(Me)
+
         MySqlConn = New MySqlConnection
         MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
         Dim SDA As New MySqlDataAdapter

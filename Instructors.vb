@@ -6,6 +6,10 @@ Public Class frmInstructors
 
     Private Sub Instructors_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        'Centre Form
+        Dim loadInstructorsForm As New RadianSettings
+        loadInstructorsForm.CenterForm(Me)
+
         MySqlConn = New MySqlConnection
         MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
         Dim SDA As New MySqlDataAdapter
@@ -96,7 +100,14 @@ Public Class frmInstructors
 
             MySqlConn.Open()
             Dim Query As String
-            Query = "Update radiantraining.instructors set idInstructors='" & txtInstructorID.Text & "',InstructorName='" & txtInstructorName.Text & "',Company='" & cmbCompanyName.Text & "',InsMobile='" & txtInsMobile.Text & "' where idInstructors='" & txtInstructorID.Text & "'"
+            Query = "
+            Update radiantraining.instructors set
+            idInstructors='" & txtInstructorID.Text & "',
+            InstructorName='" & txtInstructorName.Text & "',
+            Company='" & cmbCompanyName.Text & "',
+            InsMobile='" & txtInsMobile.Text & "'
+            where idInstructors='" & txtInstructorID.Text & "'"
+
             COMMAND = New MySqlCommand(Query, MySqlConn)
             READER = COMMAND.ExecuteReader
 

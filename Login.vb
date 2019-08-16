@@ -3,20 +3,23 @@ Imports System.Data
 Imports MySql.Data
 
 Public Class frmLogin
+
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        Dim loadLoginForm As New RadianSettings
+        loadLoginForm.CenterForm(Me)
         cbAdmin.Checked = False
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
 
         Me.Close()
 
     End Sub
 
     Dim MysqlConn As MySqlConnection
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
+    Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         MysqlConn = New MySqlConnection With {
             .ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
         }
@@ -61,4 +64,11 @@ Public Class frmLogin
         End Try
 
     End Sub
+
+    Private Sub btnOptions_Click(sender As Object, e As EventArgs) Handles btnOptions.Click
+
+        frmSettings.Show()
+
+    End Sub
 End Class
+

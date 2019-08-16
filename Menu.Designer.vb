@@ -44,18 +44,20 @@ Partial Class frmMenu
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.btnSettings = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnCheckConnection
         '
+        Me.btnCheckConnection.BackColor = System.Drawing.Color.Tomato
         Me.btnCheckConnection.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCheckConnection.Location = New System.Drawing.Point(470, 528)
+        Me.btnCheckConnection.Location = New System.Drawing.Point(486, 529)
         Me.btnCheckConnection.Name = "btnCheckConnection"
-        Me.btnCheckConnection.Size = New System.Drawing.Size(120, 40)
-        Me.btnCheckConnection.TabIndex = 0
-        Me.btnCheckConnection.Text = "Test Connection"
-        Me.btnCheckConnection.UseVisualStyleBackColor = True
+        Me.btnCheckConnection.Size = New System.Drawing.Size(75, 30)
+        Me.btnCheckConnection.TabIndex = 15
+        Me.btnCheckConnection.Text = "Test"
+        Me.btnCheckConnection.UseVisualStyleBackColor = False
         '
         'Label1
         '
@@ -105,7 +107,7 @@ Partial Class frmMenu
         Me.btnStudentTraining.Location = New System.Drawing.Point(33, 226)
         Me.btnStudentTraining.Name = "btnStudentTraining"
         Me.btnStudentTraining.Size = New System.Drawing.Size(120, 55)
-        Me.btnStudentTraining.TabIndex = 9
+        Me.btnStudentTraining.TabIndex = 1
         Me.btnStudentTraining.Text = "Student Training"
         Me.btnStudentTraining.UseVisualStyleBackColor = False
         '
@@ -116,7 +118,7 @@ Partial Class frmMenu
         Me.btnStudentDetails.Location = New System.Drawing.Point(33, 296)
         Me.btnStudentDetails.Name = "btnStudentDetails"
         Me.btnStudentDetails.Size = New System.Drawing.Size(120, 55)
-        Me.btnStudentDetails.TabIndex = 10
+        Me.btnStudentDetails.TabIndex = 2
         Me.btnStudentDetails.Text = "Student Details"
         Me.btnStudentDetails.UseVisualStyleBackColor = False
         '
@@ -127,7 +129,7 @@ Partial Class frmMenu
         Me.btnLocalCompany.Location = New System.Drawing.Point(33, 366)
         Me.btnLocalCompany.Name = "btnLocalCompany"
         Me.btnLocalCompany.Size = New System.Drawing.Size(120, 55)
-        Me.btnLocalCompany.TabIndex = 10
+        Me.btnLocalCompany.TabIndex = 3
         Me.btnLocalCompany.Text = "Company Details"
         Me.btnLocalCompany.UseVisualStyleBackColor = False
         '
@@ -138,7 +140,7 @@ Partial Class frmMenu
         Me.btnInstructor.Location = New System.Drawing.Point(33, 436)
         Me.btnInstructor.Name = "btnInstructor"
         Me.btnInstructor.Size = New System.Drawing.Size(120, 55)
-        Me.btnInstructor.TabIndex = 10
+        Me.btnInstructor.TabIndex = 4
         Me.btnInstructor.Text = "Instructors"
         Me.btnInstructor.UseVisualStyleBackColor = False
         '
@@ -149,7 +151,7 @@ Partial Class frmMenu
         Me.Button5.Location = New System.Drawing.Point(225, 436)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(120, 55)
-        Me.Button5.TabIndex = 12
+        Me.Button5.TabIndex = 8
         Me.Button5.Text = "Current Year TD"
         Me.Button5.UseVisualStyleBackColor = False
         '
@@ -160,7 +162,7 @@ Partial Class frmMenu
         Me.Button6.Location = New System.Drawing.Point(225, 366)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(120, 55)
-        Me.Button6.TabIndex = 13
+        Me.Button6.TabIndex = 7
         Me.Button6.Text = "Last Class"
         Me.Button6.UseVisualStyleBackColor = False
         '
@@ -171,7 +173,7 @@ Partial Class frmMenu
         Me.Button7.Location = New System.Drawing.Point(225, 296)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(120, 55)
-        Me.Button7.TabIndex = 14
+        Me.Button7.TabIndex = 6
         Me.Button7.Text = "Expired Training"
         Me.Button7.UseVisualStyleBackColor = False
         '
@@ -182,7 +184,7 @@ Partial Class frmMenu
         Me.Button8.Location = New System.Drawing.Point(225, 226)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(120, 55)
-        Me.Button8.TabIndex = 11
+        Me.Button8.TabIndex = 5
         Me.Button8.Text = "Student Listing"
         Me.Button8.UseVisualStyleBackColor = False
         '
@@ -193,7 +195,7 @@ Partial Class frmMenu
         Me.Button9.Location = New System.Drawing.Point(441, 436)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(120, 55)
-        Me.Button9.TabIndex = 16
+        Me.Button9.TabIndex = 12
         Me.Button9.Text = "Last Year Training"
         Me.Button9.UseVisualStyleBackColor = False
         '
@@ -204,7 +206,7 @@ Partial Class frmMenu
         Me.Button10.Location = New System.Drawing.Point(441, 366)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(120, 55)
-        Me.Button10.TabIndex = 17
+        Me.Button10.TabIndex = 11
         Me.Button10.Text = "Company Training"
         Me.Button10.UseVisualStyleBackColor = False
         '
@@ -215,7 +217,7 @@ Partial Class frmMenu
         Me.Button11.Location = New System.Drawing.Point(441, 296)
         Me.Button11.Name = "Button11"
         Me.Button11.Size = New System.Drawing.Size(120, 55)
-        Me.Button11.TabIndex = 18
+        Me.Button11.TabIndex = 10
         Me.Button11.Text = "Training (Private)"
         Me.Button11.UseVisualStyleBackColor = False
         '
@@ -226,19 +228,20 @@ Partial Class frmMenu
         Me.Button12.Location = New System.Drawing.Point(441, 226)
         Me.Button12.Name = "Button12"
         Me.Button12.Size = New System.Drawing.Size(120, 55)
-        Me.Button12.TabIndex = 15
+        Me.Button12.TabIndex = 9
         Me.Button12.Text = "Outstanding Payment"
         Me.Button12.UseVisualStyleBackColor = False
         '
         'btnExit
         '
+        Me.btnExit.BackColor = System.Drawing.Color.Tomato
         Me.btnExit.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExit.Location = New System.Drawing.Point(311, 528)
+        Me.btnExit.Location = New System.Drawing.Point(405, 529)
         Me.btnExit.Name = "btnExit"
-        Me.btnExit.Size = New System.Drawing.Size(120, 40)
-        Me.btnExit.TabIndex = 19
+        Me.btnExit.Size = New System.Drawing.Size(75, 30)
+        Me.btnExit.TabIndex = 14
         Me.btnExit.Text = "Exit"
-        Me.btnExit.UseVisualStyleBackColor = True
+        Me.btnExit.UseVisualStyleBackColor = False
         '
         'GroupBox1
         '
@@ -270,11 +273,23 @@ Partial Class frmMenu
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
+        'btnSettings
+        '
+        Me.btnSettings.BackColor = System.Drawing.Color.Tomato
+        Me.btnSettings.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSettings.Location = New System.Drawing.Point(324, 529)
+        Me.btnSettings.Name = "btnSettings"
+        Me.btnSettings.Size = New System.Drawing.Size(75, 30)
+        Me.btnSettings.TabIndex = 13
+        Me.btnSettings.Text = "Settings"
+        Me.btnSettings.UseVisualStyleBackColor = False
+        '
         'frmMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(617, 580)
+        Me.ClientSize = New System.Drawing.Size(617, 571)
+        Me.Controls.Add(Me.btnSettings)
         Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.Button10)
@@ -326,4 +341,5 @@ Partial Class frmMenu
     Friend WithEvents btnExit As Button
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents btnSettings As Button
 End Class

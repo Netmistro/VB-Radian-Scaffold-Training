@@ -19,7 +19,10 @@ Public Class frmMenu
         End Try
     End Sub
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Menu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Dim loadMenuForm As New RadianSettings
+        loadMenuForm.CenterForm(Me)
 
     End Sub
 
@@ -47,6 +50,12 @@ Public Class frmMenu
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btnInstructor.Click
 
         frmInstructors.Show()
+
+    End Sub
+
+    Private Sub BtnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
+
+        frmSettings.Show()
 
     End Sub
 End Class
