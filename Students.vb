@@ -6,6 +6,9 @@ Public Class frmStudents
 
     Private Sub FrmStudents_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        'Disable Save Button
+        btnSave.Enabled = False
+
         'Set Focus on search box
         txtSearchStudent.Select()
 
@@ -92,10 +95,19 @@ Public Class frmStudents
             Dim picName As String
             picName = row.Cells("Picture").Value.ToString
             Try
-                picBoxStudent.Image = Image.FromFile(My.Settings.PicturePath & "\" & picName)
+                Dim fs As System.IO.FileStream = Nothing
+                If String.IsNullOrEmpty(picName) Then
+                    fs = New System.IO.FileStream(My.Settings.PicturePath & "\" & "default.jpg", IO.FileMode.Open, IO.FileAccess.Read)
+                    picBoxStudent.Image = System.Drawing.Image.FromStream(fs)
+                Else
+                    fs = New System.IO.FileStream(My.Settings.PicturePath & "\" & picName & ".jpg", IO.FileMode.Open, IO.FileAccess.Read)
+                    picBoxStudent.Image = System.Drawing.Image.FromStream(fs)
+                End If
 
             Catch ex As Exception
-                picBoxStudent.Image = Image.FromFile(My.Settings.PicturePath & "\" & "default.jpg")
+
+                MsgBox(ex.Message)
+
             End Try
 
         End If
@@ -117,6 +129,9 @@ Public Class frmStudents
     End Sub
 
     Private Sub BtnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
+
+        'Enable save button
+        btnSave.Enabled = True
 
         MySqlConn = New MySqlConnection
         MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
@@ -257,9 +272,9 @@ Public Class frmStudents
             PassportNo='" & txtPassportNo.Text & "',
             Other='" & txtOther.Text & "',
             Email='" & txtEmailAddress.Text & "',
-            Notes='" & txtNotes.Text & "',
-            where StudentID='" & txtStudentID.Text & "'            
-            "
+            Notes='" & txtNotes.Text & "'
+            where StudentID='" & txtStudentID.Text & "'"
+
             COMMAND = New MySqlCommand(Query, MySqlConn)
             READER = COMMAND.ExecuteReader
 
@@ -282,20 +297,56 @@ Public Class frmStudents
 
     Private Sub BtnAttachNationalID_Click(sender As Object, e As EventArgs) Handles btnAttachNationalID.Click
 
-        Dim fd As OpenFileDialog = New OpenFileDialog()
-        Dim strFileName As String
+        If txtNationalID.Text = "" Then
 
-        fd.Title = "Select PDF File"
-        fd.InitialDirectory = "C:\"
-        fd.Filter = "PDF files (*.pdf)|*.pdf"
-        fd.FilterIndex = 2
-        fd.RestoreDirectory = True
+            MessageBox.Show("Please enter National ID#", "RADIAN Training", MessageBoxButtons.OK, MessageBoxIcon.Hand)
 
-        If fd.ShowDialog() = DialogResult.OK Then
-            strFileName = fd.FileName
-            Dim dateTime As DateTime = DateTime.Now
-            dateTime.ToString("yyy-MM-dd-HH-mm-ss")
-            System.IO.File.Copy(strFileName, My.Settings.NationalIDPath & "\" & dateTime.ToString & ".pdf")
+        ElseIf System.IO.File.Exists(My.Settings.NationalIDPath & "\" & txtNationalID.Text & ".pdf") = False Then
+
+            Dim fd As OpenFileDialog = New OpenFileDialog()
+            Dim strFileName As String
+            fd.Title = "Select PDF File"
+            fd.InitialDirectory = "C:\"
+            fd.Filter = "PDF files (*.pdf)|*.pdf"
+            fd.FilterIndex = 2
+            fd.RestoreDirectory = True
+
+            If fd.ShowDialog() = DialogResult.OK Then
+                Try
+
+                    strFileName = fd.FileName
+                    System.IO.File.Copy(strFileName, My.Settings.NationalIDPath & "\" & txtNationalID.Text & ".pdf", True)
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+
+                End Try
+
+            End If
+
+        Else
+
+            Select Case MsgBox("File already exists!" & vbCrLf & "Would you like to replace?", MsgBoxStyle.YesNo)
+
+                Case MsgBoxResult.No
+                    Exit Sub
+                Case MsgBoxResult.Yes
+
+                    Dim fd As OpenFileDialog = New OpenFileDialog()
+                    Dim strFileName As String
+
+                    fd.Title = "Select PDF File"
+                    fd.InitialDirectory = "C:\"
+                    fd.Filter = "PDF files (*.pdf)|*.pdf"
+                    fd.FilterIndex = 2
+                    fd.RestoreDirectory = True
+
+                    If fd.ShowDialog() = DialogResult.OK Then
+                        strFileName = fd.FileName
+                        System.IO.File.Copy(strFileName, My.Settings.NationalIDPath & "\" & txtNationalID.Text & ".pdf", True)
+                    End If
+
+            End Select
 
         End If
 
@@ -313,48 +364,29 @@ Public Class frmStudents
             If txtFirstName.Text = "" And txtLastName.Text = "" Then
                 MsgBox("Please enter Student Name")
 
-            ElseIf txtFirstName.Text <> And txtLastName.Text = Nothing Then
-                MySqlConn.Open()
-                Dim Query As String
-                Query = "select * from radiantraining.localcompany"
-                COMMAND = New MySqlCommand(Query, MySqlConn)
-                READER = COMMAND.ExecuteReader
-
-                While READER.Read
-
-                    Dim firstname = READER.GetString("FirstName")
-                    Dim lastName = READER.GetString("LastName")
-
-                    If txtFirstName.Text & txtLastName.Text = firstname & lastName Then
-                        MsgBox("Name already exist!")
-                    End If
-
-                End While
-                MySqlConn.Close()
-
-
             Else
                 MySqlConn.Open()
                 Dim Query As String
-                Query = "
-                INSERT INTO radiantraining.students
-                (FirstName, MiddleName, LastName, Company, Mobile, Home, Other, Address, City, Email, Notes, NationalIDNo, PassportNo,
-                DriversPermitNo )
+                Query = "INSERT INTO radiantraining.students
+                (FirstName, MiddleName, LastName, Company, Address, City, Mobile, Home, Other, NationalIDNo,
+                DriversPermitNo, PassportNo, Email, Notes )
                 VALUES(
                 '" & txtFirstName.Text & "',
                 '" & txtMiddleName.Text & "',
                 '" & txtLastName.Text & "',
                 '" & cmbCompanyName.Text & "',
+                '" & txtStudentAddress.Text & "',
+                '" & cmbCity.Text & "',                
                 '" & txtMobile.Text & "',
                 '" & txtHome.Text & "',
                 '" & txtOther.Text & "',
-                '" & txtStudentAddress.Text & "',
-                '" & cmbCity.Text & "',
-                '" & txtEmailAddress.Text & "',
-                '" & txtNotes.Text & "',
                 '" & txtNationalID.Text & "',
+                '" & txtDriversPermitNo.Text & "',
                 '" & txtPassportNo.Text & "',
-                '" & txtDriversPermitNo.Text & "')"
+                '" & txtEmailAddress.Text & "',
+                '" & txtNotes.Text & "'
+                )"
+
                 COMMAND = New MySqlCommand(Query, MySqlConn)
                 READER = COMMAND.ExecuteReader
 
@@ -429,17 +461,264 @@ Public Class frmStudents
 
     Private Sub PicBoxStudent_Click(sender As Object, e As EventArgs) Handles picBoxStudent.Click
 
-        Dim fd As OpenFileDialog = New OpenFileDialog()
-        Dim strFileName As String
+        If System.IO.File.Exists(My.Settings.PicturePath & "\" & txtFirstName.Text & txtLastName.Text & ".jpg") = True Then
+            Select Case MsgBox("Image already exist, would you like to replace?", MsgBoxStyle.YesNo)
+                Case MsgBoxResult.No
 
-        fd.Title = "Select PDF File"
-        fd.InitialDirectory = "C:\"
-        fd.Filter = "JPG files (*.jpg)|*.jpg"
-        fd.FilterIndex = 2
-        fd.RestoreDirectory = True
+                    Exit Sub
 
-        If fd.ShowDialog() = DialogResult.OK Then
-            strFileName = fd.FileName
+                Case MsgBoxResult.Yes
+
+                    Dim fd As OpenFileDialog = New OpenFileDialog()
+                    Dim strFileName As String
+
+                    fd.Title = "Select Image File"
+                    fd.InitialDirectory = "C:\"
+                    fd.Filter = "JPG files |*.jpg; *.jpeg"
+                    fd.FilterIndex = 2
+                    fd.RestoreDirectory = True
+
+                    If fd.ShowDialog() = DialogResult.OK Then
+                        Try
+                            If Me.picBoxStudent Is Nothing Then
+
+                                Dim fs As System.IO.FileStream = Nothing
+                                fs = New System.IO.FileStream(My.Settings.PicturePath & "\" & txtFirstName.Text & txtLastName.Text & ".jpg", IO.FileMode.Open, IO.FileAccess.Read)
+                                picBoxStudent.Image = System.Drawing.Image.FromStream(fs)
+
+                                strFileName = fd.FileName
+                                MySqlConn.Open()
+                                Dim Query As String
+                                Dim READER As MySqlDataReader
+                                Query = "Update radiantraining.students set
+                                Picture='" & txtFirstName.Text & txtLastName.Text & "'
+                                where StudentID='" & txtStudentID.Text & "'"
+                                COMMAND = New MySqlCommand(Query, MySqlConn)
+                                READER = COMMAND.ExecuteReader
+
+                                MsgBox("Student image updated...")
+                                'Refresh Data
+                                loadTable()
+                                MySqlConn.Close()
+
+                            Else
+
+                                strFileName = fd.FileName
+                                MySqlConn.Open()
+                                Dim Query As String
+                                Dim READER As MySqlDataReader
+                                Query = "Update radiantraining.students set
+                                Picture='" & txtFirstName.Text & txtLastName.Text & "'
+                                where StudentID='" & txtStudentID.Text & "'"
+                                COMMAND = New MySqlCommand(Query, MySqlConn)
+                                READER = COMMAND.ExecuteReader
+
+                                Me.picBoxStudent.Dispose()
+                                My.Computer.FileSystem.DeleteFile(My.Settings.PicturePath & "\" & txtFirstName.Text & txtLastName.Text & ".jpg")
+
+                                Dim fs As System.IO.FileStream = Nothing
+                                fs = New System.IO.FileStream(My.Settings.PicturePath & "\" & txtFirstName.Text & txtLastName.Text & ".jpg", IO.FileMode.Open, IO.FileAccess.Read)
+                                picBoxStudent.Image = System.Drawing.Image.FromStream(fs)
+                                Me.picBoxStudent.Load()
+
+
+                                MsgBox("Student image updated...")
+                                'Refresh Data
+                                loadTable()
+                                MySqlConn.Close()
+
+                            End If
+
+
+                        Catch ex As Exception
+                            MsgBox(ex.Message)
+                        End Try
+
+                    End If
+
+            End Select
+        Else
+
+            Dim fd As OpenFileDialog = New OpenFileDialog()
+            Dim strFileName As String
+
+            fd.Title = "Select PDF File"
+            fd.InitialDirectory = "C:\"
+            fd.Filter = "JPG files |*.jpg; *.jpeg"
+            fd.FilterIndex = 2
+            fd.RestoreDirectory = True
+
+            If fd.ShowDialog() = DialogResult.OK Then
+                Try
+                    strFileName = fd.FileName
+                    picBoxStudent.Image = Nothing
+
+                    MySqlConn.Open()
+                    Dim Query As String
+                    Query = "Update radiantraining.students set
+                            Picture='" & txtFirstName.Text & txtLastName.Text & "'
+                            where StudentID='" & txtStudentID.Text & "'"
+                    COMMAND = New MySqlCommand(Query, MySqlConn)
+
+                    MsgBox("Student image updated...")
+                    'Refresh Data
+                    loadTable()
+                    MySqlConn.Close()
+
+                    System.IO.File.Copy(strFileName, My.Settings.PicturePath & "\" & txtFirstName.Text & txtLastName.Text & ".jpg", True)
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
+
+            End If
+
+        End If
+
+    End Sub
+
+    Private Sub BtnViewNationalID_Click(sender As Object, e As EventArgs) Handles btnViewNationalID.Click
+
+        Try
+            Process.Start(My.Settings.NationalIDPath & "\" & txtNationalID.Text & ".pdf")
+
+        Catch ex As Exception
+            MsgBox("File does not exist. Please upload.")
+        End Try
+
+    End Sub
+
+    Private Sub BtnViewPassport_Click(sender As Object, e As EventArgs) Handles btnViewPassport.Click
+
+        Try
+            Process.Start(My.Settings.PassportPath & "\" & txtPassportNo.Text & ".pdf")
+
+        Catch ex As Exception
+            MsgBox("File does not exist. Please upload.")
+        End Try
+
+    End Sub
+
+    Private Sub BtnViewDriversPermit_Click(sender As Object, e As EventArgs) Handles btnViewDriversPermit.Click
+
+        Try
+            Process.Start(My.Settings.DriversPermitPath & "\" & txtDriversPermitNo.Text & ".pdf")
+
+        Catch ex As Exception
+            MsgBox("File does not exist. Please upload.")
+        End Try
+
+    End Sub
+
+    Private Sub BtnAttachPassport_Click(sender As Object, e As EventArgs) Handles btnAttachPassport.Click
+
+        If txtPassportNo.Text = "" Then
+
+            MessageBox.Show("Please enter Passport#", "RADIAN Training", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+
+        ElseIf System.IO.File.Exists(My.Settings.PassportPath & "\" & txtPassportNo.Text & ".pdf") = False Then
+
+            Dim fd As OpenFileDialog = New OpenFileDialog()
+            Dim strFileName As String
+            fd.Title = "Select PDF File"
+            fd.InitialDirectory = "C:\"
+            fd.Filter = "PDF files (*.pdf)|*.pdf"
+            fd.FilterIndex = 2
+            fd.RestoreDirectory = True
+
+            If fd.ShowDialog() = DialogResult.OK Then
+                Try
+
+                    strFileName = fd.FileName
+                    System.IO.File.Copy(strFileName, My.Settings.PassportPath & "\" & txtPassportNo.Text & ".pdf", True)
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+
+                End Try
+
+            End If
+
+        Else
+
+            Select Case MsgBox("File already exists!" & vbCrLf & "Would you like to replace?", MsgBoxStyle.YesNo)
+
+                Case MsgBoxResult.No
+                    Exit Sub
+                Case MsgBoxResult.Yes
+
+                    Dim fd As OpenFileDialog = New OpenFileDialog()
+                    Dim strFileName As String
+
+                    fd.Title = "Select PDF File"
+                    fd.InitialDirectory = "C:\"
+                    fd.Filter = "PDF files (*.pdf)|*.pdf"
+                    fd.FilterIndex = 2
+                    fd.RestoreDirectory = True
+
+                    If fd.ShowDialog() = DialogResult.OK Then
+                        strFileName = fd.FileName
+                        System.IO.File.Copy(strFileName, My.Settings.PassportPath & "\" & txtPassportNo.Text & ".pdf", True)
+                    End If
+
+            End Select
+
+        End If
+
+    End Sub
+
+    Private Sub BtnAttachDriversPermit_Click(sender As Object, e As EventArgs) Handles btnAttachDriversPermit.Click
+
+        If txtDriversPermitNo.Text = "" Then
+
+            MessageBox.Show("Please enter Driver's Permit No.", "RADIAN Training", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+
+        ElseIf System.IO.File.Exists(My.Settings.DriversPermitPath & "\" & txtDriversPermitNo.Text & ".pdf") = False Then
+
+            Dim fd As OpenFileDialog = New OpenFileDialog()
+            Dim strFileName As String
+            fd.Title = "Select PDF File"
+            fd.InitialDirectory = "C:\"
+            fd.Filter = "PDF files (*.pdf)|*.pdf"
+            fd.FilterIndex = 2
+            fd.RestoreDirectory = True
+
+            If fd.ShowDialog() = DialogResult.OK Then
+                Try
+
+                    strFileName = fd.FileName
+                    System.IO.File.Copy(strFileName, My.Settings.DriversPermitPath & "\" & txtDriversPermitNo.Text & ".pdf", True)
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+
+                End Try
+
+            End If
+
+        Else
+
+            Select Case MsgBox("File already exists!" & vbCrLf & "Would you like to replace?", MsgBoxStyle.YesNo)
+
+                Case MsgBoxResult.No
+                    Exit Sub
+                Case MsgBoxResult.Yes
+
+                    Dim fd As OpenFileDialog = New OpenFileDialog()
+                    Dim strFileName As String
+
+                    fd.Title = "Select PDF File"
+                    fd.InitialDirectory = "C:\"
+                    fd.Filter = "PDF files (*.pdf)|*.pdf"
+                    fd.FilterIndex = 2
+                    fd.RestoreDirectory = True
+
+                    If fd.ShowDialog() = DialogResult.OK Then
+                        strFileName = fd.FileName
+                        System.IO.File.Copy(strFileName, My.Settings.DriversPermitPath & "\" & txtDriversPermitNo.Text & ".pdf", True)
+                    End If
+
+            End Select
 
         End If
 
