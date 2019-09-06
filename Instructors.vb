@@ -6,6 +6,9 @@ Public Class frmInstructors
 
     Private Sub Instructors_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        'Disable the Save button
+        btnSave.Enabled = False
+
         'Centre Form
         Dim loadInstructorsForm As New RadianSettings
         loadInstructorsForm.CenterForm(Me)
@@ -50,6 +53,10 @@ Public Class frmInstructors
     End Sub
 
     Private Sub BtnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
+
+        'Enable Save Button
+        btnSave.Enabled = True
+
         MySqlConn = New MySqlConnection
         MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
         Dim READER As MySqlDataReader
@@ -244,7 +251,7 @@ Public Class frmInstructors
 
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         MySqlConn = New MySqlConnection
         MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
 

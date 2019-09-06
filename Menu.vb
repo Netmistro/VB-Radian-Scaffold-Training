@@ -30,7 +30,7 @@ Public Class frmMenu
         Me.Close()
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnStudentTraining.Click
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs)
 
         frmStudentTraining.Show()
 
@@ -56,6 +56,18 @@ Public Class frmMenu
     Private Sub BtnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
 
         frmSettings.Show()
+
+    End Sub
+
+    Private Sub btnStudentListing_Click(sender As Object, e As EventArgs) Handles btnStudentListing.Click
+
+        frmUsers.Show()
+
+    End Sub
+
+    Private Sub btnForeignCompany_Click(sender As Object, e As EventArgs) Handles btnForeignCompany.Click
+
+        frmForeignCompany.Show()
 
     End Sub
 End Class

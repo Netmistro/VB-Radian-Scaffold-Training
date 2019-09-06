@@ -22,6 +22,9 @@ Partial Class frmStudents
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtStudentID = New System.Windows.Forms.TextBox()
         Me.txtFirstName = New System.Windows.Forms.TextBox()
@@ -44,7 +47,6 @@ Partial Class frmStudents
         Me.btnViewNationalID = New System.Windows.Forms.Button()
         Me.btnViewPassport = New System.Windows.Forms.Button()
         Me.btnViewDriversPermit = New System.Windows.Forms.Button()
-        Me.picBoxStudent = New System.Windows.Forms.PictureBox()
         Me.txtEmailAddress = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtNotes = New System.Windows.Forms.TextBox()
@@ -69,10 +71,14 @@ Partial Class frmStudents
         Me.Label13 = New System.Windows.Forms.Label()
         Me.cmbCity = New System.Windows.Forms.ComboBox()
         Me.Label16 = New System.Windows.Forms.Label()
-        CType(Me.picBoxStudent, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.btnNewCity = New System.Windows.Forms.Button()
+        Me.btnNewCompany = New System.Windows.Forms.Button()
+        Me.picBoxStudent = New System.Windows.Forms.PictureBox()
+        Me.btnTraining = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picBoxStudent, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -178,7 +184,7 @@ Partial Class frmStudents
         'txtNationalID
         '
         Me.txtNationalID.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNationalID.Location = New System.Drawing.Point(494, 346)
+        Me.txtNationalID.Location = New System.Drawing.Point(494, 358)
         Me.txtNationalID.Name = "txtNationalID"
         Me.txtNationalID.Size = New System.Drawing.Size(83, 22)
         Me.txtNationalID.TabIndex = 15
@@ -187,7 +193,7 @@ Partial Class frmStudents
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(421, 350)
+        Me.Label8.Location = New System.Drawing.Point(421, 362)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(65, 13)
         Me.Label8.TabIndex = 13
@@ -196,7 +202,7 @@ Partial Class frmStudents
         'txtPassportNo
         '
         Me.txtPassportNo.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPassportNo.Location = New System.Drawing.Point(494, 380)
+        Me.txtPassportNo.Location = New System.Drawing.Point(494, 392)
         Me.txtPassportNo.Name = "txtPassportNo"
         Me.txtPassportNo.Size = New System.Drawing.Size(83, 22)
         Me.txtPassportNo.TabIndex = 18
@@ -205,7 +211,7 @@ Partial Class frmStudents
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(435, 384)
+        Me.Label9.Location = New System.Drawing.Point(435, 396)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(51, 13)
         Me.Label9.TabIndex = 15
@@ -232,7 +238,7 @@ Partial Class frmStudents
         'txtDriversPermitNo
         '
         Me.txtDriversPermitNo.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDriversPermitNo.Location = New System.Drawing.Point(494, 415)
+        Me.txtDriversPermitNo.Location = New System.Drawing.Point(494, 427)
         Me.txtDriversPermitNo.Name = "txtDriversPermitNo"
         Me.txtDriversPermitNo.Size = New System.Drawing.Size(83, 22)
         Me.txtDriversPermitNo.TabIndex = 21
@@ -241,7 +247,7 @@ Partial Class frmStudents
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(409, 419)
+        Me.Label11.Location = New System.Drawing.Point(409, 431)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(77, 13)
         Me.Label11.TabIndex = 19
@@ -251,7 +257,7 @@ Partial Class frmStudents
         '
         Me.btnViewNationalID.BackColor = System.Drawing.Color.Turquoise
         Me.btnViewNationalID.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnViewNationalID.Location = New System.Drawing.Point(583, 341)
+        Me.btnViewNationalID.Location = New System.Drawing.Point(583, 353)
         Me.btnViewNationalID.Name = "btnViewNationalID"
         Me.btnViewNationalID.Size = New System.Drawing.Size(75, 30)
         Me.btnViewNationalID.TabIndex = 16
@@ -262,7 +268,7 @@ Partial Class frmStudents
         '
         Me.btnViewPassport.BackColor = System.Drawing.Color.Turquoise
         Me.btnViewPassport.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnViewPassport.Location = New System.Drawing.Point(583, 375)
+        Me.btnViewPassport.Location = New System.Drawing.Point(583, 387)
         Me.btnViewPassport.Name = "btnViewPassport"
         Me.btnViewPassport.Size = New System.Drawing.Size(75, 30)
         Me.btnViewPassport.TabIndex = 19
@@ -273,21 +279,12 @@ Partial Class frmStudents
         '
         Me.btnViewDriversPermit.BackColor = System.Drawing.Color.Turquoise
         Me.btnViewDriversPermit.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnViewDriversPermit.Location = New System.Drawing.Point(583, 410)
+        Me.btnViewDriversPermit.Location = New System.Drawing.Point(583, 422)
         Me.btnViewDriversPermit.Name = "btnViewDriversPermit"
         Me.btnViewDriversPermit.Size = New System.Drawing.Size(75, 30)
         Me.btnViewDriversPermit.TabIndex = 22
         Me.btnViewDriversPermit.Text = "View"
         Me.btnViewDriversPermit.UseVisualStyleBackColor = False
-        '
-        'picBoxStudent
-        '
-        Me.picBoxStudent.Location = New System.Drawing.Point(589, 131)
-        Me.picBoxStudent.Name = "picBoxStudent"
-        Me.picBoxStudent.Size = New System.Drawing.Size(150, 150)
-        Me.picBoxStudent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.picBoxStudent.TabIndex = 24
-        Me.picBoxStudent.TabStop = False
         '
         'txtEmailAddress
         '
@@ -439,7 +436,7 @@ Partial Class frmStudents
         '
         Me.btnAttachPassport.BackColor = System.Drawing.Color.DodgerBlue
         Me.btnAttachPassport.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAttachPassport.Location = New System.Drawing.Point(664, 375)
+        Me.btnAttachPassport.Location = New System.Drawing.Point(664, 387)
         Me.btnAttachPassport.Name = "btnAttachPassport"
         Me.btnAttachPassport.Size = New System.Drawing.Size(75, 30)
         Me.btnAttachPassport.TabIndex = 20
@@ -450,7 +447,7 @@ Partial Class frmStudents
         '
         Me.btnAttachNationalID.BackColor = System.Drawing.Color.DodgerBlue
         Me.btnAttachNationalID.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAttachNationalID.Location = New System.Drawing.Point(664, 341)
+        Me.btnAttachNationalID.Location = New System.Drawing.Point(664, 353)
         Me.btnAttachNationalID.Name = "btnAttachNationalID"
         Me.btnAttachNationalID.Size = New System.Drawing.Size(75, 30)
         Me.btnAttachNationalID.TabIndex = 17
@@ -461,7 +458,7 @@ Partial Class frmStudents
         '
         Me.btnAttachDriversPermit.BackColor = System.Drawing.Color.DodgerBlue
         Me.btnAttachDriversPermit.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAttachDriversPermit.Location = New System.Drawing.Point(664, 410)
+        Me.btnAttachDriversPermit.Location = New System.Drawing.Point(664, 422)
         Me.btnAttachDriversPermit.Name = "btnAttachDriversPermit"
         Me.btnAttachDriversPermit.Size = New System.Drawing.Size(75, 30)
         Me.btnAttachDriversPermit.TabIndex = 23
@@ -486,9 +483,27 @@ Partial Class frmStudents
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.Location = New System.Drawing.Point(25, 458)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridView1.Size = New System.Drawing.Size(714, 188)
         Me.DataGridView1.TabIndex = 24
         '
@@ -530,11 +545,56 @@ Partial Class frmStudents
         Me.Label16.TabIndex = 55
         Me.Label16.Text = "City"
         '
+        'btnNewCity
+        '
+        Me.btnNewCity.BackColor = System.Drawing.Color.Tomato
+        Me.btnNewCity.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNewCity.Location = New System.Drawing.Point(497, 285)
+        Me.btnNewCity.Name = "btnNewCity"
+        Me.btnNewCity.Size = New System.Drawing.Size(75, 30)
+        Me.btnNewCity.TabIndex = 56
+        Me.btnNewCity.Text = "&New"
+        Me.btnNewCity.UseVisualStyleBackColor = False
+        '
+        'btnNewCompany
+        '
+        Me.btnNewCompany.BackColor = System.Drawing.Color.Tomato
+        Me.btnNewCompany.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNewCompany.Location = New System.Drawing.Point(372, 221)
+        Me.btnNewCompany.Name = "btnNewCompany"
+        Me.btnNewCompany.Size = New System.Drawing.Size(75, 30)
+        Me.btnNewCompany.TabIndex = 57
+        Me.btnNewCompany.Text = "&New"
+        Me.btnNewCompany.UseVisualStyleBackColor = False
+        '
+        'picBoxStudent
+        '
+        Me.picBoxStudent.Location = New System.Drawing.Point(589, 131)
+        Me.picBoxStudent.Name = "picBoxStudent"
+        Me.picBoxStudent.Size = New System.Drawing.Size(150, 150)
+        Me.picBoxStudent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picBoxStudent.TabIndex = 24
+        Me.picBoxStudent.TabStop = False
+        '
+        'btnTraining
+        '
+        Me.btnTraining.BackColor = System.Drawing.Color.Tomato
+        Me.btnTraining.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnTraining.Location = New System.Drawing.Point(664, 652)
+        Me.btnTraining.Name = "btnTraining"
+        Me.btnTraining.Size = New System.Drawing.Size(75, 30)
+        Me.btnTraining.TabIndex = 58
+        Me.btnTraining.Text = "&Training"
+        Me.btnTraining.UseVisualStyleBackColor = False
+        '
         'frmStudents
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(762, 689)
+        Me.ClientSize = New System.Drawing.Size(764, 686)
+        Me.Controls.Add(Me.btnTraining)
+        Me.Controls.Add(Me.btnNewCompany)
+        Me.Controls.Add(Me.btnNewCity)
         Me.Controls.Add(Me.cmbCity)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.txtStudentAddress)
@@ -581,12 +641,12 @@ Partial Class frmStudents
         Me.Controls.Add(Me.Panel1)
         Me.Name = "frmStudents"
         Me.Text = "Students"
-        CType(Me.picBoxStudent, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picBoxStudent, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -639,4 +699,7 @@ Partial Class frmStudents
     Friend WithEvents Label13 As Label
     Friend WithEvents cmbCity As ComboBox
     Friend WithEvents Label16 As Label
+    Friend WithEvents btnNewCity As Button
+    Friend WithEvents btnNewCompany As Button
+    Friend WithEvents btnTraining As Button
 End Class

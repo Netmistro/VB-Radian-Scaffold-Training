@@ -22,10 +22,10 @@ Public Class frmStudents
         Dim bSource As New BindingSource
 
         'Blank all fields on load
+        txtStudentID.Text = ""
         txtStudentAddress.Text = ""
         cmbCity.Text = ""
         txtSearchStudent.Text = ""
-        txtStudentID.Text = ""
         txtFirstName.Text = ""
         txtMiddleName.Text = ""
         txtLastName.Text = ""
@@ -68,10 +68,11 @@ Public Class frmStudents
 
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
 
         MySqlConn = New MySqlConnection
         MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+
 
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow
@@ -92,17 +93,74 @@ Public Class frmStudents
             txtPassportNo.Text = row.Cells("PassportNo").Value.ToString
             txtDriversPermitNo.Text = row.Cells("DriversPermitNo").Value.ToString
 
+            'Try Catch Block City Name Dropdown list
+            Try
+                MySqlConn.Open()
+                Dim Query As String
+                Query = "select * from radiantraining.City"
+                COMMAND = New MySqlCommand(Query, MySqlConn)
+                Dim READER As MySqlDataReader
+                READER = COMMAND.ExecuteReader
+
+                While READER.Read
+
+                    Dim cityName = READER.GetString("CityName")
+                    cmbCity.Items.Add(cityName)
+
+                End While
+
+
+                MySqlConn.Close()
+
+            Catch ex As Exception
+
+                MessageBox.Show(ex.Message)
+            Finally
+
+                MySqlConn.Dispose()
+
+            End Try
+
+            'Try Catch Block Company Name Dropdown list
+            Try
+                MySqlConn.Open()
+                Dim Query As String
+                Query = "select * from radiantraining.localcompany"
+                COMMAND = New MySqlCommand(Query, MySqlConn)
+                Dim READER As MySqlDataReader
+                READER = COMMAND.ExecuteReader
+
+                While READER.Read
+
+                    Dim companyName = READER.GetString("CompanyName")
+                    cmbCompanyName.Items.Add(companyName)
+
+                End While
+
+                MySqlConn.Close()
+
+            Catch ex As Exception
+
+                MessageBox.Show(ex.Message)
+            Finally
+
+                MySqlConn.Dispose()
+
+            End Try
+
             Dim picName As String
             picName = row.Cells("Picture").Value.ToString
             Try
-                Dim fs As System.IO.FileStream = Nothing
+                Dim fs As System.IO.FileStream
                 If String.IsNullOrEmpty(picName) Then
-                    fs = New System.IO.FileStream(My.Settings.PicturePath & "\" & "default.jpg", IO.FileMode.Open, IO.FileAccess.Read)
-                    picBoxStudent.Image = System.Drawing.Image.FromStream(fs)
+                    fs = New System.IO.FileStream(My.Settings.PicturePath & "\" & "default.jpg", IO.FileMode.Open, IO.FileAccess.ReadWrite)
+                    Me.picBoxStudent.Image = System.Drawing.Image.FromStream(fs)
                 Else
-                    fs = New System.IO.FileStream(My.Settings.PicturePath & "\" & picName & ".jpg", IO.FileMode.Open, IO.FileAccess.Read)
-                    picBoxStudent.Image = System.Drawing.Image.FromStream(fs)
+                    fs = New System.IO.FileStream(My.Settings.PicturePath & "\" & picName & ".jpg", IO.FileMode.Open, IO.FileAccess.ReadWrite)
+                    Me.picBoxStudent.Image = System.Drawing.Image.FromStream(fs)
                 End If
+
+                fs.Close()
 
             Catch ex As Exception
 
@@ -130,85 +188,95 @@ Public Class frmStudents
 
     Private Sub BtnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
 
-        'Enable save button
-        btnSave.Enabled = True
+        Select Case MsgBox("Would you like to create a new record?", MsgBoxStyle.YesNo)
 
-        MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
-        Dim READER As MySqlDataReader
+            Case MsgBoxResult.No
 
-        'Reload table data
-        loadTable()
+                Exit Sub
 
-        ' Blank all text boxes
-        txtStudentID.ReadOnly = True
-        txtFirstName.Text = ""
-        txtMiddleName.Text = ""
-        txtLastName.Text = ""
-        txtMobile.Text = ""
-        txtOther.Text = ""
-        txtHome.Text = ""
-        txtEmailAddress.Text = ""
-        txtStudentAddress.Text = ""
-        cmbCity.Text = ""
-        txtNotes.Text = ""
-        txtNationalID.Text = ""
-        txtPassportNo.Text = ""
-        txtPassportNo.Text = ""
-        picBoxStudent = Nothing
-        cmbCompanyName.Text = ""
+            Case MsgBoxResult.Yes
 
-        'Try Catch Block City Name
-        Try
-            MySqlConn.Open()
-            Dim Query As String
-            Query = "select * from radiantraining.City"
-            COMMAND = New MySqlCommand(Query, MySqlConn)
-            READER = COMMAND.ExecuteReader
+                'Enable save button
+                btnSave.Enabled = True
 
-            While READER.Read
+                MySqlConn = New MySqlConnection
+                MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+                Dim READER As MySqlDataReader
 
-                Dim cityName = READER.GetString("CityName")
-                cmbCity.Items.Add(cityName)
+                'Reload table data
+                loadTable()
 
-            End While
+                ' Blank all text boxes
+                txtStudentID.ReadOnly = True
+                txtFirstName.Text = ""
+                txtMiddleName.Text = ""
+                txtLastName.Text = ""
+                txtMobile.Text = ""
+                txtOther.Text = ""
+                txtHome.Text = ""
+                txtEmailAddress.Text = ""
+                txtStudentAddress.Text = ""
+                cmbCity.Text = ""
+                txtNotes.Text = ""
+                txtNationalID.Text = ""
+                txtPassportNo.Text = ""
+                txtPassportNo.Text = ""
+                cmbCompanyName.Text = ""
+                txtDriversPermitNo.Text = ""
+
+                'Try Catch Block City Name
+                Try
+                    MySqlConn.Open()
+                    Dim Query As String
+                    Query = "select * from radiantraining.City"
+                    COMMAND = New MySqlCommand(Query, MySqlConn)
+                    READER = COMMAND.ExecuteReader
+
+                    While READER.Read
+
+                        Dim cityName = READER.GetString("CityName")
+                        cmbCity.Items.Add(cityName)
+
+                    End While
 
 
-            MySqlConn.Close()
+                    MySqlConn.Close()
 
-        Catch ex As Exception
+                Catch ex As Exception
 
-            MessageBox.Show(ex.Message)
-        Finally
+                    MessageBox.Show(ex.Message)
+                Finally
 
-            MySqlConn.Dispose()
+                    MySqlConn.Dispose()
 
-        End Try
+                End Try
 
-        'Try Catch Block Local Company
-        Try
-            MySqlConn.Open()
-            Dim Query As String
-            Query = "select * from radiantraining.localcompany"
-            COMMAND = New MySqlCommand(Query, MySqlConn)
-            READER = COMMAND.ExecuteReader
+                'Try Catch Block Local Company
+                Try
+                    MySqlConn.Open()
+                    Dim Query As String
+                    Query = "select * from radiantraining.localcompany"
+                    COMMAND = New MySqlCommand(Query, MySqlConn)
+                    READER = COMMAND.ExecuteReader
 
-            While READER.Read
+                    While READER.Read
 
-                Dim companyName = READER.GetString("CompanyName")
-                cmbCompanyName.Items.Add(companyName)
+                        Dim companyName = READER.GetString("CompanyName")
+                        cmbCompanyName.Items.Add(companyName)
 
-            End While
-            MySqlConn.Close()
+                    End While
+                    MySqlConn.Close()
 
-        Catch ex As Exception
+                Catch ex As Exception
 
-            MessageBox.Show(ex.Message)
-        Finally
+                    MessageBox.Show(ex.Message)
+                Finally
 
-            MySqlConn.Dispose()
+                    MySqlConn.Dispose()
 
-        End Try
+                End Try
+
+        End Select
 
     End Sub
 
@@ -394,6 +462,7 @@ Public Class frmStudents
                 'Refresh Data
                 loadTable()
                 MySqlConn.Close()
+
             End If
 
 
@@ -412,6 +481,7 @@ Public Class frmStudents
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
 
         MySqlConn = New MySqlConnection
+        'Connection String
         MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
         Dim READER As MySqlDataReader
 
@@ -423,7 +493,17 @@ Public Class frmStudents
             Query = "DELETE from radiantraining.students where StudentID='" & txtStudentID.Text & "'"
             COMMAND = New MySqlCommand(Query, MySqlConn)
             READER = COMMAND.ExecuteReader
-            MsgBox("Record Deleted")
+            Select Case (MsgBox("You are about to delete a record", MsgBoxStyle.YesNo))
+
+                Case MsgBoxResult.No
+
+                    Exit Sub
+
+                Case MsgBoxResult.Yes
+
+                    MsgBox("Record Deleted - " & txtFirstName.Text & " " & txtLastName.Text)
+
+            End Select
 
             'Refresh Data - Call function
             loadTable()
@@ -461,17 +541,16 @@ Public Class frmStudents
 
     Private Sub PicBoxStudent_Click(sender As Object, e As EventArgs) Handles picBoxStudent.Click
 
-        If System.IO.File.Exists(My.Settings.PicturePath & "\" & txtFirstName.Text & txtLastName.Text & ".jpg") = True Then
+
+        Dim studentFileName As String = Format(Now, "yyyy-MM-dd-hh-mm-ss")
+
+        If System.IO.File.Exists(My.Settings.PicturePath & "\" & studentFileName & ".jpg") = True Or System.IO.File.Exists(My.Settings.PicturePath & "\default.jpg") = True Then
             Select Case MsgBox("Image already exist, would you like to replace?", MsgBoxStyle.YesNo)
                 Case MsgBoxResult.No
-
                     Exit Sub
-
                 Case MsgBoxResult.Yes
-
                     Dim fd As OpenFileDialog = New OpenFileDialog()
                     Dim strFileName As String
-
                     fd.Title = "Select Image File"
                     fd.InitialDirectory = "C:\"
                     fd.Filter = "JPG files |*.jpg; *.jpeg"
@@ -479,100 +558,36 @@ Public Class frmStudents
                     fd.RestoreDirectory = True
 
                     If fd.ShowDialog() = DialogResult.OK Then
-                        Try
-                            If Me.picBoxStudent Is Nothing Then
 
-                                Dim fs As System.IO.FileStream = Nothing
-                                fs = New System.IO.FileStream(My.Settings.PicturePath & "\" & txtFirstName.Text & txtLastName.Text & ".jpg", IO.FileMode.Open, IO.FileAccess.Read)
-                                picBoxStudent.Image = System.Drawing.Image.FromStream(fs)
+                        Me.picBoxStudent.Image.Dispose()
+                        Me.picBoxStudent.Image = Nothing
+                        System.GC.Collect()
+                        System.IO.File.Delete(My.Settings.PicturePath & "\" & studentFileName & ".jpg")
 
-                                strFileName = fd.FileName
-                                MySqlConn.Open()
-                                Dim Query As String
-                                Dim READER As MySqlDataReader
-                                Query = "Update radiantraining.students set
-                                Picture='" & txtFirstName.Text & txtLastName.Text & "'
+                        strFileName = fd.FileName
+                        MySqlConn.Open()
+                        Dim Query As String
+                        Dim READER As MySqlDataReader
+                        Query = "Update radiantraining.students set
+                                Picture='" & studentFileName & "'
                                 where StudentID='" & txtStudentID.Text & "'"
-                                COMMAND = New MySqlCommand(Query, MySqlConn)
-                                READER = COMMAND.ExecuteReader
+                        COMMAND = New MySqlCommand(Query, MySqlConn)
+                        READER = COMMAND.ExecuteReader
 
-                                MsgBox("Student image updated...")
-                                'Refresh Data
-                                loadTable()
-                                MySqlConn.Close()
+                        System.IO.File.Copy(strFileName, My.Settings.PicturePath & "\" & studentFileName & ".jpg", True)
+                        Dim fs As System.IO.FileStream
+                        fs = New System.IO.FileStream(My.Settings.PicturePath & "\" & studentFileName & ".jpg", IO.FileMode.Open, IO.FileAccess.Read)
+                        picBoxStudent.Image = System.Drawing.Image.FromStream(fs)
+                        fs.Close()
 
-                            Else
-
-                                strFileName = fd.FileName
-                                MySqlConn.Open()
-                                Dim Query As String
-                                Dim READER As MySqlDataReader
-                                Query = "Update radiantraining.students set
-                                Picture='" & txtFirstName.Text & txtLastName.Text & "'
-                                where StudentID='" & txtStudentID.Text & "'"
-                                COMMAND = New MySqlCommand(Query, MySqlConn)
-                                READER = COMMAND.ExecuteReader
-
-                                Me.picBoxStudent.Dispose()
-                                My.Computer.FileSystem.DeleteFile(My.Settings.PicturePath & "\" & txtFirstName.Text & txtLastName.Text & ".jpg")
-
-                                Dim fs As System.IO.FileStream = Nothing
-                                fs = New System.IO.FileStream(My.Settings.PicturePath & "\" & txtFirstName.Text & txtLastName.Text & ".jpg", IO.FileMode.Open, IO.FileAccess.Read)
-                                picBoxStudent.Image = System.Drawing.Image.FromStream(fs)
-                                Me.picBoxStudent.Load()
-
-
-                                MsgBox("Student image updated...")
-                                'Refresh Data
-                                loadTable()
-                                MySqlConn.Close()
-
-                            End If
-
-
-                        Catch ex As Exception
-                            MsgBox(ex.Message)
-                        End Try
+                        MsgBox("Student image updated...")
+                        'Refresh Data
+                        loadTable()
+                        MySqlConn.Close()
 
                     End If
 
             End Select
-        Else
-
-            Dim fd As OpenFileDialog = New OpenFileDialog()
-            Dim strFileName As String
-
-            fd.Title = "Select PDF File"
-            fd.InitialDirectory = "C:\"
-            fd.Filter = "JPG files |*.jpg; *.jpeg"
-            fd.FilterIndex = 2
-            fd.RestoreDirectory = True
-
-            If fd.ShowDialog() = DialogResult.OK Then
-                Try
-                    strFileName = fd.FileName
-                    picBoxStudent.Image = Nothing
-
-                    MySqlConn.Open()
-                    Dim Query As String
-                    Query = "Update radiantraining.students set
-                            Picture='" & txtFirstName.Text & txtLastName.Text & "'
-                            where StudentID='" & txtStudentID.Text & "'"
-                    COMMAND = New MySqlCommand(Query, MySqlConn)
-
-                    MsgBox("Student image updated...")
-                    'Refresh Data
-                    loadTable()
-                    MySqlConn.Close()
-
-                    System.IO.File.Copy(strFileName, My.Settings.PicturePath & "\" & txtFirstName.Text & txtLastName.Text & ".jpg", True)
-
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                End Try
-
-            End If
-
         End If
 
     End Sub
@@ -721,6 +736,61 @@ Public Class frmStudents
             End Select
 
         End If
+
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
+    End Sub
+
+    Private Sub BtnNewCompany_Click(sender As Object, e As EventArgs) Handles btnNewCompany.Click
+
+        frmLocalCompany.Show()
+
+    End Sub
+
+    Private Sub BtnNewCity_Click(sender As Object, e As EventArgs) Handles btnNewCity.Click
+
+        City.Show()
+
+    End Sub
+
+    Private Sub TxtPassportNo_TextChanged(sender As Object, e As EventArgs) Handles txtPassportNo.TextChanged
+
+        Try
+            txtPassportNo.MaxLength = "8"
+
+        Catch ex As Exception
+            MsgBox("Please check the amount of characters entered")
+        End Try
+
+    End Sub
+
+    Private Sub TxtNationalID_TextChanged(sender As Object, e As EventArgs) Handles txtNationalID.TextChanged
+
+        Try
+            txtNationalID.MaxLength = "11"
+
+        Catch ex As Exception
+            MsgBox("Please check the amount of characters entered")
+        End Try
+
+    End Sub
+
+    Private Sub TxtDriversPermitNo_TextChanged(sender As Object, e As EventArgs) Handles txtDriversPermitNo.TextChanged
+
+        Try
+            txtDriversPermitNo.MaxLength = "7"
+
+        Catch ex As Exception
+            MsgBox("Please check the amount of characters entered")
+        End Try
+
+    End Sub
+
+    Private Sub btnTraining_Click(sender As Object, e As EventArgs) Handles btnTraining.Click
+
+        frmStudentTraining.Show()
 
     End Sub
 End Class
