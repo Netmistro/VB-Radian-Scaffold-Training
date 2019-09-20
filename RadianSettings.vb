@@ -57,4 +57,19 @@ Public Class RadianSettings
 
     End Sub
 
+    Public Sub contactType()
+
+        'Check to see if the local of foreign company form is open
+        Dim ContactType As String
+        If Application.OpenForms.OfType(Of Form).Contains(frmForeignCompany) Then
+
+            ContactType = "Foreign"
+
+        Else
+            ContactType = "Local"
+
+        End If
+
+    End Sub
+
 End Class

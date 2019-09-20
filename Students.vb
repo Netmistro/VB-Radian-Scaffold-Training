@@ -12,6 +12,11 @@ Public Class frmStudents
         'Set Focus on search box
         txtSearchStudent.Select()
 
+        'Load Mask Textboxes
+        txtmMobile.Mask = "###-###-####"
+        txtmHome.Mask = "###-###-####"
+        txtmOther.Mask = "###-###-####"
+
         'Centre Form
         Dim loadStudentsForm As New RadianSettings
         loadStudentsForm.CenterForm(Me)
@@ -30,9 +35,9 @@ Public Class frmStudents
         txtMiddleName.Text = ""
         txtLastName.Text = ""
         cmbCompanyName.Text = ""
-        txtMobile.Text = ""
-        txtHome.Text = ""
-        txtOther.Text = ""
+        txtmMobile.Text = ""
+        txtmHome.Text = ""
+        txtmOther.Text = ""
         txtEmailAddress.Text = ""
         txtNotes.Text = ""
         txtNationalID.Text = ""
@@ -82,11 +87,11 @@ Public Class frmStudents
             txtMiddleName.Text = row.Cells("MiddleName").Value.ToString
             txtLastName.Text = row.Cells("LastName").Value.ToString
             cmbCompanyName.Text = row.Cells("Company").Value.ToString
-            txtMobile.Text = row.Cells("Mobile").Value.ToString
+            txtmMobile.Text = row.Cells("Mobile").Value.ToString
             txtStudentAddress.Text = row.Cells("Address").Value.ToString
             cmbCity.Text = row.Cells("City").Value.ToString
-            txtHome.Text = row.Cells("Home").Value.ToString
-            txtOther.Text = row.Cells("Other").Value.ToString
+            txtmHome.Text = row.Cells("Home").Value.ToString
+            txtmOther.Text = row.Cells("Other").Value.ToString
             txtEmailAddress.Text = row.Cells("email").Value.ToString
             txtNotes.Text = row.Cells("Notes").Value.ToString
             txtNationalID.Text = row.Cells("NationalIDNo").Value.ToString
@@ -211,9 +216,9 @@ Public Class frmStudents
                 txtFirstName.Text = ""
                 txtMiddleName.Text = ""
                 txtLastName.Text = ""
-                txtMobile.Text = ""
-                txtOther.Text = ""
-                txtHome.Text = ""
+                txtmMobile.Text = ""
+                txtmOther.Text = ""
+                txtmHome.Text = ""
                 txtEmailAddress.Text = ""
                 txtStudentAddress.Text = ""
                 cmbCity.Text = ""
@@ -332,13 +337,13 @@ Public Class frmStudents
             Company='" & cmbCompanyName.Text & "',
             Address='" & txtStudentAddress.Text & "',
             City='" & cmbCity.Text & "',
-            Mobile='" & txtMobile.Text & "',
-            Home='" & txtHome.Text & "',
-            Other='" & txtOther.Text & "',
+            Mobile='" & txtmMobile.Text & "',
+            Home='" & txtmHome.Text & "',
+            Other='" & txtmOther.Text & "',
             NationalIDNo='" & txtNationalID.Text & "',
             DriversPermitNo='" & txtDriversPermitNo.Text & "',
             PassportNo='" & txtPassportNo.Text & "',
-            Other='" & txtOther.Text & "',
+            Other='" & txtmOther.Text & "',
             Email='" & txtEmailAddress.Text & "',
             Notes='" & txtNotes.Text & "'
             where StudentID='" & txtStudentID.Text & "'"
@@ -369,7 +374,7 @@ Public Class frmStudents
 
             MessageBox.Show("Please enter National ID#", "RADIAN Training", MessageBoxButtons.OK, MessageBoxIcon.Hand)
 
-        ElseIf System.IO.File.Exists(My.Settings.NationalIDPath & "\" & txtNationalID.Text & ".pdf") = False Then
+        ElseIf System.IO.File.Exists(My.Settings.NationalIDPath & "\" & txtFirstName.Text & "_" & txtLastName.Text & "_" & txtNationalID.Text & ".pdf") = False Then
 
             Dim fd As OpenFileDialog = New OpenFileDialog()
             Dim strFileName As String
@@ -383,7 +388,7 @@ Public Class frmStudents
                 Try
 
                     strFileName = fd.FileName
-                    System.IO.File.Copy(strFileName, My.Settings.NationalIDPath & "\" & txtNationalID.Text & ".pdf", True)
+                    System.IO.File.Copy(strFileName, My.Settings.NationalIDPath & "\" & txtFirstName.Text & "_" & txtLastName.Text & "_" & txtNationalID.Text & ".pdf", True)
 
                 Catch ex As Exception
                     MsgBox(ex.Message)
@@ -411,7 +416,7 @@ Public Class frmStudents
 
                     If fd.ShowDialog() = DialogResult.OK Then
                         strFileName = fd.FileName
-                        System.IO.File.Copy(strFileName, My.Settings.NationalIDPath & "\" & txtNationalID.Text & ".pdf", True)
+                        System.IO.File.Copy(strFileName, My.Settings.NationalIDPath & "\" & txtFirstName.Text & "_" & txtLastName.Text & "_" & txtNationalID.Text & ".pdf", True)
                     End If
 
             End Select
@@ -445,9 +450,9 @@ Public Class frmStudents
                 '" & cmbCompanyName.Text & "',
                 '" & txtStudentAddress.Text & "',
                 '" & cmbCity.Text & "',                
-                '" & txtMobile.Text & "',
-                '" & txtHome.Text & "',
-                '" & txtOther.Text & "',
+                '" & txtmMobile.Text & "',
+                '" & txtmHome.Text & "',
+                '" & txtmOther.Text & "',
                 '" & txtNationalID.Text & "',
                 '" & txtDriversPermitNo.Text & "',
                 '" & txtPassportNo.Text & "',
@@ -524,9 +529,9 @@ Public Class frmStudents
             txtMiddleName.Text = ""
             txtLastName.Text = ""
             cmbCompanyName.Text = ""
-            txtMobile.Text = ""
-            txtHome.Text = ""
-            txtOther.Text = ""
+            txtmMobile.Text = ""
+            txtmHome.Text = ""
+            txtmOther.Text = ""
             txtEmailAddress.Text = ""
             txtNotes.Text = ""
             txtNationalID.Text = ""
@@ -595,7 +600,7 @@ Public Class frmStudents
     Private Sub BtnViewNationalID_Click(sender As Object, e As EventArgs) Handles btnViewNationalID.Click
 
         Try
-            Process.Start(My.Settings.NationalIDPath & "\" & txtNationalID.Text & ".pdf")
+            Process.Start(My.Settings.NationalIDPath & "\" & txtFirstName.Text & "_" & txtLastName.Text & "_" & txtNationalID.Text & ".pdf")
 
         Catch ex As Exception
             MsgBox("File does not exist. Please upload.")
@@ -606,7 +611,7 @@ Public Class frmStudents
     Private Sub BtnViewPassport_Click(sender As Object, e As EventArgs) Handles btnViewPassport.Click
 
         Try
-            Process.Start(My.Settings.PassportPath & "\" & txtPassportNo.Text & ".pdf")
+            Process.Start(My.Settings.PassportPath & "\" & txtFirstName.Text & "_" & txtLastName.Text & "_" & txtPassportNo.Text & ".pdf")
 
         Catch ex As Exception
             MsgBox("File does not exist. Please upload.")
@@ -617,7 +622,7 @@ Public Class frmStudents
     Private Sub BtnViewDriversPermit_Click(sender As Object, e As EventArgs) Handles btnViewDriversPermit.Click
 
         Try
-            Process.Start(My.Settings.DriversPermitPath & "\" & txtDriversPermitNo.Text & ".pdf")
+            Process.Start(My.Settings.DriversPermitPath & "\" & txtFirstName.Text & "_" & txtLastName.Text & "_" & txtDriversPermitNo.Text & ".pdf")
 
         Catch ex As Exception
             MsgBox("File does not exist. Please upload.")
@@ -631,7 +636,7 @@ Public Class frmStudents
 
             MessageBox.Show("Please enter Passport#", "RADIAN Training", MessageBoxButtons.OK, MessageBoxIcon.Hand)
 
-        ElseIf System.IO.File.Exists(My.Settings.PassportPath & "\" & txtPassportNo.Text & ".pdf") = False Then
+        ElseIf System.IO.File.Exists(My.Settings.PassportPath & "\" & txtFirstName.Text & "_" & txtLastName.Text & "_" & txtPassportNo.Text & ".pdf") = False Then
 
             Dim fd As OpenFileDialog = New OpenFileDialog()
             Dim strFileName As String
@@ -645,7 +650,7 @@ Public Class frmStudents
                 Try
 
                     strFileName = fd.FileName
-                    System.IO.File.Copy(strFileName, My.Settings.PassportPath & "\" & txtPassportNo.Text & ".pdf", True)
+                    System.IO.File.Copy(strFileName, My.Settings.PassportPath & "\" & txtFirstName.Text & "_" & txtLastName.Text & "_" & txtPassportNo.Text & ".pdf", True)
 
                 Catch ex As Exception
                     MsgBox(ex.Message)
@@ -673,7 +678,7 @@ Public Class frmStudents
 
                     If fd.ShowDialog() = DialogResult.OK Then
                         strFileName = fd.FileName
-                        System.IO.File.Copy(strFileName, My.Settings.PassportPath & "\" & txtPassportNo.Text & ".pdf", True)
+                        System.IO.File.Copy(strFileName, My.Settings.PassportPath & "\" & txtFirstName.Text & "_" & txtLastName.Text & "_" & txtPassportNo.Text & ".pdf", True)
                     End If
 
             End Select
@@ -688,7 +693,7 @@ Public Class frmStudents
 
             MessageBox.Show("Please enter Driver's Permit No.", "RADIAN Training", MessageBoxButtons.OK, MessageBoxIcon.Hand)
 
-        ElseIf System.IO.File.Exists(My.Settings.DriversPermitPath & "\" & txtDriversPermitNo.Text & ".pdf") = False Then
+        ElseIf System.IO.File.Exists(My.Settings.DriversPermitPath & "\" & txtFirstName.Text & "_" & txtLastName.Text & "_" & txtDriversPermitNo.Text & ".pdf") = False Then
 
             Dim fd As OpenFileDialog = New OpenFileDialog()
             Dim strFileName As String
@@ -702,7 +707,7 @@ Public Class frmStudents
                 Try
 
                     strFileName = fd.FileName
-                    System.IO.File.Copy(strFileName, My.Settings.DriversPermitPath & "\" & txtDriversPermitNo.Text & ".pdf", True)
+                    System.IO.File.Copy(strFileName, My.Settings.DriversPermitPath & "\" & txtFirstName.Text & "_" & txtLastName.Text & "_" & txtDriversPermitNo.Text & ".pdf", True)
 
                 Catch ex As Exception
                     MsgBox(ex.Message)
@@ -730,16 +735,12 @@ Public Class frmStudents
 
                     If fd.ShowDialog() = DialogResult.OK Then
                         strFileName = fd.FileName
-                        System.IO.File.Copy(strFileName, My.Settings.DriversPermitPath & "\" & txtDriversPermitNo.Text & ".pdf", True)
+                        IO.File.Copy(strFileName, My.Settings.DriversPermitPath & "\" & txtFirstName.Text & "_" & txtLastName.Text & "_" & txtDriversPermitNo.Text & ".pdf", True)
                     End If
 
             End Select
 
         End If
-
-    End Sub
-
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
     End Sub
 
@@ -790,7 +791,14 @@ Public Class frmStudents
 
     Private Sub btnTraining_Click(sender As Object, e As EventArgs) Handles btnTraining.Click
 
-        frmStudentTraining.Show()
+        If txtStudentID.Text = "" Then
+
+            MsgBox("Please chose a student before continuing", vbOKOnly)
+        Else
+
+            frmStudentTraining.Show()
+
+        End If
 
     End Sub
 End Class

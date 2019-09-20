@@ -378,4 +378,18 @@ Public Class frmLocalCompany
         End Try
 
     End Sub
+
+    Private Sub btnContacts_Click(sender As Object, e As EventArgs) Handles btnContacts.Click
+
+        If txtCompanyID.Text = "" Then
+
+            MsgBox("Please choose a Company")
+
+        Else
+
+            frmContacts.Show()
+
+        End If
+
+    End Sub
 End Class

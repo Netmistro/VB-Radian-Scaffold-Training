@@ -106,6 +106,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ForeignCompany.Designer.vb">
+      <DependentUpon>ForeignCompany.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ForeignCompany.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payment.Designer.vb">
+      <DependentUpon>Payment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Users.Designer.vb">
       <DependentUpon>Users.vb</DependentUpon>
     </Compile>
@@ -124,10 +136,10 @@
       <DependentUpon>AllUsers.xsd</DependentUpon>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="ForeignCompany.Designer.vb">
-      <DependentUpon>ForeignCompany.vb</DependentUpon>
+    <Compile Include="Contacts.Designer.vb">
+      <DependentUpon>Contacts.vb</DependentUpon>
     </Compile>
-    <Compile Include="ForeignCompany.vb">
+    <Compile Include="Contacts.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="City.Designer.vb">
@@ -197,6 +209,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ForeignCompany.resx">
+      <DependentUpon>ForeignCompany.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payment.resx">
+      <DependentUpon>Payment.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users.resx">
       <DependentUpon>Users.vb</DependentUpon>
     </EmbeddedResource>
@@ -204,8 +222,8 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>AllSystemUsers.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ForeignCompany.resx">
-      <DependentUpon>ForeignCompany.vb</DependentUpon>
+    <EmbeddedResource Include="Contacts.resx">
+      <DependentUpon>Contacts.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="City.resx">
       <DependentUpon>City.vb</DependentUpon>

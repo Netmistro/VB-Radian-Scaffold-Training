@@ -1,20 +1,35 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Public Class frmForeignCompany
+Public Class frmContacts
     Dim MySqlConn As MySqlConnection
     Dim COMMAND As MySqlCommand
-    Private Sub BtnNew_Click(sender As Object, e As EventArgs)
-
-    End Sub
 
     Private Sub FrmForeignCompany_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        'Hide save button
-        btnSaveCompany.Enabled = False
+        'Disable save button
+        btnSave.Enabled = False
 
         'Centre Form
-        Dim loadForeignCompany As New RadianSettings
-        loadForeignCompany.CenterForm(Me)
+        Dim contactForm As New RadianSettings
+        contactForm.CenterForm(Me)
+
+        'Disable Controls
+        txtContactID.Enabled = False
+
+        'Check to see if the local of foreign company form is open
+        Dim Contact As String
+        Dim Company As Int32
+        If Application.OpenForms.OfType(Of Form).Contains(frmForeignCompany) Then
+
+            Contact = "Foreign"
+            Company = frmForeignCompany.txtCompanyID.Text
+
+        Else
+
+            Contact = "Local"
+            Company = frmLocalCompany.txtCompanyID.Text
+
+        End If
 
         MySqlConn = New MySqlConnection
         MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
@@ -23,24 +38,17 @@ Public Class frmForeignCompany
         Dim bSource As New BindingSource
 
         'Blank all fields on load
-        txtAddress.Text = ""
-        txtCity.Text = ""
-        txtCompanyID.Text = ""
-        txtCompanyName.Text = ""
+        txtContactID.Text = ""
+        txtName.Text = ""
+        txtPosition.Text = ""
+        txtMobile.Text = ""
         txtEmail.Text = ""
-        txtFax.Text = ""
-        txtMainContact.Text = ""
-        txtManagingDirector.Text = ""
-        txtPhone1.Text = ""
-        txtPhone2.Text = ""
-        txtWebsite.Text = ""
 
         Try
             MySqlConn.Open()
             Dim Query As String
-            Query = "select idfCompany as 'ID', CompanyName, ManDirector, Phone1, Phone2, Fax, Address, 
-            City, MainContact, email , Website
-            from radiantraining.foreigncompany"
+            Query = "SELECT idcontacts as 'ID', ContactName, Position, Mobile, Email, ContactType, Company
+            from radiantraining.contacts WHERE Company ='" & Company & "' AND ContactType = '" & Contact & "'"
             COMMAND = New MySqlCommand(Query, MySqlConn)
 
             SDA.SelectCommand = COMMAND
@@ -62,26 +70,19 @@ Public Class frmForeignCompany
 
     End Sub
 
-    Private Sub DataGridView2_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
 
         MySqlConn = New MySqlConnection
         MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
 
-
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow
             row = Me.DataGridView1.Rows(e.RowIndex)
-            txtCompanyID.Text = row.Cells("ID").Value.ToString
-            txtCompanyName.Text = row.Cells("CompanyName").Value.ToString
-            txtManagingDirector.Text = row.Cells("ManDirector").Value.ToString
-            txtPhone1.Text = row.Cells("Phone1").Value.ToString
-            txtPhone2.Text = row.Cells("Phone2").Value.ToString
-            txtFax.Text = row.Cells("Fax").Value.ToString
-            txtEmail.Text = row.Cells("email").Value.ToString
-            txtWebsite.Text = row.Cells("Website").Value.ToString
-            txtAddress.Text = row.Cells("Address").Value.ToString
-            txtCity.Text = row.Cells("City").Value.ToString
-            txtMainContact.Text = row.Cells("MainContact").Value.ToString
+            txtContactID.Text = row.Cells("ID").Value.ToString
+            txtName.Text = row.Cells("ContactName").Value.ToString
+            txtPosition.Text = row.Cells("Position").Value.ToString
+            txtMobile.Text = row.Cells("Mobile").Value.ToString
+            txtEmail.Text = row.Cells("Email").Value.ToString
 
             MySqlConn.Dispose()
 
@@ -89,9 +90,9 @@ Public Class frmForeignCompany
 
     End Sub
 
-    Private Sub btnNewCompany_Click(sender As Object, e As EventArgs) Handles btnNewCompany.Click
+    Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
 
-        Select Case MsgBox("Would you like to create a new Company?", MsgBoxStyle.YesNo)
+        Select Case MsgBox("Would you like to create a new Contact?", MsgBoxStyle.YesNo)
 
             Case MsgBoxResult.No
 
@@ -100,23 +101,17 @@ Public Class frmForeignCompany
             Case MsgBoxResult.Yes
 
                 'Enable save button
-                btnSaveCompany.Enabled = True
+                btnSave.Enabled = True
 
                 'Reload table data
                 loadTable()
 
                 ' Blank all text boxes
-                txtCompanyID.ReadOnly = True
-                txtCompanyName.Text = ""
-                txtManagingDirector.Text = ""
-                txtPhone1.Text = ""
-                txtPhone2.Text = ""
-                txtFax.Text = ""
+                txtContactID.ReadOnly = True
+                txtName.Text = ""
+                txtPosition.Text = ""
+                txtMobile.Text = ""
                 txtEmail.Text = ""
-                txtWebsite.Text = ""
-                txtAddress.Text = ""
-                txtCity.Text = ""
-                txtMainContact.Text = ""
 
         End Select
 
@@ -130,12 +125,26 @@ Public Class frmForeignCompany
         Dim dbDataSet As New DataTable
         Dim bSource As New BindingSource
 
+        'Check to see if the local of foreign company form is open
+        Dim Contact As String
+        Dim Company As Int32
+        If Application.OpenForms.OfType(Of Form).Contains(frmForeignCompany) Then
+
+            Contact = "Foreign"
+            Company = frmForeignCompany.txtCompanyID.Text
+
+        Else
+
+            Contact = "Local"
+            Company = frmLocalCompany.txtCompanyID.Text
+
+        End If
+
         Try
             MySqlConn.Open()
             Dim Query As String
-            Query = "select idfCompany as 'ID', CompanyName, ManDirector, Phone1, Phone2, Fax, Address, City, 
-                MainContact, email, Website
-                from radiantraining.foreigncompany"
+            Query = "SELECT idcontacts as 'ID', ContactName, Position, Mobile, Email, ContactType, Company
+            from radiantraining.contacts WHERE Company ='" & Company & "' AND ContactType = '" & Contact & "'"
             COMMAND = New MySqlCommand(Query, MySqlConn)
 
             SDA.SelectCommand = COMMAND
@@ -157,29 +166,40 @@ Public Class frmForeignCompany
 
     End Sub
 
-    Private Sub btnUpdateCompany_Click(sender As Object, e As EventArgs) Handles btnUpdateCompany.Click
+    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
 
         MySqlConn = New MySqlConnection
         MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
         Dim READER As MySqlDataReader
+
+        'Check to see if the local of foreign company form is open
+        Dim Contact As String
+        Dim Company As Int32
+        If Application.OpenForms.OfType(Of Form).Contains(frmForeignCompany) Then
+
+            Contact = "Foreign"
+            Company = frmForeignCompany.txtCompanyID.Text
+
+        Else
+
+            Contact = "Local"
+            Company = frmLocalCompany.txtCompanyID.Text
+
+        End If
 
         'Try Catch Block
         Try
 
             MySqlConn.Open()
             Dim Query As String
-            Query = "Update radiantraining.foreigncompany set
-            CompanyName='" & txtCompanyName.Text & "',
-            ManDirector='" & txtManagingDirector.Text & "',
-            Phone1='" & txtPhone1.Text & "',
-            Phone2='" & txtPhone2.Text & "',
-            Fax='" & txtFax.Text & "',
+            Query = "UPDATE radiantraining.contacts SET
+            ContactName='" & txtName.Text & "',
+            Position='" & txtPosition.Text & "',
+            Mobile='" & txtMobile.Text & "',
             Email='" & txtEmail.Text & "',
-            Website='" & txtWebsite.Text & "',
-            Address='" & txtAddress.Text & "',
-            City='" & txtCity.Text & "',
-            MainContact='" & txtMainContact.Text & "'
-            where idfCompany ='" & txtCompanyID.Text & "'"
+            ContactType = '" & Contact & "',
+            Company='" & Company & "'
+            WHERE idcontacts ='" & txtContactID.Text & "'"
 
             COMMAND = New MySqlCommand(Query, MySqlConn)
             READER = COMMAND.ExecuteReader
@@ -201,7 +221,7 @@ Public Class frmForeignCompany
 
     End Sub
 
-    Private Sub btndeleteCompany_Click(sender As Object, e As EventArgs) Handles btndeleteCompany.Click
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
 
         MySqlConn = New MySqlConnection
         'Connection String
@@ -213,10 +233,10 @@ Public Class frmForeignCompany
 
             MySqlConn.Open()
             Dim Query As String
-            Query = "DELETE from radiantraining.foreigncompany where idfCompany='" & txtCompanyID.Text & "'"
+            Query = "DELETE from radiantraining.contacts WHERE idcontacts='" & txtContactID.Text & "'"
             COMMAND = New MySqlCommand(Query, MySqlConn)
             READER = COMMAND.ExecuteReader
-            Select Case (MsgBox("You are about to delete a Company", MsgBoxStyle.YesNo))
+            Select Case (MsgBox("You are about to delete a Contact!", MsgBoxStyle.YesNo))
 
                 Case MsgBoxResult.No
 
@@ -224,7 +244,7 @@ Public Class frmForeignCompany
 
                 Case MsgBoxResult.Yes
 
-                    MsgBox("Record Deleted - " & txtCompanyName.Text)
+                    MsgBox("Record Deleted - " & txtName.Text)
 
             End Select
 
@@ -239,17 +259,11 @@ Public Class frmForeignCompany
         Finally
 
             'Blank all fields on load
-            txtCompanyID.Text = ""
-            txtCompanyName.Text = ""
-            txtManagingDirector.Text = ""
-            txtPhone1.Text = ""
-            txtPhone2.Text = ""
-            txtFax.Text = ""
+            txtContactID.Text = ""
+            txtName.Text = ""
+            txtPosition.Text = ""
+            txtMobile.Text = ""
             txtEmail.Text = ""
-            txtWebsite.Text = ""
-            txtAddress.Text = ""
-            txtCity.Text = ""
-            txtMainContact.Text = ""
 
             MySqlConn.Dispose()
 
@@ -257,33 +271,44 @@ Public Class frmForeignCompany
 
     End Sub
 
-    Private Sub btnSaveCompany_Click(sender As Object, e As EventArgs) Handles btnSaveCompany.Click
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
         MySqlConn = New MySqlConnection
         MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
         Dim READER As MySqlDataReader
 
+        'Check to see if the local of foreign company form is open
+        Dim Contact As String
+        Dim Company As Int32
+        If Application.OpenForms.OfType(Of Form).Contains(frmForeignCompany) Then
+
+            Contact = "Foreign"
+            Company = frmForeignCompany.txtCompanyID.Text
+
+        Else
+
+            Contact = "Local"
+            Company = frmLocalCompany.txtCompanyID.Text
+
+        End If
+
         'Try Catch Block
         Try
 
-            If txtCompanyName.Text = "" Or txtPhone1.Text = "" Then
-                MsgBox("Please enter Company Name and a Phone number!")
+            If txtName.Text = "" Or txtMobile.Text = "" Then
+                MsgBox("Please enter Contact Name and Phone number!")
             Else
                 MySqlConn.Open()
                 Dim Query As String
-                Query = "INSERT INTO radiantraining.foreigncompany
-                (CompanyName, ManDirector, Phone1, Phone2, Fax, email, Website, Address, City, MainContact )
+                Query = "INSERT INTO radiantraining.contacts
+                (ContactName, Position, Mobile, Email, ContactType, Company)
                 VALUES (
-                '" & txtCompanyName.Text & "',
-                '" & txtManagingDirector.Text & "',
-                '" & txtPhone1.Text & "',
-                '" & txtPhone2.Text & "',
-                '" & txtFax.Text & "',
+                '" & txtName.Text & "',
+                '" & txtPosition.Text & "',
+                '" & txtMobile.Text & "',
                 '" & txtEmail.Text & "',
-                '" & txtWebsite.Text & "',
-                '" & txtAddress.Text & "',
-                '" & txtCity.Text & "',
-                '" & txtMainContact.Text & "'
+                '" & Contact & "',
+                '" & Company & "'
                 )"
                 COMMAND = New MySqlCommand(Query, MySqlConn)
                 READER = COMMAND.ExecuteReader
@@ -308,23 +333,4 @@ Public Class frmForeignCompany
 
     End Sub
 
-    Private Sub btnContacts_Click(sender As Object, e As EventArgs)
-
-        frmContacts.Show()
-
-    End Sub
-
-    Private Sub btnContacts_Click_1(sender As Object, e As EventArgs) Handles btnContacts.Click
-
-        If txtCompanyID.Text = "" Then
-
-            MsgBox("Please choose a Company")
-
-        Else
-
-            frmContacts.Show()
-
-        End If
-
-    End Sub
 End Class

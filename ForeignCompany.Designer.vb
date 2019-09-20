@@ -22,8 +22,8 @@ Partial Class frmForeignCompany
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.txtWebsite = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtMainContact = New System.Windows.Forms.TextBox()
@@ -53,6 +53,7 @@ Partial Class frmForeignCompany
         Me.btndeleteCompany = New System.Windows.Forms.Button()
         Me.btnNewCompany = New System.Windows.Forms.Button()
         Me.btnUpdateCompany = New System.Windows.Forms.Button()
+        Me.btnContacts = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -60,7 +61,7 @@ Partial Class frmForeignCompany
         'txtWebsite
         '
         Me.txtWebsite.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtWebsite.Location = New System.Drawing.Point(139, 296)
+        Me.txtWebsite.Location = New System.Drawing.Point(126, 296)
         Me.txtWebsite.Name = "txtWebsite"
         Me.txtWebsite.Size = New System.Drawing.Size(208, 22)
         Me.txtWebsite.TabIndex = 8
@@ -69,7 +70,7 @@ Partial Class frmForeignCompany
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(83, 301)
+        Me.Label12.Location = New System.Drawing.Point(70, 301)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(49, 13)
         Me.Label12.TabIndex = 45
@@ -78,16 +79,16 @@ Partial Class frmForeignCompany
         'txtMainContact
         '
         Me.txtMainContact.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMainContact.Location = New System.Drawing.Point(476, 172)
+        Me.txtMainContact.Location = New System.Drawing.Point(480, 201)
         Me.txtMainContact.Name = "txtMainContact"
-        Me.txtMainContact.Size = New System.Drawing.Size(130, 22)
+        Me.txtMainContact.Size = New System.Drawing.Size(150, 22)
         Me.txtMainContact.TabIndex = 11
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(394, 177)
+        Me.Label11.Location = New System.Drawing.Point(398, 206)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(76, 13)
         Me.Label11.TabIndex = 43
@@ -96,16 +97,16 @@ Partial Class frmForeignCompany
         'txtCity
         '
         Me.txtCity.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCity.Location = New System.Drawing.Point(476, 141)
+        Me.txtCity.Location = New System.Drawing.Point(480, 170)
         Me.txtCity.Name = "txtCity"
-        Me.txtCity.Size = New System.Drawing.Size(130, 22)
+        Me.txtCity.Size = New System.Drawing.Size(150, 22)
         Me.txtCity.TabIndex = 10
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(444, 146)
+        Me.Label10.Location = New System.Drawing.Point(448, 175)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(26, 13)
         Me.Label10.TabIndex = 41
@@ -114,17 +115,17 @@ Partial Class frmForeignCompany
         'txtAddress
         '
         Me.txtAddress.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAddress.Location = New System.Drawing.Point(476, 88)
+        Me.txtAddress.Location = New System.Drawing.Point(480, 84)
         Me.txtAddress.Multiline = True
         Me.txtAddress.Name = "txtAddress"
-        Me.txtAddress.Size = New System.Drawing.Size(213, 44)
+        Me.txtAddress.Size = New System.Drawing.Size(150, 75)
         Me.txtAddress.TabIndex = 9
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(422, 110)
+        Me.Label9.Location = New System.Drawing.Point(426, 106)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(48, 13)
         Me.Label9.TabIndex = 39
@@ -133,7 +134,7 @@ Partial Class frmForeignCompany
         'txtEmail
         '
         Me.txtEmail.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEmail.Location = New System.Drawing.Point(139, 265)
+        Me.txtEmail.Location = New System.Drawing.Point(126, 265)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(167, 22)
         Me.txtEmail.TabIndex = 7
@@ -142,7 +143,7 @@ Partial Class frmForeignCompany
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(98, 270)
+        Me.Label8.Location = New System.Drawing.Point(85, 270)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(34, 13)
         Me.Label8.TabIndex = 37
@@ -151,7 +152,7 @@ Partial Class frmForeignCompany
         'txtFax
         '
         Me.txtFax.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFax.Location = New System.Drawing.Point(139, 234)
+        Me.txtFax.Location = New System.Drawing.Point(126, 234)
         Me.txtFax.Name = "txtFax"
         Me.txtFax.Size = New System.Drawing.Size(118, 22)
         Me.txtFax.TabIndex = 6
@@ -160,7 +161,7 @@ Partial Class frmForeignCompany
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(100, 239)
+        Me.Label7.Location = New System.Drawing.Point(87, 239)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(24, 13)
         Me.Label7.TabIndex = 35
@@ -169,7 +170,7 @@ Partial Class frmForeignCompany
         'txtPhone2
         '
         Me.txtPhone2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPhone2.Location = New System.Drawing.Point(139, 203)
+        Me.txtPhone2.Location = New System.Drawing.Point(126, 203)
         Me.txtPhone2.Name = "txtPhone2"
         Me.txtPhone2.Size = New System.Drawing.Size(118, 22)
         Me.txtPhone2.TabIndex = 5
@@ -177,7 +178,7 @@ Partial Class frmForeignCompany
         'txtPhone1
         '
         Me.txtPhone1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPhone1.Location = New System.Drawing.Point(139, 172)
+        Me.txtPhone1.Location = New System.Drawing.Point(126, 172)
         Me.txtPhone1.Name = "txtPhone1"
         Me.txtPhone1.Size = New System.Drawing.Size(118, 22)
         Me.txtPhone1.TabIndex = 4
@@ -185,7 +186,7 @@ Partial Class frmForeignCompany
         'txtManagingDirector
         '
         Me.txtManagingDirector.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtManagingDirector.Location = New System.Drawing.Point(139, 141)
+        Me.txtManagingDirector.Location = New System.Drawing.Point(126, 141)
         Me.txtManagingDirector.Name = "txtManagingDirector"
         Me.txtManagingDirector.Size = New System.Drawing.Size(167, 22)
         Me.txtManagingDirector.TabIndex = 3
@@ -193,7 +194,7 @@ Partial Class frmForeignCompany
         'txtCompanyName
         '
         Me.txtCompanyName.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCompanyName.Location = New System.Drawing.Point(139, 110)
+        Me.txtCompanyName.Location = New System.Drawing.Point(126, 110)
         Me.txtCompanyName.Name = "txtCompanyName"
         Me.txtCompanyName.Size = New System.Drawing.Size(239, 22)
         Me.txtCompanyName.TabIndex = 2
@@ -201,7 +202,7 @@ Partial Class frmForeignCompany
         'txtCompanyID
         '
         Me.txtCompanyID.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCompanyID.Location = New System.Drawing.Point(139, 79)
+        Me.txtCompanyID.Location = New System.Drawing.Point(126, 79)
         Me.txtCompanyID.Name = "txtCompanyID"
         Me.txtCompanyID.Size = New System.Drawing.Size(60, 22)
         Me.txtCompanyID.TabIndex = 1
@@ -210,7 +211,7 @@ Partial Class frmForeignCompany
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(83, 208)
+        Me.Label6.Location = New System.Drawing.Point(70, 208)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(49, 13)
         Me.Label6.TabIndex = 29
@@ -220,7 +221,7 @@ Partial Class frmForeignCompany
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(83, 177)
+        Me.Label5.Location = New System.Drawing.Point(70, 177)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(49, 13)
         Me.Label5.TabIndex = 28
@@ -230,7 +231,7 @@ Partial Class frmForeignCompany
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(28, 146)
+        Me.Label4.Location = New System.Drawing.Point(15, 146)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(104, 13)
         Me.Label4.TabIndex = 27
@@ -240,7 +241,7 @@ Partial Class frmForeignCompany
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(45, 115)
+        Me.Label3.Location = New System.Drawing.Point(32, 115)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(87, 13)
         Me.Label3.TabIndex = 26
@@ -250,7 +251,7 @@ Partial Class frmForeignCompany
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(63, 84)
+        Me.Label2.Location = New System.Drawing.Point(50, 84)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(69, 13)
         Me.Label2.TabIndex = 25
@@ -260,17 +261,17 @@ Partial Class frmForeignCompany
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(31, 334)
+        Me.DataGridView1.Location = New System.Drawing.Point(18, 334)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle4
-        Me.DataGridView1.Size = New System.Drawing.Size(666, 196)
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle2
+        Me.DataGridView1.Size = New System.Drawing.Size(625, 196)
         Me.DataGridView1.TabIndex = 52
         '
         'Panel1
@@ -279,7 +280,7 @@ Partial Class frmForeignCompany
         Me.Panel1.Controls.Add(Me.Label13)
         Me.Panel1.Location = New System.Drawing.Point(1, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(722, 57)
+        Me.Panel1.Size = New System.Drawing.Size(661, 57)
         Me.Panel1.TabIndex = 53
         '
         'Label13
@@ -287,7 +288,7 @@ Partial Class frmForeignCompany
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(276, 19)
+        Me.Label13.Location = New System.Drawing.Point(211, 17)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(216, 25)
         Me.Label13.TabIndex = 22
@@ -337,11 +338,23 @@ Partial Class frmForeignCompany
         Me.btnUpdateCompany.Text = "&Update"
         Me.btnUpdateCompany.UseVisualStyleBackColor = False
         '
+        'btnContacts
+        '
+        Me.btnContacts.BackColor = System.Drawing.Color.Turquoise
+        Me.btnContacts.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnContacts.Location = New System.Drawing.Point(555, 230)
+        Me.btnContacts.Name = "btnContacts"
+        Me.btnContacts.Size = New System.Drawing.Size(75, 30)
+        Me.btnContacts.TabIndex = 70
+        Me.btnContacts.Text = "Contacts"
+        Me.btnContacts.UseVisualStyleBackColor = False
+        '
         'frmForeignCompany
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(725, 591)
+        Me.ClientSize = New System.Drawing.Size(661, 591)
+        Me.Controls.Add(Me.btnContacts)
         Me.Controls.Add(Me.btnSaveCompany)
         Me.Controls.Add(Me.btndeleteCompany)
         Me.Controls.Add(Me.btnNewCompany)
@@ -371,7 +384,7 @@ Partial Class frmForeignCompany
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Name = "frmForeignCompany"
-        Me.Text = "ForeignCompany"
+        Me.Text = "Foreign Company"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -408,4 +421,5 @@ Partial Class frmForeignCompany
     Friend WithEvents btndeleteCompany As Button
     Friend WithEvents btnNewCompany As Button
     Friend WithEvents btnUpdateCompany As Button
+    Friend WithEvents btnContacts As Button
 End Class

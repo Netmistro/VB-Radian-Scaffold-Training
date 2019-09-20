@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmStudents
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmStudents
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -32,15 +32,12 @@ Partial Class frmStudents
         Me.txtLastName = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.txtMobile = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.txtHome = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtNationalID = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtPassportNo = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.txtOther = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtDriversPermitNo = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -75,6 +72,9 @@ Partial Class frmStudents
         Me.btnNewCompany = New System.Windows.Forms.Button()
         Me.picBoxStudent = New System.Windows.Forms.PictureBox()
         Me.btnTraining = New System.Windows.Forms.Button()
+        Me.txtmMobile = New System.Windows.Forms.MaskedTextBox()
+        Me.txtmHome = New System.Windows.Forms.MaskedTextBox()
+        Me.txtmOther = New System.Windows.Forms.MaskedTextBox()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -145,37 +145,21 @@ Partial Class frmStudents
         Me.Label5.TabIndex = 7
         Me.Label5.Text = "Company"
         '
-        'txtMobile
-        '
-        Me.txtMobile.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMobile.Location = New System.Drawing.Point(90, 259)
-        Me.txtMobile.Name = "txtMobile"
-        Me.txtMobile.Size = New System.Drawing.Size(100, 22)
-        Me.txtMobile.TabIndex = 8
-        '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(41, 261)
+        Me.Label6.Location = New System.Drawing.Point(41, 263)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(43, 13)
         Me.Label6.TabIndex = 9
         Me.Label6.Text = "Mobile"
         '
-        'txtHome
-        '
-        Me.txtHome.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtHome.Location = New System.Drawing.Point(240, 260)
-        Me.txtHome.Name = "txtHome"
-        Me.txtHome.Size = New System.Drawing.Size(100, 22)
-        Me.txtHome.TabIndex = 9
-        '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(197, 265)
+        Me.Label7.Location = New System.Drawing.Point(197, 263)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(37, 13)
         Me.Label7.TabIndex = 11
@@ -217,19 +201,11 @@ Partial Class frmStudents
         Me.Label9.TabIndex = 15
         Me.Label9.Text = "Passport"
         '
-        'txtOther
-        '
-        Me.txtOther.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtOther.Location = New System.Drawing.Point(391, 260)
-        Me.txtOther.Name = "txtOther"
-        Me.txtOther.Size = New System.Drawing.Size(100, 22)
-        Me.txtOther.TabIndex = 10
-        '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(347, 265)
+        Me.Label10.Location = New System.Drawing.Point(347, 263)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(37, 13)
         Me.Label10.TabIndex = 17
@@ -356,7 +332,7 @@ Partial Class frmStudents
         '
         Me.btnUpdate.BackColor = System.Drawing.Color.Tomato
         Me.btnUpdate.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUpdate.Location = New System.Drawing.Point(296, 651)
+        Me.btnUpdate.Location = New System.Drawing.Point(296, 658)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(75, 30)
         Me.btnUpdate.TabIndex = 26
@@ -367,7 +343,7 @@ Partial Class frmStudents
         '
         Me.btnNew.BackColor = System.Drawing.Color.Tomato
         Me.btnNew.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNew.Location = New System.Drawing.Point(210, 651)
+        Me.btnNew.Location = New System.Drawing.Point(210, 658)
         Me.btnNew.Name = "btnNew"
         Me.btnNew.Size = New System.Drawing.Size(75, 30)
         Me.btnNew.TabIndex = 25
@@ -378,7 +354,7 @@ Partial Class frmStudents
         '
         Me.btnDelete.BackColor = System.Drawing.Color.Tomato
         Me.btnDelete.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDelete.Location = New System.Drawing.Point(382, 651)
+        Me.btnDelete.Location = New System.Drawing.Point(382, 658)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(75, 30)
         Me.btnDelete.TabIndex = 27
@@ -469,7 +445,7 @@ Partial Class frmStudents
         '
         Me.btnSave.BackColor = System.Drawing.Color.Tomato
         Me.btnSave.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(468, 651)
+        Me.btnSave.Location = New System.Drawing.Point(468, 658)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 30)
         Me.btnSave.TabIndex = 28
@@ -580,18 +556,42 @@ Partial Class frmStudents
         '
         Me.btnTraining.BackColor = System.Drawing.Color.Tomato
         Me.btnTraining.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnTraining.Location = New System.Drawing.Point(664, 652)
+        Me.btnTraining.Location = New System.Drawing.Point(664, 659)
         Me.btnTraining.Name = "btnTraining"
         Me.btnTraining.Size = New System.Drawing.Size(75, 30)
         Me.btnTraining.TabIndex = 58
         Me.btnTraining.Text = "&Training"
         Me.btnTraining.UseVisualStyleBackColor = False
         '
+        'txtmMobile
+        '
+        Me.txtmMobile.Location = New System.Drawing.Point(91, 259)
+        Me.txtmMobile.Name = "txtmMobile"
+        Me.txtmMobile.Size = New System.Drawing.Size(100, 20)
+        Me.txtmMobile.TabIndex = 8
+        '
+        'txtmHome
+        '
+        Me.txtmHome.Location = New System.Drawing.Point(240, 259)
+        Me.txtmHome.Name = "txtmHome"
+        Me.txtmHome.Size = New System.Drawing.Size(100, 20)
+        Me.txtmHome.TabIndex = 9
+        '
+        'txtmOther
+        '
+        Me.txtmOther.Location = New System.Drawing.Point(386, 259)
+        Me.txtmOther.Name = "txtmOther"
+        Me.txtmOther.Size = New System.Drawing.Size(100, 20)
+        Me.txtmOther.TabIndex = 10
+        '
         'frmStudents
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(764, 686)
+        Me.ClientSize = New System.Drawing.Size(764, 699)
+        Me.Controls.Add(Me.txtmOther)
+        Me.Controls.Add(Me.txtmHome)
+        Me.Controls.Add(Me.txtmMobile)
         Me.Controls.Add(Me.btnTraining)
         Me.Controls.Add(Me.btnNewCompany)
         Me.Controls.Add(Me.btnNewCity)
@@ -621,15 +621,12 @@ Partial Class frmStudents
         Me.Controls.Add(Me.btnViewNationalID)
         Me.Controls.Add(Me.txtDriversPermitNo)
         Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.txtOther)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.txtPassportNo)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.txtNationalID)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.txtHome)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.txtMobile)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txtLastName)
@@ -659,15 +656,12 @@ Partial Class frmStudents
     Friend WithEvents txtLastName As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents txtMobile As TextBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents txtHome As TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents txtNationalID As TextBox
     Friend WithEvents Label8 As Label
     Friend WithEvents txtPassportNo As TextBox
     Friend WithEvents Label9 As Label
-    Friend WithEvents txtOther As TextBox
     Friend WithEvents Label10 As Label
     Friend WithEvents txtDriversPermitNo As TextBox
     Friend WithEvents Label11 As Label
@@ -702,4 +696,7 @@ Partial Class frmStudents
     Friend WithEvents btnNewCity As Button
     Friend WithEvents btnNewCompany As Button
     Friend WithEvents btnTraining As Button
+    Friend WithEvents txtmMobile As MaskedTextBox
+    Friend WithEvents txtmHome As MaskedTextBox
+    Friend WithEvents txtmOther As MaskedTextBox
 End Class

@@ -55,6 +55,7 @@ Partial Class frmLocalCompany
         Me.btnClear = New System.Windows.Forms.Button()
         Me.txtSearchCompany = New System.Windows.Forms.TextBox()
         Me.txtMainContact = New System.Windows.Forms.TextBox()
+        Me.btnContacts = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -377,11 +378,23 @@ Partial Class frmLocalCompany
         Me.txtMainContact.Size = New System.Drawing.Size(121, 22)
         Me.txtMainContact.TabIndex = 67
         '
+        'btnContacts
+        '
+        Me.btnContacts.BackColor = System.Drawing.Color.Turquoise
+        Me.btnContacts.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnContacts.Location = New System.Drawing.Point(616, 278)
+        Me.btnContacts.Name = "btnContacts"
+        Me.btnContacts.Size = New System.Drawing.Size(75, 30)
+        Me.btnContacts.TabIndex = 71
+        Me.btnContacts.Text = "Contacts"
+        Me.btnContacts.UseVisualStyleBackColor = False
+        '
         'frmLocalCompany
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(739, 661)
+        Me.Controls.Add(Me.btnContacts)
         Me.Controls.Add(Me.txtMainContact)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.cmbCity)
@@ -413,7 +426,7 @@ Partial Class frmLocalCompany
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Name = "frmLocalCompany"
-        Me.Text = "Company"
+        Me.Text = "Local Company"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -456,4 +469,5 @@ Partial Class frmLocalCompany
     Friend WithEvents btnClear As Button
     Friend WithEvents txtSearchCompany As TextBox
     Friend WithEvents txtMainContact As TextBox
+    Friend WithEvents btnContacts As Button
 End Class
