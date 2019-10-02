@@ -6,7 +6,7 @@ Public Class frmLocalCompany
     Private Sub FrmLocalCompany_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'Centre Form
-        Dim loadLocalCompany As New RadianSettings
+        Dim loadLocalCompany As New RADIANSETTINGS
         loadLocalCompany.CenterForm(Me)
 
         'Disable Save Button
@@ -16,11 +16,12 @@ Public Class frmLocalCompany
         txtSearchCompany.Select()
 
         'Centre Form
-        Dim loadStudentsForm As New RadianSettings
+        Dim loadStudentsForm As New RADIANSETTINGS
         loadStudentsForm.CenterForm(Me)
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim SDA As New MySqlDataAdapter
         Dim bSource As New BindingSource
 
@@ -68,7 +69,8 @@ Public Class frmLocalCompany
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
 
 
         If e.RowIndex >= 0 Then
@@ -141,7 +143,8 @@ Public Class frmLocalCompany
                 btnSaveCompany.Enabled = True
 
                 MySqlConn = New MySqlConnection
-                MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+                Dim CString As New RADIANSETTINGS
+                MySqlConn.ConnectionString = CString.ConnString
                 Dim READER As MySqlDataReader
 
                 'Reload table data
@@ -195,7 +198,8 @@ Public Class frmLocalCompany
     Private Sub loadTable()
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim SDA As New MySqlDataAdapter
         Dim dbDataSet As New DataTable
         Dim bSource As New BindingSource
@@ -230,7 +234,8 @@ Public Class frmLocalCompany
     Private Sub BtnUpdateCompany_Click(sender As Object, e As EventArgs) Handles btnUpdateCompany.Click
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block
@@ -275,7 +280,8 @@ Public Class frmLocalCompany
 
         MySqlConn = New MySqlConnection
         'Connection String
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block
@@ -331,7 +337,8 @@ Public Class frmLocalCompany
     Private Sub btnSaveCompany_Click(sender As Object, e As EventArgs) Handles btnSaveCompany.Click
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block

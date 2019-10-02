@@ -8,7 +8,7 @@ Public Class frmSettings
     Private Sub FrmSettings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'Centre Form
-        Dim loadSettingsForm As New RadianSettings
+        Dim loadSettingsForm As New RADIANSETTINGS
         loadSettingsForm.CenterForm(Me)
 
     End Sub
@@ -21,8 +21,7 @@ Public Class frmSettings
 
     Private Sub btnTestConnection_Click(sender As Object, e As EventArgs) Handles btnTestConnection.Click
 
-        Dim testConnection As New RadianSettings
-        testConnection.testConnection()
+
 
     End Sub
 

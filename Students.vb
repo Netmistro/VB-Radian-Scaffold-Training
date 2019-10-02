@@ -18,13 +18,8 @@ Public Class frmStudents
         txtmOther.Mask = "###-###-####"
 
         'Centre Form
-        Dim loadStudentsForm As New RadianSettings
+        Dim loadStudentsForm As New RADIANSETTINGS
         loadStudentsForm.CenterForm(Me)
-
-        MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
-        Dim SDA As New MySqlDataAdapter
-        Dim bSource As New BindingSource
 
         'Blank all fields on load
         txtStudentID.Text = ""
@@ -44,13 +39,21 @@ Public Class frmStudents
         txtPassportNo.Text = ""
         txtDriversPermitNo.Text = ""
 
+
+        Dim SDA As New MySqlDataAdapter
+        Dim bSource As New BindingSource
+        MySqlConn = New MySqlConnection
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
+
         Try
+
             MySqlConn.Open()
             Dim Query As String
             Query = "select studentid as 'ID', FirstName as 'FirstName', MiddleName as 'MiddleName', LastName as 'LastName',
-                Company, Address, City, Mobile, Home, Other, NationalIDNo, DriversPermitNo, PassportNo,
-                NationalID, DriversPermit, Passport, Picture, Email, Notes
-                from radiantraining.students"
+            Company, Address, City, Mobile, Home, Other, NationalIDNo, DriversPermitNo, PassportNo,
+            NationalID, DriversPermit, Passport, Picture, Email, Notes
+            from radiantraining.students"
             COMMAND = New MySqlCommand(Query, MySqlConn)
 
             SDA.SelectCommand = COMMAND
@@ -70,13 +73,13 @@ Public Class frmStudents
 
         End Try
 
-
     End Sub
 
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
 
 
         If e.RowIndex >= 0 Then
@@ -205,7 +208,8 @@ Public Class frmStudents
                 btnSave.Enabled = True
 
                 MySqlConn = New MySqlConnection
-                MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+                Dim CString As New RADIANSETTINGS
+                MySqlConn.ConnectionString = CString.ConnString
                 Dim READER As MySqlDataReader
 
                 'Reload table data
@@ -288,7 +292,8 @@ Public Class frmStudents
     Private Sub loadTable()
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim SDA As New MySqlDataAdapter
         Dim dbDataSet As New DataTable
         Dim bSource As New BindingSource
@@ -322,7 +327,8 @@ Public Class frmStudents
     Private Sub BtnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block
@@ -428,7 +434,8 @@ Public Class frmStudents
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block
@@ -487,7 +494,8 @@ Public Class frmStudents
 
         MySqlConn = New MySqlConnection
         'Connection String
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block
@@ -752,7 +760,7 @@ Public Class frmStudents
 
     Private Sub BtnNewCity_Click(sender As Object, e As EventArgs) Handles btnNewCity.Click
 
-        City.Show()
+        frmCity.Show()
 
     End Sub
 
@@ -796,7 +804,7 @@ Public Class frmStudents
             MsgBox("Please chose a student before continuing", vbOKOnly)
         Else
 
-            frmStudentTraining.Show()
+            frmTraining.Show()
 
         End If
 

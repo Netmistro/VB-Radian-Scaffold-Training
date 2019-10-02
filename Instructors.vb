@@ -10,11 +10,12 @@ Public Class frmInstructors
         btnSave.Enabled = False
 
         'Centre Form
-        Dim loadInstructorsForm As New RadianSettings
+        Dim loadInstructorsForm As New RADIANSETTINGS
         loadInstructorsForm.CenterForm(Me)
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim SDA As New MySqlDataAdapter
         Dim dbDataSet As New DataTable
         Dim bSource As New BindingSource
@@ -58,7 +59,8 @@ Public Class frmInstructors
         btnSave.Enabled = True
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block
@@ -99,7 +101,8 @@ Public Class frmInstructors
     Private Sub BtnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block
@@ -138,7 +141,8 @@ Public Class frmInstructors
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block
@@ -175,7 +179,8 @@ Public Class frmInstructors
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block
@@ -220,7 +225,8 @@ Public Class frmInstructors
     Private Sub loadTable()
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim SDA As New MySqlDataAdapter
         Dim dbDataSet As New DataTable
         Dim bSource As New BindingSource
@@ -253,7 +259,8 @@ Public Class frmInstructors
 
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
 
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow

@@ -1,19 +1,20 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Public Class frmCity
+Public Class frmCourses
     Dim MySqlConn As MySqlConnection
     Dim COMMAND As MySqlCommand
-    Private Sub FrmCity_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    Private Sub frmCourses_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'Disable save button
         btnSave.Enabled = False
 
         'Centre Form
-        Dim cityForm As New RADIANSETTINGS
-        cityForm.CenterForm(Me)
+        Dim contactForm As New RADIANSETTINGS
+        contactForm.CenterForm(Me)
 
         'Disable Controls
-        txtCityID.Enabled = False
+        txtCourseID.Enabled = False
 
         MySqlConn = New MySqlConnection
         Dim CString As New RADIANSETTINGS
@@ -23,13 +24,15 @@ Public Class frmCity
         Dim bSource As New BindingSource
 
         'Blank all fields on load
-        txtCityID.Text = ""
-        txtCityName.Text = ""
+        txtCourseID.Text = ""
+        txtCourseCode.Text = ""
+        txtCourseName.Text = ""
+        txtCost.Text = FormatCurrency(0.00, 2)
 
         Try
             MySqlConn.Open()
             Dim Query As String
-            Query = "SELECT idCity as 'ID', CityName from radiantraining.city"
+            Query = "SELECT idCourses as 'ID', CourseCode, CourseName, Cost from radiantraining.courses"
             COMMAND = New MySqlCommand(Query, MySqlConn)
 
             SDA.SelectCommand = COMMAND
@@ -38,6 +41,11 @@ Public Class frmCity
             DataGridView1.DataSource = bSource
             SDA.Update(dbDataSet)
             DataGridView1.ColumnHeadersDefaultCellStyle.Font = New Font(DataGridView1.Font, FontStyle.Bold)
+
+            'Format Datagrid View
+            DataGridView1.Columns(3).DefaultCellStyle.Format = "c"
+            DataGridView1.Refresh()
+
             MySqlConn.Close()
 
         Catch ex As Exception
@@ -48,7 +56,6 @@ Public Class frmCity
             MySqlConn.Dispose()
 
         End Try
-
 
     End Sub
 
@@ -61,8 +68,14 @@ Public Class frmCity
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow
             row = Me.DataGridView1.Rows(e.RowIndex)
-            txtCityID.Text = row.Cells("ID").Value.ToString
-            txtCityName.Text = row.Cells("CityName").Value.ToString
+            txtCourseID.Text = row.Cells("ID").Value.ToString
+            txtCourseCode.Text = row.Cells("CourseCode").Value.ToString
+            txtCourseName.Text = row.Cells("CourseName").Value.ToString
+            If row.Cells("Cost").Value.ToString = "" Then
+                txtCost.Text = FormatCurrency(0.00, 2)
+            Else
+                txtCost.Text = FormatCurrency(row.Cells("Cost").Value.ToString, 2)
+            End If
 
             MySqlConn.Dispose()
 
@@ -72,10 +85,7 @@ Public Class frmCity
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
 
-        ' Disable update button
-        btnUpdate.Enabled = False
-
-        Select Case MsgBox("Would you like to create a new City Name?", MsgBoxStyle.YesNo)
+        Select Case MsgBox("Would you like to create a new Course?", MsgBoxStyle.YesNo)
 
             Case MsgBoxResult.No
 
@@ -90,8 +100,10 @@ Public Class frmCity
                 loadTable()
 
                 ' Blank all text boxes
-                txtCityID.ReadOnly = True
-                txtCityName.Text = ""
+                txtCourseID.ReadOnly = True
+                txtCourseCode.Text = ""
+                txtCourseName.Text = ""
+                txtCost.Text = ""
 
         End Select
 
@@ -109,7 +121,7 @@ Public Class frmCity
         Try
             MySqlConn.Open()
             Dim Query As String
-            Query = "SELECT idCity as 'ID', CityName from radiantraining.city"
+            Query = "SELECT idCourses as 'ID', CourseCode, CourseName, Cost from radiantraining.courses"
             COMMAND = New MySqlCommand(Query, MySqlConn)
 
             SDA.SelectCommand = COMMAND
@@ -143,9 +155,11 @@ Public Class frmCity
 
             MySqlConn.Open()
             Dim Query As String
-            Query = "UPDATE radiantraining.city SET
-            CityName='" & txtCityName.Text & "'
-            WHERE idCity ='" & txtCityID.Text & "'"
+            Query = "UPDATE radiantraining.courses SET
+            CourseCode='" & txtCourseCode.Text & "',
+            CourseName='" & txtCourseName.Text & "',
+            Cost='" & txtCost.Text & "'
+            WHERE idcontacts ='" & txtCourseID.Text & "'"
 
             COMMAND = New MySqlCommand(Query, MySqlConn)
             READER = COMMAND.ExecuteReader
@@ -180,10 +194,10 @@ Public Class frmCity
 
             MySqlConn.Open()
             Dim Query As String
-            Query = "DELETE from radiantraining.city WHERE idCity='" & txtCityID.Text & "'"
+            Query = "DELETE from radiantraining.courses WHERE idCourses='" & txtCourseID.Text & "'"
             COMMAND = New MySqlCommand(Query, MySqlConn)
             READER = COMMAND.ExecuteReader
-            Select Case (MsgBox("You are about to delete a City!", MsgBoxStyle.YesNo))
+            Select Case (MsgBox("You are about to delete a Course!", MsgBoxStyle.YesNo))
 
                 Case MsgBoxResult.No
 
@@ -191,7 +205,7 @@ Public Class frmCity
 
                 Case MsgBoxResult.Yes
 
-                    MsgBox("Record Deleted - " & txtCityName.Text)
+                    MsgBox("Record Deleted - " & txtCourseCode.Text & "-" & txtCourseName.Text)
 
             End Select
 
@@ -206,8 +220,10 @@ Public Class frmCity
         Finally
 
             'Blank all fields on load
-            txtCityID.Text = ""
-            txtCityName.Text = ""
+            txtCourseID.Text = ""
+            txtCourseCode.Text = ""
+            txtCourseName.Text = ""
+            txtCost.Text = ""
 
             MySqlConn.Dispose()
 
@@ -225,14 +241,17 @@ Public Class frmCity
         'Try Catch Block
         Try
 
-            If txtCityName.Text = "" Then
-                MsgBox("Please enter a valid City Name!")
+            If txtCourseName.Text = "" And txtCourseCode.Text = "" And txtCost.Text = "" Then
+                MsgBox("Please enter valid Course information!")
             Else
                 MySqlConn.Open()
                 Dim Query As String
-                Query = "INSERT INTO radiantraining.city
-                (CityName)
-                VALUES ('" & txtCityName.Text & "')"
+                Query = "INSERT INTO radiantraining.courses (CourseCode, CourseName, Cost)
+                VALUES (
+                '" & txtCourseCode.Text & "',
+                '" & txtCourseName.Text & "',
+                '" & txtCost.Text & "'
+                )"
                 COMMAND = New MySqlCommand(Query, MySqlConn)
                 READER = COMMAND.ExecuteReader
 

@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
-Public Class frmStudentTraining
-    Dim MySqlConn As MySqlConnection
-    Dim COMMAND As MySqlCommand
+Public Class frmTraining
+    Dim MysqlConn As New MySqlConnection
+    Dim COMMAND As New MySqlCommand
     Dim dbDataSet As New DataTable
     Private Sub FrmStudentTraining_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -11,15 +11,11 @@ Public Class frmStudentTraining
         dtpEndDate.Format = DateTimePickerFormat.Custom
         dtpEndDate.CustomFormat = "dd-MMM-yyyy"
 
-        'Format Currency
-        txtCost.Text = Format(txtCost.Text, "$0.00")
-        txtBalance.Text = Format(txtBalance.Text, "$0.00")
-
         'Disable save button
         btnSave.Enabled = False
 
         'Centre Form
-        Dim loadStndentTraining As New RadianSettings
+        Dim loadStndentTraining As New RADIANSETTINGS
         loadStndentTraining.CenterForm(Me)
 
         'Disable a few text boxes
@@ -35,42 +31,54 @@ Public Class frmStudentTraining
         txtMiddleName.Text = frmStudents.txtMiddleName.Text
         txtLastName.Text = frmStudents.txtLastName.Text
 
-        MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        MysqlConn = New MySqlConnection
+        Dim CString As New RADIANSETTINGS
+        MysqlConn.ConnectionString = CString.ConnString
         Dim SDA As New MySqlDataAdapter
         Dim bSource As New BindingSource
 
         Try
-            MySqlConn.Open()
+
             Dim Query As String
             Query = "SELECT TrainingID as 'ID', 
-            fkStudentID as 'Student', Course, CertNo, Instructor, StartDate, EndDate, Certificate, Notes, Company, Cost
+            fkStudentID as 'Student', Course, CertNo, Instructor, StartDate, EndDate, Certificate, Company, Notes, Cost
             FROM radiantraining.training WHERE fkStudentID = '" & txtStudentID.Text & "'"
-            COMMAND = New MySqlCommand(Query, MySqlConn)
+            COMMAND = New MySqlCommand(Query, MysqlConn)
 
+            MysqlConn.Open()
             SDA.SelectCommand = COMMAND
             SDA.Fill(dbDataSet)
             bSource.DataSource = dbDataSet
             DataGridView1.DataSource = bSource
             SDA.Update(dbDataSet)
             DataGridView1.ColumnHeadersDefaultCellStyle.Font = New Font(DataGridView1.Font, FontStyle.Bold)
-            MySqlConn.Close()
+
+            'Format Datagrid View
+            DataGridView1.Columns(10).DefaultCellStyle.Format = "c"
+            DataGridView1.Refresh()
+            MysqlConn.Close()
+
 
         Catch ex As Exception
 
             MessageBox.Show(ex.Message)
+
         Finally
 
-            MySqlConn.Dispose()
+            MysqlConn.Close()
 
         End Try
+
 
     End Sub
 
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
 
-        MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        MysqlConn = New MySqlConnection
+        Dim CString As New RADIANSETTINGS
+        MysqlConn.ConnectionString = CString.ConnString
+
+        DataGridView1.Refresh()
 
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow
@@ -87,10 +95,10 @@ Public Class frmStudentTraining
 
             'Try Catch Block Courses Dropdown list
             Try
-                MySqlConn.Open()
+                MysqlConn.Open()
                 Dim Query As String
                 Query = "SELECT * from radiantraining.courses"
-                COMMAND = New MySqlCommand(Query, MySqlConn)
+                COMMAND = New MySqlCommand(Query, MysqlConn)
                 Dim READER As MySqlDataReader
                 READER = COMMAND.ExecuteReader
 
@@ -101,23 +109,23 @@ Public Class frmStudentTraining
 
                 End While
 
-                MySqlConn.Close()
+                MysqlConn.Close()
 
             Catch ex As Exception
 
                 MessageBox.Show(ex.Message)
             Finally
 
-                MySqlConn.Dispose()
+                MysqlConn.Dispose()
 
             End Try
 
             'Try Catch Block Company Dropdown list
             Try
-                MySqlConn.Open()
+                MysqlConn.Open()
                 Dim Query As String
                 Query = "SELECT * from radiantraining.localcompany"
-                COMMAND = New MySqlCommand(Query, MySqlConn)
+                COMMAND = New MySqlCommand(Query, MysqlConn)
                 Dim READER As MySqlDataReader
                 READER = COMMAND.ExecuteReader
 
@@ -128,24 +136,24 @@ Public Class frmStudentTraining
 
                 End While
 
-                MySqlConn.Close()
+                MysqlConn.Close()
 
             Catch ex As Exception
 
                 MessageBox.Show(ex.Message)
             Finally
 
-                MySqlConn.Dispose()
+                MysqlConn.Dispose()
 
             End Try
 
             'Try Catch Block Balance
             Try
-                MySqlConn.Open()
+                MysqlConn.Open()
                 Dim Query As String
                 Query = "SELECT * from radiantraining.payments WHERE TrainID='" & txtTrainNo.Text & "' 
                         AND StudentID='" & txtStudentID.Text & "'"
-                COMMAND = New MySqlCommand(Query, MySqlConn)
+                COMMAND = New MySqlCommand(Query, MysqlConn)
                 Dim READER As MySqlDataReader
                 READER = COMMAND.ExecuteReader
 
@@ -156,11 +164,11 @@ Public Class frmStudentTraining
                     Sum = Sum + AmtPaid
 
                     Dim Cost As Decimal = txtCost.Text
-                    txtBalance.Text = Cost - Sum
+                    txtBalance.Text = FormatCurrency((Cost - Sum), 2)
 
                 End While
 
-                MySqlConn.Close()
+                MysqlConn.Close()
 
             Catch ex As Exception
 
@@ -168,16 +176,16 @@ Public Class frmStudentTraining
 
             Finally
 
-                MySqlConn.Dispose()
+                MysqlConn.Dispose()
 
             End Try
 
             'Try Catch Block Instructors Dropdown list
             Try
-                MySqlConn.Open()
+                MysqlConn.Open()
                 Dim Query As String
                 Query = "SELECT * from radiantraining.instructors"
-                COMMAND = New MySqlCommand(Query, MySqlConn)
+                COMMAND = New MySqlCommand(Query, MysqlConn)
                 Dim READER As MySqlDataReader
                 READER = COMMAND.ExecuteReader
 
@@ -188,18 +196,27 @@ Public Class frmStudentTraining
 
                 End While
 
-                MySqlConn.Close()
+                MysqlConn.Close()
 
             Catch ex As Exception
 
                 MessageBox.Show(ex.Message)
             Finally
 
-                MySqlConn.Dispose()
+                MysqlConn.Dispose()
 
             End Try
 
+        Else
+
+            MsgBox(e.ToString)
+
         End If
+
+        txtCost.Text = FormatCurrency(txtCost.Text, 2)
+        'Format Datagrid View
+        DataGridView1.Columns(10).DefaultCellStyle.Format = "c"
+        DataGridView1.Refresh()
 
     End Sub
 
@@ -233,8 +250,9 @@ Public Class frmStudentTraining
                 'Enable save button
                 btnSave.Enabled = True
 
-                MySqlConn = New MySqlConnection
-                MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+                MysqlConn = New MySqlConnection
+                Dim CString As New RADIANSETTINGS
+                MysqlConn.ConnectionString = CString.ConnString
                 Dim READER As MySqlDataReader
 
                 'Reload table data
@@ -252,10 +270,10 @@ Public Class frmStudentTraining
 
                 'Try Catch Block Course Name
                 Try
-                    MySqlConn.Open()
+                    MysqlConn.Open()
                     Dim Query As String
                     Query = "select * from radiantraining.courses"
-                    COMMAND = New MySqlCommand(Query, MySqlConn)
+                    COMMAND = New MySqlCommand(Query, MysqlConn)
                     READER = COMMAND.ExecuteReader
 
                     While READER.Read
@@ -265,23 +283,23 @@ Public Class frmStudentTraining
 
                     End While
 
-                    MySqlConn.Close()
+                    MysqlConn.Close()
 
                 Catch ex As Exception
 
                     MessageBox.Show(ex.Message)
                 Finally
 
-                    MySqlConn.Dispose()
+                    MysqlConn.Dispose()
 
                 End Try
 
                 'Try Catch Block Instructor
                 Try
-                    MySqlConn.Open()
+                    MysqlConn.Open()
                     Dim Query As String
                     Query = "select * from radiantraining.instructors"
-                    COMMAND = New MySqlCommand(Query, MySqlConn)
+                    COMMAND = New MySqlCommand(Query, MysqlConn)
                     READER = COMMAND.ExecuteReader
 
                     While READER.Read
@@ -290,23 +308,23 @@ Public Class frmStudentTraining
                         cmbInstructor.Items.Add(instructorName)
 
                     End While
-                    MySqlConn.Close()
+                    MysqlConn.Close()
 
                 Catch ex As Exception
 
                     MessageBox.Show(ex.Message)
                 Finally
 
-                    MySqlConn.Dispose()
+                    MysqlConn.Dispose()
 
                 End Try
 
                 'Try Catch Block Company
                 Try
-                    MySqlConn.Open()
+                    MysqlConn.Open()
                     Dim Query As String
                     Query = "select * from radiantraining.localcompany"
-                    COMMAND = New MySqlCommand(Query, MySqlConn)
+                    COMMAND = New MySqlCommand(Query, MysqlConn)
                     READER = COMMAND.ExecuteReader
 
                     While READER.Read
@@ -315,14 +333,14 @@ Public Class frmStudentTraining
                         cmbCompany.Items.Add(localCompanyName)
 
                     End While
-                    MySqlConn.Close()
+                    MysqlConn.Close()
 
                 Catch ex As Exception
 
                     MessageBox.Show(ex.Message)
                 Finally
 
-                    MySqlConn.Dispose()
+                    MysqlConn.Dispose()
 
                 End Try
 
@@ -332,34 +350,35 @@ Public Class frmStudentTraining
 
     Private Sub loadTable()
 
-        MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        MysqlConn = New MySqlConnection
+        Dim CString As New RADIANSETTINGS
+        MysqlConn.ConnectionString = CString.ConnString
         Dim SDA As New MySqlDataAdapter
         Dim dbDataSet As New DataTable
         Dim bSource As New BindingSource
 
         Try
-            MySqlConn.Open()
+            MysqlConn.Open()
             Dim Query As String
             Query = "select TrainingID as 'ID', 
             fkStudentID as 'Student', Course, CertNo, Instructor, StartDate, EndDate, Certificate, Notes, Company
             from radiantraining.training WHERE fkStudentID ='" & txtStudentID.Text & "'"
 
-            COMMAND = New MySqlCommand(Query, MySqlConn)
+            COMMAND = New MySqlCommand(Query, MysqlConn)
             SDA.SelectCommand = COMMAND
             SDA.Fill(dbDataSet)
             bSource.DataSource = dbDataSet
             DataGridView1.DataSource = bSource
             SDA.Update(dbDataSet)
             DataGridView1.ColumnHeadersDefaultCellStyle.Font = New Font(DataGridView1.Font, FontStyle.Bold)
-            MySqlConn.Close()
+            MysqlConn.Close()
 
         Catch ex As Exception
 
             MessageBox.Show(ex.Message)
         Finally
 
-            MySqlConn.Dispose()
+            MysqlConn.Dispose()
 
         End Try
 
@@ -367,14 +386,15 @@ Public Class frmStudentTraining
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
 
-        MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        MysqlConn = New MySqlConnection
+        Dim CString As New RADIANSETTINGS
+        MysqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block
         Try
 
-            MySqlConn.Open()
+            MysqlConn.Open()
             Dim Query As String
             Query = "Update radiantraining.training SET
             Course='" & cmbCourseName.Text & "',
@@ -386,13 +406,13 @@ Public Class frmStudentTraining
             Cost = '" & txtCost.Text & "'
             WHERE fkStudentID='" & txtStudentID.Text & "' AND TrainingID='" & txtTrainNo.Text & "'"
 
-            COMMAND = New MySqlCommand(Query, MySqlConn)
+            COMMAND = New MySqlCommand(Query, MysqlConn)
             READER = COMMAND.ExecuteReader
 
             MsgBox("Successfully Updated")
             'Refresh Data
             loadTable()
-            MySqlConn.Close()
+            MysqlConn.Close()
 
         Catch ex As Exception
 
@@ -400,7 +420,7 @@ Public Class frmStudentTraining
 
         Finally
 
-            MySqlConn.Dispose()
+            MysqlConn.Dispose()
 
         End Try
 
@@ -408,18 +428,19 @@ Public Class frmStudentTraining
 
     Private Sub btndelete_Click(sender As Object, e As EventArgs) Handles btndelete.Click
 
-        MySqlConn = New MySqlConnection
+        MysqlConn = New MySqlConnection
         'Connection String
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MysqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block
         Try
 
-            MySqlConn.Open()
+            MysqlConn.Open()
             Dim Query As String
             Query = "DELETE from radiantraining.training WHERE fkStudentID='" & txtStudentID.Text & "' AND TrainingID='" & txtTrainNo.Text & "'"
-            COMMAND = New MySqlCommand(Query, MySqlConn)
+            COMMAND = New MySqlCommand(Query, MysqlConn)
             READER = COMMAND.ExecuteReader
             Select Case (MsgBox("You are about to delete a Record - '" & txtFirstName.Text & " " & txtLastName.Text & "'", MsgBoxStyle.YesNo))
 
@@ -435,7 +456,7 @@ Public Class frmStudentTraining
 
             'Refresh Data - Call function
             loadTable()
-            MySqlConn.Close()
+            MysqlConn.Close()
 
         Catch ex As Exception
 
@@ -453,7 +474,7 @@ Public Class frmStudentTraining
             txtNotes.Text = ""
             txtCost.Text = ""
 
-            MySqlConn.Dispose()
+            MysqlConn.Dispose()
 
         End Try
 
@@ -461,9 +482,13 @@ Public Class frmStudentTraining
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
-        MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        MysqlConn = New MySqlConnection
+        Dim CString As New RADIANSETTINGS
+        MysqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
+
+        'Refresh the data
+        DataGridView1.Refresh()
 
         'Try Catch Block
         Try
@@ -472,7 +497,7 @@ Public Class frmStudentTraining
                 MsgBox("Please enter Valid Information!")
 
             Else
-                MySqlConn.Open()
+                MysqlConn.Open()
                 Dim Query As String
                 Query = "INSERT INTO radiantraining.training
                 (fkStudentID, Course, CertNo, Instructor, StartDate, EndDate, Company, Notes, Cost)
@@ -488,14 +513,14 @@ Public Class frmStudentTraining
                 '" & txtCost.Text & "'
                  )"
 
-                COMMAND = New MySqlCommand(Query, MySqlConn)
+                COMMAND = New MySqlCommand(Query, MysqlConn)
                 READER = COMMAND.ExecuteReader
 
                 MsgBox("Successfully Entered")
 
                 'Refresh Data
                 loadTable()
-                MySqlConn.Close()
+                MysqlConn.Close()
 
             End If
 
@@ -505,7 +530,7 @@ Public Class frmStudentTraining
 
         Finally
 
-            MySqlConn.Dispose()
+            MysqlConn.Dispose()
 
         End Try
 
@@ -586,16 +611,17 @@ Public Class frmStudentTraining
 
     Private Sub cmbCourseName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCourseName.SelectedIndexChanged
 
-        MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        MysqlConn = New MySqlConnection
+        Dim CString As New RADIANSETTINGS
+        MysqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block Cost
         Try
-            MySqlConn.Open()
+            MysqlConn.Open()
             Dim Query As String
             Query = "SELECT * from radiantraining.courses WHERE CourseName = '" & cmbCourseName.Text & "'"
-            COMMAND = New MySqlCommand(Query, MySqlConn)
+            COMMAND = New MySqlCommand(Query, MysqlConn)
             READER = COMMAND.ExecuteReader
 
             While READER.Read
@@ -605,7 +631,7 @@ Public Class frmStudentTraining
 
             End While
 
-            MySqlConn.Close()
+            MysqlConn.Close()
 
         Catch ex As Exception
 
@@ -613,7 +639,7 @@ Public Class frmStudentTraining
 
         Finally
 
-            MySqlConn.Dispose()
+            MysqlConn.Dispose()
 
         End Try
 

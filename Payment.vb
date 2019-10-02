@@ -6,7 +6,7 @@ Public Class frmPayment
     Private Sub Payment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'Centre Form
-        Dim loadStudentsForm As New RadianSettings
+        Dim loadStudentsForm As New RADIANSETTINGS
         loadStudentsForm.CenterForm(Me)
 
         'Format date time pickers at load
@@ -14,9 +14,20 @@ Public Class frmPayment
         dtpDatePaid.CustomFormat = "dd-MMM-yyyy"
 
         'Format Currency
-        txtAmtPaid.Text = Format(txtAmtPaid.Text, "$0.00")
-        txtCost.Text = Format(txtCost.Text, "$0.00")
-        txtBalance.Text = Format(txtBalance.Text, "$0.00")
+        Dim AmtPaid As Decimal
+        txtAmtPaid.Text = FormatCurrency(AmtPaid, 2)
+        txtBalance.Text = FormatCurrency(frmTraining.txtBalance.Text, 2)
+        txtCost.Text = FormatCurrency(frmTraining.txtCost.Text, 2)
+
+        If txtBalance.Text = 0 Then
+
+            btnNew.Enabled = False
+
+        Else
+
+            btnNew.Enabled = True
+
+        End If
 
         'Disable Controls
         btnSave.Enabled = False
@@ -29,19 +40,21 @@ Public Class frmPayment
         txtEnteredBy.Enabled = False
         txtBalance.Enabled = False
         txtCost.Enabled = False
+        txtPayID.Enabled = False
 
         'Load previous form values
-        txtStudentID.Text = frmStudentTraining.txtStudentID.Text
-        txtFirstName.Text = frmStudentTraining.txtFirstName.Text
-        txtMiddleName.Text = frmStudentTraining.txtMiddleName.Text
-        txtLastName.Text = frmStudentTraining.txtLastName.Text
-        txtCourseName.Text = frmStudentTraining.cmbCourseName.Text
-        txtTrainID.Text = frmStudentTraining.txtTrainNo.Text
-        txtBalance.Text = frmStudentTraining.txtBalance.Text
-        txtCost.Text = frmStudentTraining.txtCost.Text
+        txtStudentID.Text = frmTraining.txtStudentID.Text
+        txtFirstName.Text = frmTraining.txtFirstName.Text
+        txtMiddleName.Text = frmTraining.txtMiddleName.Text
+        txtLastName.Text = frmTraining.txtLastName.Text
+        txtCourseName.Text = frmTraining.cmbCourseName.Text
+        txtTrainID.Text = frmTraining.txtTrainNo.Text
+        txtBalance.Text = frmTraining.txtBalance.Text
+        txtCost.Text = frmTraining.txtCost.Text
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim SDA As New MySqlDataAdapter
         Dim bSource As New BindingSource
 
@@ -58,6 +71,11 @@ Public Class frmPayment
             DataGridView1.DataSource = bSource
             SDA.Update(dbDataSet)
             DataGridView1.ColumnHeadersDefaultCellStyle.Font = New Font(DataGridView1.Font, FontStyle.Bold)
+
+            'Format Datagrid View
+            DataGridView1.Columns(3).DefaultCellStyle.Format = "c"
+            DataGridView1.Refresh()
+
             MySqlConn.Close()
 
         Catch ex As Exception
@@ -74,7 +92,8 @@ Public Class frmPayment
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
 
         If e.RowIndex >= 0 Then
 
@@ -83,19 +102,29 @@ Public Class frmPayment
             txtPayID.Text = row.Cells("PayID").Value.ToString
             txtCourseName.Text = row.Cells("CourseName").Value.ToString
             dtpDatePaid.Text = row.Cells("DatePaid").Value.ToString
-            txtAmtPaid.Text = Format(row.Cells("AmtPaid").Value.ToString, "$0.00")
+            txtAmtPaid.Text = FormatCurrency(row.Cells("AmtPaid").Value.ToString, 2)
             txtPayee.Text = row.Cells("Payee").Value.ToString
             txtEnteredBy.Text = row.Cells("Entered").Value.ToString
             txtReceiptNo.Text = row.Cells("ReceiptNo").Value.ToString
 
         End If
 
+        'Format Datagrid View
+        DataGridView1.Columns(3).DefaultCellStyle.Format = "c"
+        DataGridView1.Refresh()
+
+        'Format previous loaded values
+        txtAmtPaid.Text = FormatCurrency(txtAmtPaid.Text, 2)
+        txtBalance.Text = FormatCurrency(frmTraining.txtBalance.Text, 2)
+        txtCost.Text = FormatCurrency(frmTraining.txtCost.Text, 2)
+
     End Sub
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block
@@ -141,30 +170,42 @@ Public Class frmPayment
 
             Case MsgBoxResult.Yes
 
-                'Enable save button
-                btnSave.Enabled = True
+                'Check Student Balance and return error if the balance is zero, proceed otherwise
+                If frmTraining.txtBalance.Text = 0 Then
 
-                MySqlConn = New MySqlConnection
-                MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+                    MsgBox("Student balance is already Zero!")
 
-                'Reload table data
-                loadTable()
+                Else
 
-                ' Blank all text boxes
-                txtStudentID.ReadOnly = True
-                txtFirstName.ReadOnly = True
-                txtMiddleName.ReadOnly = True
-                txtPayID.ReadOnly = True
-                txtTrainID.ReadOnly = True
-                txtCourseName.ReadOnly = True
-                txtEnteredBy.ReadOnly = True
-                dtpDatePaid.ResetText()
-                txtTrainID.Text = frmStudentTraining.txtTrainNo.Text
-                txtCost.Text = ""
-                txtReceiptNo.Text = ""
-                txtAmtPaid.Text = ""
-                txtPayee.Text = ""
-                txtEnteredBy.Text = StrConv(frmLogin.txtUsername.Text, VbStrConv.ProperCase)
+                    'Enable save button
+                    btnSave.Enabled = True
+
+                    'Load previous form Values
+                    txtCost.Text = FormatCurrency(frmTraining.txtCost.Text, 2)
+
+                    MySqlConn = New MySqlConnection
+                    Dim CString As New RADIANSETTINGS
+                    MySqlConn.ConnectionString = CString.ConnString
+
+                    'Reload table data
+                    loadTable()
+
+                    ' Blank all text boxes
+                    txtStudentID.ReadOnly = True
+                    txtFirstName.ReadOnly = True
+                    txtMiddleName.ReadOnly = True
+                    txtPayID.ReadOnly = True
+                    txtTrainID.ReadOnly = True
+                    txtCourseName.ReadOnly = True
+                    txtEnteredBy.ReadOnly = True
+                    dtpDatePaid.ResetText()
+                    txtTrainID.Text = frmTraining.txtTrainNo.Text
+                    txtReceiptNo.Text = ""
+                    txtAmtPaid.Text = ""
+                    txtPayee.Text = ""
+                    txtEnteredBy.Text = StrConv(frmLogin.txtUsername.Text, VbStrConv.ProperCase)
+
+                End If
 
         End Select
 
@@ -173,7 +214,8 @@ Public Class frmPayment
     Private Sub loadTable()
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim SDA As New MySqlDataAdapter
         Dim dbDataSet As New DataTable
         Dim bSource As New BindingSource
@@ -207,7 +249,8 @@ Public Class frmPayment
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block
@@ -260,7 +303,8 @@ Public Class frmPayment
 
         MySqlConn = New MySqlConnection
         'Connection String
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block

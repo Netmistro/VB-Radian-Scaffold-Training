@@ -13,11 +13,12 @@ Public Class frmForeignCompany
         btnSaveCompany.Enabled = False
 
         'Centre Form
-        Dim loadForeignCompany As New RadianSettings
+        Dim loadForeignCompany As New RADIANSETTINGS
         loadForeignCompany.CenterForm(Me)
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim SDA As New MySqlDataAdapter
         Dim dbDataSet As New DataTable
         Dim bSource As New BindingSource
@@ -65,7 +66,8 @@ Public Class frmForeignCompany
     Private Sub DataGridView2_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
 
 
         If e.RowIndex >= 0 Then
@@ -125,7 +127,8 @@ Public Class frmForeignCompany
     Private Sub loadTable()
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim SDA As New MySqlDataAdapter
         Dim dbDataSet As New DataTable
         Dim bSource As New BindingSource
@@ -160,7 +163,8 @@ Public Class frmForeignCompany
     Private Sub btnUpdateCompany_Click(sender As Object, e As EventArgs) Handles btnUpdateCompany.Click
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block
@@ -205,7 +209,8 @@ Public Class frmForeignCompany
 
         MySqlConn = New MySqlConnection
         'Connection String
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block
@@ -260,7 +265,8 @@ Public Class frmForeignCompany
     Private Sub btnSaveCompany_Click(sender As Object, e As EventArgs) Handles btnSaveCompany.Click
 
         MySqlConn = New MySqlConnection
-        MySqlConn.ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
+        Dim CString As New RADIANSETTINGS
+        MySqlConn.ConnectionString = CString.ConnString
         Dim READER As MySqlDataReader
 
         'Try Catch Block

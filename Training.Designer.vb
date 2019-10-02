@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmStudentTraining
+Partial Class frmTraining
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -433,7 +433,7 @@ Partial Class frmStudentTraining
         Me.Label14.TabIndex = 74
         Me.Label14.Text = "Balance"
         '
-        'frmStudentTraining
+        'frmTraining
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -476,7 +476,7 @@ Partial Class frmStudentTraining
         Me.Controls.Add(Me.txtStudentID)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Name = "frmStudentTraining"
+        Me.Name = "frmTraining"
         Me.Text = "Student Training"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)

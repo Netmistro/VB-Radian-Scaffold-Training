@@ -382,7 +382,7 @@ Partial Class frmLocalCompany
         '
         Me.btnContacts.BackColor = System.Drawing.Color.Turquoise
         Me.btnContacts.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnContacts.Location = New System.Drawing.Point(616, 278)
+        Me.btnContacts.Location = New System.Drawing.Point(616, 238)
         Me.btnContacts.Name = "btnContacts"
         Me.btnContacts.Size = New System.Drawing.Size(75, 30)
         Me.btnContacts.TabIndex = 71

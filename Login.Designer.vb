@@ -26,11 +26,10 @@ Partial Class frmLogin
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.txtPassword = New System.Windows.Forms.TextBox()
-        Me.cbAdmin = New System.Windows.Forms.CheckBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnLogin = New System.Windows.Forms.Button()
-        Me.btnOptions = New System.Windows.Forms.Button()
+        Me.btnChangePWD = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -39,7 +38,7 @@ Partial Class frmLogin
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(24, 95)
+        Me.Label1.Location = New System.Drawing.Point(33, 98)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(58, 13)
         Me.Label1.TabIndex = 0
@@ -49,7 +48,7 @@ Partial Class frmLogin
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(26, 137)
+        Me.Label2.Location = New System.Drawing.Point(35, 140)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(56, 13)
         Me.Label2.TabIndex = 1
@@ -58,7 +57,7 @@ Partial Class frmLogin
         'txtUsername
         '
         Me.txtUsername.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUsername.Location = New System.Drawing.Point(88, 86)
+        Me.txtUsername.Location = New System.Drawing.Point(97, 89)
         Me.txtUsername.Name = "txtUsername"
         Me.txtUsername.Size = New System.Drawing.Size(179, 22)
         Me.txtUsername.TabIndex = 1
@@ -66,38 +65,27 @@ Partial Class frmLogin
         'txtPassword
         '
         Me.txtPassword.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPassword.Location = New System.Drawing.Point(88, 128)
+        Me.txtPassword.Location = New System.Drawing.Point(97, 131)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPassword.Size = New System.Drawing.Size(179, 22)
         Me.txtPassword.TabIndex = 2
-        '
-        'cbAdmin
-        '
-        Me.cbAdmin.AutoSize = True
-        Me.cbAdmin.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbAdmin.Location = New System.Drawing.Point(88, 168)
-        Me.cbAdmin.Name = "cbAdmin"
-        Me.cbAdmin.Size = New System.Drawing.Size(59, 17)
-        Me.cbAdmin.TabIndex = 3
-        Me.cbAdmin.Text = "Admin"
-        Me.cbAdmin.UseVisualStyleBackColor = True
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(33, 17)
+        Me.Label3.Location = New System.Drawing.Point(30, 17)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(233, 30)
+        Me.Label3.Size = New System.Drawing.Size(257, 30)
         Me.Label3.TabIndex = 5
-        Me.Label3.Text = "RADIAN System Login"
+        Me.Label3.Text = "RADIAN Training System"
         '
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(110, 191)
+        Me.btnCancel.Location = New System.Drawing.Point(119, 177)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(80, 30)
         Me.btnCancel.TabIndex = 5
@@ -107,22 +95,22 @@ Partial Class frmLogin
         'btnLogin
         '
         Me.btnLogin.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLogin.Location = New System.Drawing.Point(29, 191)
+        Me.btnLogin.Location = New System.Drawing.Point(38, 177)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(80, 30)
         Me.btnLogin.TabIndex = 4
         Me.btnLogin.Text = "&Ok"
         Me.btnLogin.UseVisualStyleBackColor = True
         '
-        'btnOptions
+        'btnChangePWD
         '
-        Me.btnOptions.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnOptions.Location = New System.Drawing.Point(191, 191)
-        Me.btnOptions.Name = "btnOptions"
-        Me.btnOptions.Size = New System.Drawing.Size(80, 30)
-        Me.btnOptions.TabIndex = 6
-        Me.btnOptions.Text = "O&ptions > >"
-        Me.btnOptions.UseVisualStyleBackColor = True
+        Me.btnChangePWD.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnChangePWD.Location = New System.Drawing.Point(200, 177)
+        Me.btnChangePWD.Name = "btnChangePWD"
+        Me.btnChangePWD.Size = New System.Drawing.Size(80, 30)
+        Me.btnChangePWD.TabIndex = 6
+        Me.btnChangePWD.Text = "O&ptions > >"
+        Me.btnChangePWD.UseVisualStyleBackColor = True
         '
         'Panel1
         '
@@ -130,19 +118,18 @@ Partial Class frmLogin
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Location = New System.Drawing.Point(1, 1)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(306, 64)
+        Me.Panel1.Size = New System.Drawing.Size(322, 64)
         Me.Panel1.TabIndex = 10
         '
         'frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(307, 239)
+        Me.ClientSize = New System.Drawing.Size(323, 225)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.btnOptions)
+        Me.Controls.Add(Me.btnChangePWD)
         Me.Controls.Add(Me.btnLogin)
         Me.Controls.Add(Me.btnCancel)
-        Me.Controls.Add(Me.cbAdmin)
         Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.txtUsername)
         Me.Controls.Add(Me.Label2)
@@ -160,10 +147,9 @@ Partial Class frmLogin
     Friend WithEvents Label2 As Label
     Friend WithEvents txtUsername As TextBox
     Friend WithEvents txtPassword As TextBox
-    Friend WithEvents cbAdmin As CheckBox
     Friend WithEvents Label3 As Label
     Friend WithEvents btnCancel As Button
     Friend WithEvents btnLogin As Button
-    Friend WithEvents btnOptions As Button
+    Friend WithEvents btnChangePWD As Button
     Friend WithEvents Panel1 As Panel
 End Class

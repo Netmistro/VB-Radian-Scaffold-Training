@@ -221,7 +221,7 @@ Partial Class frmPayment
         Me.txtPayee.Location = New System.Drawing.Point(328, 218)
         Me.txtPayee.Name = "txtPayee"
         Me.txtPayee.Size = New System.Drawing.Size(167, 22)
-        Me.txtPayee.TabIndex = 3
+        Me.txtPayee.TabIndex = 6
         '
         'Label7
         '
@@ -239,7 +239,7 @@ Partial Class frmPayment
         Me.txtAmtPaid.Location = New System.Drawing.Point(328, 188)
         Me.txtAmtPaid.Name = "txtAmtPaid"
         Me.txtAmtPaid.Size = New System.Drawing.Size(90, 22)
-        Me.txtAmtPaid.TabIndex = 2
+        Me.txtAmtPaid.TabIndex = 4
         '
         'Label8
         '
@@ -268,6 +268,7 @@ Partial Class frmPayment
         Me.txtEnteredBy.Name = "txtEnteredBy"
         Me.txtEnteredBy.Size = New System.Drawing.Size(167, 22)
         Me.txtEnteredBy.TabIndex = 68
+        Me.txtEnteredBy.TabStop = False
         '
         'Label10
         '
@@ -285,7 +286,7 @@ Partial Class frmPayment
         Me.dtpDatePaid.Location = New System.Drawing.Point(328, 133)
         Me.dtpDatePaid.Name = "dtpDatePaid"
         Me.dtpDatePaid.Size = New System.Drawing.Size(108, 20)
-        Me.dtpDatePaid.TabIndex = 1
+        Me.dtpDatePaid.TabIndex = 3
         '
         'txtTrainID
         '
@@ -312,7 +313,7 @@ Partial Class frmPayment
         Me.btnSave.Location = New System.Drawing.Point(389, 480)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 30)
-        Me.btnSave.TabIndex = 8
+        Me.btnSave.TabIndex = 10
         Me.btnSave.Text = "&Save"
         Me.btnSave.UseVisualStyleBackColor = False
         '
@@ -323,7 +324,7 @@ Partial Class frmPayment
         Me.btnDelete.Location = New System.Drawing.Point(303, 480)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(75, 30)
-        Me.btnDelete.TabIndex = 7
+        Me.btnDelete.TabIndex = 9
         Me.btnDelete.Text = "&Delete"
         Me.btnDelete.UseVisualStyleBackColor = False
         '
@@ -334,7 +335,7 @@ Partial Class frmPayment
         Me.btnNew.Location = New System.Drawing.Point(131, 480)
         Me.btnNew.Name = "btnNew"
         Me.btnNew.Size = New System.Drawing.Size(75, 30)
-        Me.btnNew.TabIndex = 5
+        Me.btnNew.TabIndex = 7
         Me.btnNew.Text = "&New"
         Me.btnNew.UseVisualStyleBackColor = False
         '
@@ -345,7 +346,7 @@ Partial Class frmPayment
         Me.btnUpdate.Location = New System.Drawing.Point(217, 480)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(75, 30)
-        Me.btnUpdate.TabIndex = 6
+        Me.btnUpdate.TabIndex = 8
         Me.btnUpdate.Text = "&Update"
         Me.btnUpdate.UseVisualStyleBackColor = False
         '
@@ -355,7 +356,7 @@ Partial Class frmPayment
         Me.txtCourseName.Location = New System.Drawing.Point(328, 104)
         Me.txtCourseName.Name = "txtCourseName"
         Me.txtCourseName.Size = New System.Drawing.Size(263, 22)
-        Me.txtCourseName.TabIndex = 77
+        Me.txtCourseName.TabIndex = 2
         '
         'txtCost
         '
@@ -364,6 +365,7 @@ Partial Class frmPayment
         Me.txtCost.Name = "txtCost"
         Me.txtCost.Size = New System.Drawing.Size(90, 22)
         Me.txtCost.TabIndex = 78
+        Me.txtCost.TabStop = False
         '
         'Label13
         '
@@ -382,6 +384,7 @@ Partial Class frmPayment
         Me.txtBalance.Name = "txtBalance"
         Me.txtBalance.Size = New System.Drawing.Size(90, 22)
         Me.txtBalance.TabIndex = 80
+        Me.txtBalance.TabStop = False
         '
         'Label14
         '
@@ -399,7 +402,7 @@ Partial Class frmPayment
         Me.txtReceiptNo.Location = New System.Drawing.Point(501, 187)
         Me.txtReceiptNo.Name = "txtReceiptNo"
         Me.txtReceiptNo.Size = New System.Drawing.Size(90, 22)
-        Me.txtReceiptNo.TabIndex = 82
+        Me.txtReceiptNo.TabIndex = 5
         '
         'Label15
         '

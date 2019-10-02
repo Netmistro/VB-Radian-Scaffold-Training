@@ -38,20 +38,20 @@ Partial Class frmSettings
         Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnTestConnection = New System.Windows.Forms.Button()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.txtDBName = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.txtPassword = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.txtUserID = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.txtServerName = New System.Windows.Forms.TextBox()
-        Me.btnSaveSettings = New System.Windows.Forms.Button()
-        Me.btnPICBrowse = New System.Windows.Forms.Button()
-        Me.btnCertPath = New System.Windows.Forms.Button()
-        Me.btnNationalID = New System.Windows.Forms.Button()
-        Me.btnDriversPermit = New System.Windows.Forms.Button()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.btnPassport = New System.Windows.Forms.Button()
+        Me.btnDriversPermit = New System.Windows.Forms.Button()
+        Me.btnNationalID = New System.Windows.Forms.Button()
+        Me.btnCertPath = New System.Windows.Forms.Button()
+        Me.btnPICBrowse = New System.Windows.Forms.Button()
+        Me.btnSaveSettings = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -187,7 +187,7 @@ Partial Class frmSettings
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(24, 32)
+        Me.Label7.Location = New System.Drawing.Point(31, 32)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(70, 13)
         Me.Label7.TabIndex = 33
@@ -223,35 +223,72 @@ Partial Class frmSettings
         Me.btnTestConnection.Text = "Test"
         Me.btnTestConnection.UseVisualStyleBackColor = False
         '
+        'txtDBName
+        '
+        Me.txtDBName.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDBName.Location = New System.Drawing.Point(107, 111)
+        Me.txtDBName.Name = "txtDBName"
+        Me.txtDBName.Size = New System.Drawing.Size(126, 22)
+        Me.txtDBName.TabIndex = 38
+        Me.txtDBName.Text = "radiantraining"
+        '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(40, 116)
+        Me.Label10.Location = New System.Drawing.Point(47, 116)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(54, 13)
+        Me.Label10.Size = New System.Drawing.Size(53, 13)
         Me.Label10.TabIndex = 39
         Me.Label10.Text = "DB Name"
+        '
+        'txtPassword
+        '
+        Me.txtPassword.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPassword.Location = New System.Drawing.Point(107, 83)
+        Me.txtPassword.Name = "txtPassword"
+        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtPassword.Size = New System.Drawing.Size(126, 22)
+        Me.txtPassword.TabIndex = 36
+        Me.txtPassword.Text = "root"
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(38, 88)
+        Me.Label9.Location = New System.Drawing.Point(45, 88)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(56, 13)
         Me.Label9.TabIndex = 37
         Me.Label9.Text = "Password"
         '
+        'txtUserID
+        '
+        Me.txtUserID.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUserID.Location = New System.Drawing.Point(107, 55)
+        Me.txtUserID.Name = "txtUserID"
+        Me.txtUserID.Size = New System.Drawing.Size(126, 22)
+        Me.txtUserID.TabIndex = 34
+        Me.txtUserID.Text = "root"
+        '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(50, 60)
+        Me.Label8.Location = New System.Drawing.Point(57, 60)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(44, 13)
         Me.Label8.TabIndex = 35
         Me.Label8.Text = "User ID"
+        '
+        'txtServerName
+        '
+        Me.txtServerName.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtServerName.Location = New System.Drawing.Point(107, 27)
+        Me.txtServerName.Name = "txtServerName"
+        Me.txtServerName.Size = New System.Drawing.Size(126, 22)
+        Me.txtServerName.TabIndex = 32
+        Me.txtServerName.Text = "localhost"
         '
         'GroupBox2
         '
@@ -268,86 +305,16 @@ Partial Class frmSettings
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "File Paths"
         '
-        'txtDBName
+        'btnPassport
         '
-        Me.txtDBName.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDBName.Location = New System.Drawing.Point(107, 111)
-        Me.txtDBName.Name = "txtDBName"
-        Me.txtDBName.Size = New System.Drawing.Size(126, 22)
-        Me.txtDBName.TabIndex = 38
-        Me.txtDBName.Text = "radiantraining"
-        '
-        'txtPassword
-        '
-        Me.txtPassword.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPassword.Location = New System.Drawing.Point(107, 83)
-        Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPassword.Size = New System.Drawing.Size(126, 22)
-        Me.txtPassword.TabIndex = 36
-        Me.txtPassword.Text = "root"
-        '
-        'txtUserID
-        '
-        Me.txtUserID.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUserID.Location = New System.Drawing.Point(107, 55)
-        Me.txtUserID.Name = "txtUserID"
-        Me.txtUserID.Size = New System.Drawing.Size(126, 22)
-        Me.txtUserID.TabIndex = 34
-        Me.txtUserID.Text = "root"
-        '
-        'txtServerName
-        '
-        Me.txtServerName.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtServerName.Location = New System.Drawing.Point(107, 27)
-        Me.txtServerName.Name = "txtServerName"
-        Me.txtServerName.Size = New System.Drawing.Size(126, 22)
-        Me.txtServerName.TabIndex = 32
-        Me.txtServerName.Text = "localhost"
-        '
-        'btnSaveSettings
-        '
-        Me.btnSaveSettings.BackColor = System.Drawing.Color.Tomato
-        Me.btnSaveSettings.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSaveSettings.Location = New System.Drawing.Point(394, 403)
-        Me.btnSaveSettings.Name = "btnSaveSettings"
-        Me.btnSaveSettings.Size = New System.Drawing.Size(75, 30)
-        Me.btnSaveSettings.TabIndex = 40
-        Me.btnSaveSettings.Text = "Save"
-        Me.btnSaveSettings.UseVisualStyleBackColor = False
-        '
-        'btnPICBrowse
-        '
-        Me.btnPICBrowse.BackColor = System.Drawing.Color.LightGray
-        Me.btnPICBrowse.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPICBrowse.Location = New System.Drawing.Point(395, 30)
-        Me.btnPICBrowse.Name = "btnPICBrowse"
-        Me.btnPICBrowse.Size = New System.Drawing.Size(40, 25)
-        Me.btnPICBrowse.TabIndex = 41
-        Me.btnPICBrowse.Text = "..."
-        Me.btnPICBrowse.UseVisualStyleBackColor = False
-        '
-        'btnCertPath
-        '
-        Me.btnCertPath.BackColor = System.Drawing.Color.LightGray
-        Me.btnCertPath.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCertPath.Location = New System.Drawing.Point(395, 61)
-        Me.btnCertPath.Name = "btnCertPath"
-        Me.btnCertPath.Size = New System.Drawing.Size(40, 25)
-        Me.btnCertPath.TabIndex = 42
-        Me.btnCertPath.Text = "..."
-        Me.btnCertPath.UseVisualStyleBackColor = False
-        '
-        'btnNationalID
-        '
-        Me.btnNationalID.BackColor = System.Drawing.Color.LightGray
-        Me.btnNationalID.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNationalID.Location = New System.Drawing.Point(395, 92)
-        Me.btnNationalID.Name = "btnNationalID"
-        Me.btnNationalID.Size = New System.Drawing.Size(40, 25)
-        Me.btnNationalID.TabIndex = 43
-        Me.btnNationalID.Text = "..."
-        Me.btnNationalID.UseVisualStyleBackColor = False
+        Me.btnPassport.BackColor = System.Drawing.Color.LightGray
+        Me.btnPassport.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPassport.Location = New System.Drawing.Point(395, 154)
+        Me.btnPassport.Name = "btnPassport"
+        Me.btnPassport.Size = New System.Drawing.Size(40, 25)
+        Me.btnPassport.TabIndex = 45
+        Me.btnPassport.Text = "..."
+        Me.btnPassport.UseVisualStyleBackColor = False
         '
         'btnDriversPermit
         '
@@ -360,16 +327,49 @@ Partial Class frmSettings
         Me.btnDriversPermit.Text = "..."
         Me.btnDriversPermit.UseVisualStyleBackColor = False
         '
-        'btnPassport
+        'btnNationalID
         '
-        Me.btnPassport.BackColor = System.Drawing.Color.LightGray
-        Me.btnPassport.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPassport.Location = New System.Drawing.Point(395, 154)
-        Me.btnPassport.Name = "btnPassport"
-        Me.btnPassport.Size = New System.Drawing.Size(40, 25)
-        Me.btnPassport.TabIndex = 45
-        Me.btnPassport.Text = "..."
-        Me.btnPassport.UseVisualStyleBackColor = False
+        Me.btnNationalID.BackColor = System.Drawing.Color.LightGray
+        Me.btnNationalID.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNationalID.Location = New System.Drawing.Point(395, 92)
+        Me.btnNationalID.Name = "btnNationalID"
+        Me.btnNationalID.Size = New System.Drawing.Size(40, 25)
+        Me.btnNationalID.TabIndex = 43
+        Me.btnNationalID.Text = "..."
+        Me.btnNationalID.UseVisualStyleBackColor = False
+        '
+        'btnCertPath
+        '
+        Me.btnCertPath.BackColor = System.Drawing.Color.LightGray
+        Me.btnCertPath.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCertPath.Location = New System.Drawing.Point(395, 61)
+        Me.btnCertPath.Name = "btnCertPath"
+        Me.btnCertPath.Size = New System.Drawing.Size(40, 25)
+        Me.btnCertPath.TabIndex = 42
+        Me.btnCertPath.Text = "..."
+        Me.btnCertPath.UseVisualStyleBackColor = False
+        '
+        'btnPICBrowse
+        '
+        Me.btnPICBrowse.BackColor = System.Drawing.Color.LightGray
+        Me.btnPICBrowse.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPICBrowse.Location = New System.Drawing.Point(395, 30)
+        Me.btnPICBrowse.Name = "btnPICBrowse"
+        Me.btnPICBrowse.Size = New System.Drawing.Size(40, 25)
+        Me.btnPICBrowse.TabIndex = 41
+        Me.btnPICBrowse.Text = "..."
+        Me.btnPICBrowse.UseVisualStyleBackColor = False
+        '
+        'btnSaveSettings
+        '
+        Me.btnSaveSettings.BackColor = System.Drawing.Color.Tomato
+        Me.btnSaveSettings.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSaveSettings.Location = New System.Drawing.Point(394, 403)
+        Me.btnSaveSettings.Name = "btnSaveSettings"
+        Me.btnSaveSettings.Size = New System.Drawing.Size(75, 30)
+        Me.btnSaveSettings.TabIndex = 40
+        Me.btnSaveSettings.Text = "Save"
+        Me.btnSaveSettings.UseVisualStyleBackColor = False
         '
         'frmSettings
         '

@@ -6,9 +6,8 @@ Public Class frmLogin
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Dim loadLoginForm As New RadianSettings
+        Dim loadLoginForm As New RADIANSETTINGS
         loadLoginForm.CenterForm(Me)
-        cbAdmin.Checked = False
 
     End Sub
 
@@ -20,9 +19,10 @@ Public Class frmLogin
 
     Dim MysqlConn As MySqlConnection
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        MysqlConn = New MySqlConnection With {
-            .ConnectionString = "server=localhost;userid=root;password=root;database=radiantraining"
-        }
+        MysqlConn = New MySqlConnection
+        Dim CString As New RADIANSETTINGS
+
+        MysqlConn.ConnectionString = CString.ConnString
         Dim COMMAND As MySqlCommand
         Dim READER As MySqlDataReader
 
@@ -65,9 +65,14 @@ Public Class frmLogin
 
     End Sub
 
-    Private Sub btnOptions_Click(sender As Object, e As EventArgs) Handles btnOptions.Click
+    Private Sub btnOptions_Click(sender As Object, e As EventArgs) Handles btnChangePWD.Click
 
-        frmSettings.Show()
+        If txtUsername.Text = "" Then
+            MsgBox("Please enter valid Username!", vbOKOnly)
+        Else
+            frmChangePWD.Show()
+        End If
+
 
     End Sub
 End Class

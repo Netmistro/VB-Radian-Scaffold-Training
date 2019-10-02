@@ -1,7 +1,15 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class frmUsers
+    Dim MysqlConn As New MySqlConnection
+    Dim CString As New RADIANSETTINGS
+
     Private connectionString As New MySqlConnection("server=localhost;userid=root;password=root;database=radiantraining")
+
+    Private Sub CrystalReportViewer1_Load(sender As Object, e As EventArgs) Handles CrystalReportViewer1.Load
+
+    End Sub
+
     Private Sub btnAllSystemUsers_Click(sender As Object, e As EventArgs) Handles btnAllSystemUsers.Click
         Dim COMMAND As MySqlCommand
         Dim Adapter As New MySqlDataAdapter

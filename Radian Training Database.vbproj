@@ -106,6 +106,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangePWD.Designer.vb">
+      <DependentUpon>ChangePWD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePWD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Courses.Designer.vb">
+      <DependentUpon>Courses.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Courses.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ForeignCompany.Designer.vb">
       <DependentUpon>ForeignCompany.vb</DependentUpon>
     </Compile>
@@ -209,6 +221,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ChangePWD.resx">
+      <DependentUpon>ChangePWD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Courses.resx">
+      <DependentUpon>Courses.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ForeignCompany.resx">
       <DependentUpon>ForeignCompany.vb</DependentUpon>
     </EmbeddedResource>

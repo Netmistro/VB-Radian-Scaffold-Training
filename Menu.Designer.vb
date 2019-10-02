@@ -42,9 +42,11 @@ Partial Class frmMenu
         Me.btnExit = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.btnCourses = New System.Windows.Forms.Button()
+        Me.btnCity = New System.Windows.Forms.Button()
+        Me.btnForeignCompany = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btnSettings = New System.Windows.Forms.Button()
-        Me.btnForeignCompany = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -54,7 +56,7 @@ Partial Class frmMenu
         '
         Me.btnCheckConnection.BackColor = System.Drawing.Color.Tomato
         Me.btnCheckConnection.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCheckConnection.Location = New System.Drawing.Point(387, 532)
+        Me.btnCheckConnection.Location = New System.Drawing.Point(515, 531)
         Me.btnCheckConnection.Name = "btnCheckConnection"
         Me.btnCheckConnection.Size = New System.Drawing.Size(75, 30)
         Me.btnCheckConnection.TabIndex = 15
@@ -95,7 +97,7 @@ Partial Class frmMenu
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(196, 108)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(146, 17)
@@ -109,7 +111,7 @@ Partial Class frmMenu
         Me.btnStudentDetails.Location = New System.Drawing.Point(13, 31)
         Me.btnStudentDetails.Name = "btnStudentDetails"
         Me.btnStudentDetails.Size = New System.Drawing.Size(120, 50)
-        Me.btnStudentDetails.TabIndex = 2
+        Me.btnStudentDetails.TabIndex = 1
         Me.btnStudentDetails.Text = "Student Details"
         Me.btnStudentDetails.UseVisualStyleBackColor = False
         '
@@ -131,7 +133,7 @@ Partial Class frmMenu
         Me.btnInstructor.Location = New System.Drawing.Point(13, 87)
         Me.btnInstructor.Name = "btnInstructor"
         Me.btnInstructor.Size = New System.Drawing.Size(120, 50)
-        Me.btnInstructor.TabIndex = 4
+        Me.btnInstructor.TabIndex = 2
         Me.btnInstructor.Text = "Instructors"
         Me.btnInstructor.UseVisualStyleBackColor = False
         '
@@ -227,7 +229,7 @@ Partial Class frmMenu
         '
         Me.btnExit.BackColor = System.Drawing.Color.Tomato
         Me.btnExit.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExit.Location = New System.Drawing.Point(306, 532)
+        Me.btnExit.Location = New System.Drawing.Point(434, 531)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(75, 30)
         Me.btnExit.TabIndex = 14
@@ -254,6 +256,8 @@ Partial Class frmMenu
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.btnCourses)
+        Me.GroupBox2.Controls.Add(Me.btnCity)
         Me.GroupBox2.Controls.Add(Me.btnForeignCompany)
         Me.GroupBox2.Controls.Add(Me.btnStudentDetails)
         Me.GroupBox2.Controls.Add(Me.btnLocalCompany)
@@ -261,10 +265,43 @@ Partial Class frmMenu
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(22, 182)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(152, 329)
+        Me.GroupBox2.Size = New System.Drawing.Size(152, 379)
         Me.GroupBox2.TabIndex = 21
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Add/Edit Details"
+        '
+        'btnCourses
+        '
+        Me.btnCourses.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnCourses.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCourses.Location = New System.Drawing.Point(13, 315)
+        Me.btnCourses.Name = "btnCourses"
+        Me.btnCourses.Size = New System.Drawing.Size(120, 50)
+        Me.btnCourses.TabIndex = 6
+        Me.btnCourses.Text = "Courses"
+        Me.btnCourses.UseVisualStyleBackColor = False
+        '
+        'btnCity
+        '
+        Me.btnCity.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnCity.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCity.Location = New System.Drawing.Point(13, 257)
+        Me.btnCity.Name = "btnCity"
+        Me.btnCity.Size = New System.Drawing.Size(120, 50)
+        Me.btnCity.TabIndex = 5
+        Me.btnCity.Text = "City"
+        Me.btnCity.UseVisualStyleBackColor = False
+        '
+        'btnForeignCompany
+        '
+        Me.btnForeignCompany.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnForeignCompany.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnForeignCompany.Location = New System.Drawing.Point(13, 199)
+        Me.btnForeignCompany.Name = "btnForeignCompany"
+        Me.btnForeignCompany.Size = New System.Drawing.Size(120, 50)
+        Me.btnForeignCompany.TabIndex = 4
+        Me.btnForeignCompany.Text = "Foreign Company"
+        Me.btnForeignCompany.UseVisualStyleBackColor = False
         '
         'PictureBox1
         '
@@ -280,29 +317,18 @@ Partial Class frmMenu
         '
         Me.btnSettings.BackColor = System.Drawing.Color.Tomato
         Me.btnSettings.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSettings.Location = New System.Drawing.Point(225, 532)
+        Me.btnSettings.Location = New System.Drawing.Point(353, 531)
         Me.btnSettings.Name = "btnSettings"
         Me.btnSettings.Size = New System.Drawing.Size(75, 30)
         Me.btnSettings.TabIndex = 13
         Me.btnSettings.Text = "Settings"
         Me.btnSettings.UseVisualStyleBackColor = False
         '
-        'btnForeignCompany
-        '
-        Me.btnForeignCompany.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnForeignCompany.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnForeignCompany.Location = New System.Drawing.Point(13, 199)
-        Me.btnForeignCompany.Name = "btnForeignCompany"
-        Me.btnForeignCompany.Size = New System.Drawing.Size(120, 50)
-        Me.btnForeignCompany.TabIndex = 5
-        Me.btnForeignCompany.Text = "Foreign Company"
-        Me.btnForeignCompany.UseVisualStyleBackColor = False
-        '
         'frmMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(617, 597)
+        Me.ClientSize = New System.Drawing.Size(617, 578)
         Me.Controls.Add(Me.btnSettings)
         Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.Label4)
@@ -346,4 +372,6 @@ Partial Class frmMenu
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents btnSettings As Button
     Friend WithEvents btnForeignCompany As Button
+    Friend WithEvents btnCity As Button
+    Friend WithEvents btnCourses As Button
 End Class

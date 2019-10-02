@@ -3,25 +3,16 @@ Imports MySql.Data
 Imports MySql.Data.MySqlClient
 Public Class frmMenu
     Dim MysqlConn As MySqlConnection
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnCheckConnection.Click
+    Private Sub btnCheckConnection_Click(sender As Object, e As EventArgs) Handles btnCheckConnection.Click
 
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString =
-            "server=localhost;userid=root;password=root;database=radiantraining"
-        Try
-            MysqlConn.Open()
-            MessageBox.Show("Connection Successful", "Successful Connection", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            MysqlConn.Close()
-        Catch ex As Exception
-            MessageBox.Show("There was a connection error" & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
+
+        MessageBox.Show("Connection Successful", "Successful Connection", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
     End Sub
 
     Private Sub Menu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Dim loadMenuForm As New RadianSettings
+        Dim loadMenuForm As New RADIANSETTINGS
         loadMenuForm.CenterForm(Me)
 
     End Sub
@@ -32,7 +23,7 @@ Public Class frmMenu
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs)
 
-        frmStudentTraining.Show()
+        frmTraining.Show()
 
     End Sub
 
@@ -68,6 +59,18 @@ Public Class frmMenu
     Private Sub btnForeignCompany_Click(sender As Object, e As EventArgs) Handles btnForeignCompany.Click
 
         frmForeignCompany.Show()
+
+    End Sub
+
+    Private Sub btnCity_Click(sender As Object, e As EventArgs) Handles btnCity.Click
+
+        frmCity.Show()
+
+    End Sub
+
+    Private Sub btnCourses_Click(sender As Object, e As EventArgs) Handles btnCourses.Click
+
+        frmCourses.Show()
 
     End Sub
 End Class

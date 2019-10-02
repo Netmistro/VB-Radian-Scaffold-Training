@@ -2,7 +2,7 @@
 Imports MySql.Data
 Imports MySql.Data.MySqlClient
 
-Public Class RadianSettings
+Public Class RADIANSETTINGS
 
     'Method for Centering Forms
     Public Sub CenterForm(ByVal frm As Form, Optional ByVal parent As Form = Nothing)
@@ -21,46 +21,11 @@ Public Class RadianSettings
 
     End Sub
 
-    Public Sub testConnection()
-        Dim MysqlConn As New MySqlConnection
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString =
-            "
-            server='" & My.Settings.ServerName & "';
-            userid='" & My.Settings.UserID & "';
-            password='" & My.Settings.Password & "';
-            database='" & My.Settings.DBName & "'
-            "
-        Try
-            MysqlConn.Open()
-            MessageBox.Show("Connection Successful", "Successful Connection", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            MysqlConn.Close()
-        Catch ex As Exception
-            MessageBox.Show("There was a connection error" & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
-
-    End Sub
-
-    Public Sub connectionString()
-
-        Dim MysqlConn As New MySqlConnection
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString =
-            "
-            server='" & My.Settings.ServerName & "';
-            userid='" & My.Settings.UserID & "';
-            password='" & My.Settings.Password & "';
-            database='" & My.Settings.DBName & "'
-            "
-
-    End Sub
-
     Public Sub contactType()
 
         'Check to see if the local of foreign company form is open
         Dim ContactType As String
+
         If Application.OpenForms.OfType(Of Form).Contains(frmForeignCompany) Then
 
             ContactType = "Foreign"
@@ -71,5 +36,16 @@ Public Class RadianSettings
         End If
 
     End Sub
+
+    Public Function ConnString() As String
+
+        Dim connStr As String = "server='" & My.Settings.ServerName & "';
+        userid='" & My.Settings.UserID & "';
+        password='" & My.Settings.Password & "';
+        database='" & My.Settings.DBName & "'"
+
+        Return connStr
+
+    End Function
 
 End Class
